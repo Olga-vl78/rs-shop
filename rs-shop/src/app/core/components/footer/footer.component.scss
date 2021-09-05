@@ -32,8 +32,7 @@
     justify-content: space-between;
 }
 
-.icon,
-.icon-a1 {
+.icon {
     width: 25px;
     height: 25px;
     margin-right: 5px;
@@ -44,25 +43,6 @@
 .icon-life {
     width: 10px;
     margin-right: 5px;
-    font-weight: 800;
-}
-
-.icon-a1 {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 26px;
-    font-weight: 800;
-    color: red;
-}
-
-.a1 {
-    position: absolute;
-    top: 0;
-    left: 15px;
-    color: #000;
-    font-size: 16px;
     font-weight: 800;
 }
 

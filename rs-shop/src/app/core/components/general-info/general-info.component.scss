@@ -1,3 +1,8 @@
+.info__wrapper{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .info__wrapper,
 .info__inner-wrapper {
     display: flex;
@@ -31,6 +36,7 @@
 }
 
 .info__location-icon,
+.info__a1-pic,
 .info__viber-pic,
 .info__watch-pic {
     width: 25px;
@@ -40,25 +46,6 @@
 .info__working-hours-text {
     font-size: 0.9rem;
     color: gray;
-}
-
-.info__velcom-icon {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 26px;
-    font-weight: 800;
-    color: red;
-}
-
-.velcom {
-    position: absolute;
-    top: 0;
-    left: 15px;
-    color: #000;
-    font-size: 16px;
-    font-weight: 800;
 }
 
 .dropdown__btn {
@@ -172,4 +159,16 @@
             transform: scaleY(1);
         }
     }
+}
+
+.info__line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e5e5;
+}
+
+.separate-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e5e5;
 }

@@ -1,0 +1,51 @@
+.nav {
+    max-width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo{
+    width: 11rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg,#941e94,#e52e6b);
+}
+
+.nav__logo-link {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.btn {
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #cccaca;
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.nav__search-input {
+    width: 40rem;
+    height: 3rem;
+    padding: 8px 40px;
+    border: solid #cccaca 1px;
+    border-radius: 30px;
+    background: url(~src/assets/icons/loupe.svg) no-repeat 10px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}

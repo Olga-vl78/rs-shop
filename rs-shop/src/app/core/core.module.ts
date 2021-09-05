@@ -19,6 +19,6 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
   imports: [
     CommonModule
   ],
-  exports: [HeaderComponent,]
+  exports: [HeaderComponent, FooterComponent]
 })
 export class CoreModule { }

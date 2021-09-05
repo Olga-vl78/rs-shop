@@ -150,5 +150,15 @@ input {
 
 input:focus {
     outline: 0;
-    color: transparent;
+}
+:focus::-webkit-input-placeholder {
+    color: transparent
+  }
+
+:focus::-moz-placeholder {
+    color: transparent
+}
+
+:focus:-ms-input-placeholder {
+    color: transparent
 }
