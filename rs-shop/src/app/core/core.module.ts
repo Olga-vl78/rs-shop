@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { CategoryNavComponent } from './components/category-nav/category-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GeneralInfoComponent } from './components/general-info/general-info.component';
@@ -17,7 +18,7 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
     CategoryNavComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, SharedModule
   ],
   exports: [HeaderComponent, FooterComponent]
 })
