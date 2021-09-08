@@ -1,0 +1,9 @@
+<p-carousel [value]="bannersData" [numVisible]="1" [numScroll]="1" [autoplayInterval]="5000" [circular]="true"
+    [showIndicators]="true" [showNavigators]="true">
+    <ng-template let-banner pTemplate="item">
+        <div class="banner-pic">
+            <!-- [ngStyle]="{backgroundImage: 'url(' + banner.image + ')'}"> -->
+            <img [src]="banner.image" alt="" class="banner-img">
+        </div>
+    </ng-template>
+</p-carousel>
