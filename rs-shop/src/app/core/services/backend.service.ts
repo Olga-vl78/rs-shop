@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ICategory } from 'src/app/shared/models/category.model';
+import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 
 const BASEURL = 'http://localhost:3004';
@@ -35,14 +36,14 @@ export class BackendService {
     return this.http.get<ICategory>(`${BASEURL}/goods/category/${catId}`)
       .pipe(
         catchError(this.handleError))
-    //.toPromise();
+      .toPromise();
   }
 
   fetchSubcategory(catId: string, subcatId: string) {
-    return this.http.get<ICategory>(`${BASEURL}/goods/category/${catId}/${subcatId}`)
+    return this.http.get<IGoodsItem[]>(`${BASEURL}/goods/category/${catId}/${subcatId}`)
       .pipe(
         catchError(this.handleError))
-    //.toPromise();
+      .toPromise();
   }
 
   fetchItem(itemId: string) {

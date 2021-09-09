@@ -1,0 +1,32 @@
+:host{
+    width: 400px;
+    //height: 500px;
+    //overflow: hidden;
+}
+
+.subcategory__name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.subcategory__name:hover {
+    color: #8f0808;
+}
+
+.subcategory__list-item {
+    padding: 5px 0;
+    line-height: 2;
+}
+
+.subcategory__list-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.subcategory__list-item {
+    &:hover {
+        .subcategory__list-link {
+            color: #8f0808;
+        }
+    }
+}

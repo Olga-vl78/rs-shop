@@ -1,1 +1,23 @@
-<p>categories-list works!</p>
+<div class="categoties__container">
+    <ul class="categories__list">
+        <li class="categories__list-item" *ngFor="let category of categories"
+            (mouseover)="onCategoryMouseOver(category.id)"><a href="" class="categories__list-link"><img class="icon"
+                    [src]="category.src" alt="">{{category.name}}</a>
+        </li>
+    </ul>
+    <div class="category__info">
+        <h2 class="category__name">{{categoryName}}</h2>
+        <div class="category__info-container">
+            <app-subcategory *ngFor="let subcategory of subcategories" [subcategory]="subcategory"></app-subcategory>
+
+            <!--<div class="subcategory" *ngFor="let subcategory of subcategories">
+                <h3 class="subcategory__name">{{subcategory.name}}</h3>
+                <ul class="subcategory__list">
+                    <li class="subcategory__list-item" *ngFor="let item of subcategory.items"><a href=""
+                            class="subcategory__list-link">Subcategory Item</a>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
+import { SubcategoryComponent } from './components/subcategory/subcategory.component';
 
 const routes: Routes = [
   { path: '', component: CatalogPageComponent, pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     CatalogPageComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    SubcategoryComponent
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes)
