@@ -1,4 +1,4 @@
-<h3 class="subcategory__name">{{subcategory?.name}}</h3>
+<h3 class="subcategory__name" (click)="goToSubcategoryPage()">{{subcategory?.name}}</h3>
 <ul class="subcategory__list">
     <li class="subcategory__list-item" *ngFor="let item of subcategory?.items"><a href=""
             class="subcategory__list-link">{{item.name}}</a>

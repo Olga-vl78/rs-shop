@@ -9,18 +9,22 @@ const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path: 'catalog',
+    path: 'categories',
     //component: CatalogPageComponent,
     loadChildren: () => import('./goods/goods.module').then((m) => m.GoodsModule),
   },
   /*{
     path: 'categories',
     component: CategoryPageComponent,
-  },*/
+  },
+  {
+    path: 'subcategory',
+    loadChildren: () => import('./goods/goods.module').then((m) => m.GoodsModule),
+  },
   {
     path: '**',
     redirectTo: 'main',
-  },
+  },*/
 ];
 
 

@@ -1,0 +1,10 @@
+.items__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.items__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
