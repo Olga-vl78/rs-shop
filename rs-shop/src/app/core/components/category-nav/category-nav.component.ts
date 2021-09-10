@@ -10,7 +10,8 @@ import { BackendService } from '../../services/backend.service';
 export class CategoryNavComponent implements OnInit {
   categories: ICategory[] = [];
 
-  constructor(private readonly backendService: BackendService) { }
+  constructor(
+    private readonly backendService: BackendService) { }
 
   ngOnInit(): void {
     this.backendService.fetchCategories().then((cats) => this.categories = cats);

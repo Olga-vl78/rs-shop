@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 @Component({
-  selector: 'app-subcategory-item',
-  templateUrl: './subcategory-item.component.html',
-  styleUrls: ['./subcategory-item.component.scss']
+  selector: 'app-item-card',
+  templateUrl: './item-card.component.html',
+  styleUrls: ['./item-card.component.scss']
 })
-export class SubcategoryItemComponent implements OnInit {
+export class ItemCardComponent implements OnInit {
   @Input()
   item: IGoodsItem | undefined = undefined;
 
@@ -18,6 +18,7 @@ export class SubcategoryItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageUrl = this.item?.imageUrls[0];
+    console.log(this.imageUrl);
     //item?.availableAmount
   }
 

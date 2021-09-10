@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SubcategoryItemComponent } from './subcategory-item.component';
 
+import { SubcategoryCardComponent } from './subcategory-card.component';
 
 describe('SubcategoryCardComponent', () => {
-  let component: SubcategoryItemComponent;
-  let fixture: ComponentFixture<SubcategoryItemComponent>;
+  let component: SubcategoryCardComponent;
+  let fixture: ComponentFixture<SubcategoryCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SubcategoryItemComponent]
-    }).compileComponents();
+      declarations: [ SubcategoryCardComponent ]
+    })
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubcategoryItemComponent);
+    fixture = TestBed.createComponent(SubcategoryCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
