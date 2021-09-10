@@ -47,10 +47,10 @@ export class BackendService {
   }
 
   fetchItem(itemId: string) {
-    return this.http.get<ICategory>(`${BASEURL}/goods/item/${itemId}`)
+    return this.http.get<IGoodsItem>(`${BASEURL}/goods/item/${itemId}`)
       .pipe(
         catchError(this.handleError))
-    //.toPromise();
+      .toPromise();
   }
 
   handleError(error: HttpErrorResponse) {

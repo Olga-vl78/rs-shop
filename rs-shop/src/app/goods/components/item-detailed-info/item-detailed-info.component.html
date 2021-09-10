@@ -1,0 +1,32 @@
+<div class="item">
+    <div class="item__breadcrumbs">llllllllllllllllll</div>
+    <h2 class="item__title">{{item?.name}}</h2>
+    <div class="item__inner-wrapper">
+        <div class="item__slider">Slider</div>
+        <div class="item__pic">
+            <img [src]="imageUrl" alt="" class="item__img">
+        </div>
+        <div class="item__info">
+            <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
+            <div class="item__amount"><img src="assets/icons/tick.svg" alt="" class="item__amount_icon icon"> В наличии
+            </div>
+            <div class="item__rating">{{item?.rating}}
+                <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
+                <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
+                <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
+                <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
+                <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
+            </div>
+            <button class="item__add-busket_btn">В корзину</button>
+            <button class="item__add-favorites_btn"><img src="assets/icons/heart.svg" alt=""
+                    class="item__favorites_icon icon">Добавить в
+                избранное</button>
+            <p class="item__text">
+                Доставка по Минску
+                курьером до клиента — завтра, бесплатно
+                самовывоз в Минске — завтра, бесплатно
+            </p>
+        </div>
+    </div>
+    <div class="item__description"></div>
+</div>
