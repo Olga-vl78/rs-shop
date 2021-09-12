@@ -2,8 +2,39 @@
           <div class="nav__logo"><a class="nav__logo-link" href="">RS-shop.by</a></div>
           <button class="nav__catalog-btn btn" (click)="goToCategoriesPage()"><img class="icon"
                         src="assets/icons/catalog_stand.png">Catalog</button>
-          <input class="nav__search-input" type="text" placeholder="Search">
-          <button class="nav__account-dropdown btn"><img class="icon" src="assets/icons/account.svg">Account<img
-                        class="dropdown__arrow_svg" src="assets/icons/arrow.svg"></button>
+        <div class="nav__search scale">
+                 <input #searchText class="nav__search-input" type="text" placeholder="Search">
+                <div class="dropdown__menu">
+                        <ul class="dropdown__list">
+                                <li class="dropdown__list-item" *ngFor="let searchItem of $searchItems | async"
+                                        routerLink="/categories/{{searchItem.category}}/{{searchItem.subCategory}}/{{searchItem.id}}"
+                                        (click)="clearInputValue(searchText)">
+                                        <a
+                                                routerLink="/categories/{{searchItem.category}}/{{searchItem.subCategory}}/{{searchItem.id}}">{{searchItem.name}}</a>
+                                </li>
+                        </ul>
+                </div>
+        </div>
+        <div class="dropdown scale">
+                <button class="nav__account-dropdown btn"><img class="icon" src="assets/icons/account.svg">Account<img
+                                class="dropdown__arrow" src="assets/icons/arrow.svg"></button>
+                <div class="dropdown__menu account-dropdown">
+                        <ul class="dropdown__list">
+                                <li class="dropdown__list-item item-avatar">
+                                        <img class="icon-avatar" src="assets/icons/avatar.svg">
+                                        <button class="dropdown__enter-btn">Enter</button>
+                                </li>
+                                <li class="dropdown__list-item"><img class="icon" src="assets/icons/trolley.svg">Корзина
+                                </li>
+                                <li class="dropdown__list-item"><img class="icon"
+                                                src="assets/icons/heart_1.svg">Избранные товары</li>
+                                <li class="dropdown__list-item"><img class="icon"
+                                                src="assets/icons/view.svg">Просмотренные
+                                </li>
+                                <li class="dropdown__list-item"><img class="icon"
+                                                src="assets/icons/comparison.svg">Списки сравнения</li>
+                        </ul>
+                </div>
+        </div>
           <button class="nav__account-busket btn"><img class="icon-arrow" src="assets/icons/trolley.svg">Busket</button>
 </nav>

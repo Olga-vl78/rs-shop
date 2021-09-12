@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/core/services/backend.service';
+import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 @Component({
@@ -15,19 +17,28 @@ export class ItemDetailedInfoComponent implements OnInit {
 
   imageUrl: string = '';
 
+  subscriptions: Subscription[] = [];
+
   constructor(
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly backendService: BackendService
+    private readonly backendService: BackendService,
+    private readonly pagesDataService: PagesDataService
   ) { }
 
   ngOnInit(): void {
-    this.itemId = this.activatedRoute.snapshot.params.id;
-    this.backendService.fetchItem(this.itemId)
-      .then((item) => {
-        this.item = item;
-        this.imageUrl = item.imageUrls[0];
+    //this.itemId = this.activatedRoute.snapshot.params.id;
+    this.subscriptions.push(
+      this.activatedRoute.paramMap.subscribe((params) => {
+        const id = params.get('id');
+        if (id) {
+          this.backendService.fetchItem(id)
+            .then((item) => {
+              this.item = item;
+              this.imageUrl = item.imageUrls[0];
+            })
+        }
       })
+    )
   }
-
 }

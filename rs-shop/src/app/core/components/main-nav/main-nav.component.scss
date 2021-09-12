@@ -36,6 +36,45 @@
     background-color: #fff;
 }
 
+.nav__search,
+.dropdown {
+    position: relative;
+
+    .dropdown__arrow {
+        transition: transform 0.2s;
+    }
+
+    .dropdown__menu {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        .dropdown__arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown__menu {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+/*
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+}
+*/
+
 .nav__search-input {
     width: 40rem;
     height: 3rem;
@@ -45,12 +84,86 @@
     background: url(~src/assets/icons/loupe.svg) no-repeat 10px;
 }
 
+.dropdown__menu {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    width: 530px;
+    z-index: 100;
+
+    ul {
+        margin-top: 7px;
+        padding: 7px 0;
+        background-color: #fff;
+        list-style: none;
+        box-shadow: 0 2px 4px gray;
+
+        .dropdown__list-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e5e5e5;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #e5e5e5;
+            }
+        }
+
+        .item-avatar:hover {
+            background-color: #fff;
+            cursor: unset;
+        }
+    }
+}
+
+.nav__search.scale,
+.dropdown.scale {
+    .dropdown__menu {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    &:hover {
+        .dropdown__menu {
+            transform: scaleY(1);
+        }
+    }
+}
+
+.account-dropdown  {
+    width: 240px;
+}
+
+
 .icon {
     width: 24px;
     height: 24px;
 }
 
+.icon-avatar {
+    width: 54px;
+    height: 54px;
+}
+
 .icon-arrow {
     width: 16px;
     height: 16px;
+}
+
+.dropdown__list-item {
+    display: flex;
+    gap: 10px;
+}
+
+.item-avatar {
+    flex-direction: column;
+}
+
+.dropdown__enter-btn {
+    width: 140px;
+    height: 35px;
+    background-color: #0077CC;
+    font-weight: 600;
+    color: #fff;
 }

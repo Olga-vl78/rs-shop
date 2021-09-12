@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 @Component({
@@ -17,6 +18,8 @@ export class ItemCardComponent implements OnInit {
 
   imageUrl: string | undefined = '';
 
+  subscriptions: Subscription[] = [];
+
 
 
   constructor(
@@ -25,8 +28,18 @@ export class ItemCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.categoryId = this.activatedRoute.snapshot.params.catId;
-    this.subcategoryId = this.activatedRoute.snapshot.params.subId;
+    this.subscriptions.push(
+      this.activatedRoute.paramMap.subscribe((params) => {
+        const categoryId = params.get('catId');
+        const subcategoryId = params.get('subId');
+        if (categoryId && subcategoryId) {
+          this.categoryId = categoryId;
+          this.subcategoryId = subcategoryId;
+        }
+      })
+    )
+    //this.categoryId = this.activatedRoute.snapshot.params.catId;
+    //this.subcategoryId = this.activatedRoute.snapshot.params.subId;
     this.imageUrl = this.item?.imageUrls[0];
   }
 

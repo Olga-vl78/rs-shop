@@ -25,13 +25,6 @@ export class BackendService {
       .toPromise();
   }
 
-  fetchSearchGoods() {
-    return this.http.get<ICategory>(`${BASEURL}/goods/search?text=searchQuery`)
-      .pipe(
-        catchError(this.handleError))
-    //.toPromise();
-  }
-
   fetchCategory(catId: string) {
     return this.http.get<ICategory>(`${BASEURL}/goods/category/${catId}`)
       .pipe(
@@ -48,6 +41,13 @@ export class BackendService {
 
   fetchItem(itemId: string) {
     return this.http.get<IGoodsItem>(`${BASEURL}/goods/item/${itemId}`)
+      .pipe(
+        catchError(this.handleError))
+      .toPromise();
+  }
+
+  fetchSearchResult(searchInputValue: string) {
+    return this.http.get<IGoodsItem[]>(`${BASEURL}/goods/search?text=${searchInputValue}`)
       .pipe(
         catchError(this.handleError))
       .toPromise();
