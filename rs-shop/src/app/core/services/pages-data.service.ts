@@ -10,6 +10,8 @@ export class PagesDataService {
 
   $searchItems = new BehaviorSubject<IGoodsItem[]>([]);
 
+  orderedItems: IGoodsItem[] = [];
+
   constructor(
     private readonly backendService: BackendService,
   ) { }
@@ -18,6 +20,11 @@ export class PagesDataService {
     const items = await this.backendService.fetchSearchResult(inputValue);
     this.$searchItems.next(items);
     console.log(items)
+  }
+
+  async getOrderedItems(id: string) {
+    const item = await this.backendService.fetchItem(id);
+    this.orderedItems.push(item);
   }
 
   clearItems() {

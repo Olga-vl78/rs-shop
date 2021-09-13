@@ -13,6 +13,12 @@ const routes: Routes = [
     //component: CatalogPageComponent,
     loadChildren: () => import('./goods/goods.module').then((m) => m.GoodsModule),
   },
+  {
+    path: 'order',
+    //component: CategoryPageComponent,
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+
+  },
   /*{
     path: 'category/:id',
     component: CategoryPageComponent,

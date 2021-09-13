@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 @Component({
@@ -24,7 +25,8 @@ export class ItemCardComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly pagesDataService: PagesDataService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,11 @@ export class ItemCardComponent implements OnInit {
 
   goToItemDetailedPage() {
     this.router.navigate([`/categories/${this.categoryId}/${this.subcategoryId}/${this.item?.id}`])
+  }
+
+  onGetItemId(id: string | undefined) {
+    console.log(id);
+    if (id) this.pagesDataService.getOrderedItems(id);
   }
 
 }
