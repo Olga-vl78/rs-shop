@@ -1,0 +1,125 @@
+.orders__text {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th {
+    width: 200px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+td {
+    padding: 10px 5px;
+}
+
+thead {
+    border-top: 1px solid gray;
+}
+
+.tr {
+    border-top: 1px dotted gray;
+    border-bottom: 1px dotted gray;
+
+}
+
+.td__quantity,
+.td__delivery,
+.td__price {
+    text-align: center;
+}
+
+.td__name {
+    cursor: pointer;
+}
+.td__name_text {
+    color: #0072BC;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: transparent;
+}
+
+.item__add-favorites_btn {
+    width: 190px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    color: #0072BC;
+    border: 1px dotted #0072BC;
+    margin-bottom: 10px;
+}
+
+.item__add-favorites_btn:hover {
+    color: #EA1653;
+    border: 1px dotted #EA1653;
+}
+
+.favorites_btn-active {
+    color: #EA1653;
+    border: 1px dotted #EA1653;
+}
+
+.item__favorites_icon {
+    width: 30px;
+    height: 30px;
+}
+
+.item__delete_btn {
+    color: #EA1653;
+    text-decoration-color: #EA1653;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}
+
+.td__picture {
+    position: relative;
+}
+
+.td__picture_img {
+    position: absolute;
+    max-width: 70px;
+    height: auto;
+}
+
+.td__quantity-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.td__quantity-plus_btn,
+.td__quantity-mines_btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.td__price {
+    font-weight: 600;
+}
+
+.td__quantity-total {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+}
+
+.tr__sum {
+    padding: 10px;
+    text-align: end;
+}
+
+.tr__sum_num {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
