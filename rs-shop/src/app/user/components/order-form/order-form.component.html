@@ -1,0 +1,56 @@
+<form action="" class="form user">
+    <h3 class="form__title">Личные данные</h3>
+    <div class="form__devider"></div>
+    <div class="form__wrapper">
+        <label>Имя Фамилия:</label>
+        <input type="text" class="user__name" minlength="3" maxlength="50" required>
+        <label>*E-mail:</label>
+        <input type="text" class="user__e-mail">
+    </div>
+
+    <h3 class="form__title">Доставка</h3>
+    <div class="form__devider"></div>
+    <div class="form__wrapper">
+        <label>Город/населенный пункт:</label>
+        <input type="text" class="user__city">
+    </div>
+
+    <div class="form__wrapper">
+
+        <label>*Адрес доставки</label>
+        <input type="text" class="user__address" placeholder="Улица" minlength="3" maxlength="250" required>
+        <div class="form__inner-wrapper">
+            <input type="text" class="user__entrance address-detailes" placeholder="Подъезд">
+            <input type="text" class="user__floor address-detailes" placeholder="Квартира">
+            <input type="text" class="user__apartment address-detailes" placeholder="Квартира">
+        </div>
+    </div>
+
+    <div class="form__wrapper">
+        <label>Время доставки: </label>
+        <div class="form__inner-wrapper">
+            <input type="text" class="hours">
+            <input type="text" class="minutes">
+        </div>
+    </div>
+
+    <div class="form__wrapper">
+        <label>*Телефон:</label>
+        <input type="text" class="user__phone">
+    </div>
+
+    <div class="form__wrapper">
+        <label>Комментарий:</label>
+        <textarea class="user__comments" maxlength="250"></textarea>
+    </div>
+
+    <div class="form__devider gray"></div>
+
+    <div class="form__wrapper align-right">
+        <p class="amount">Стоимость заказа с доставкой:</p>
+        <p class="amount-to-pay">К оплате:</p>
+        <button class="confirm-btn">Подтвердить заказ</button>
+    </div>
+    <p>Ваш заказ создан успешно, ожидайте доставку в указанное время</p>
+
+</form>
