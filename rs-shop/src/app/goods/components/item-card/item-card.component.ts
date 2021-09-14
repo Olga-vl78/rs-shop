@@ -49,9 +49,13 @@ export class ItemCardComponent implements OnInit {
     this.router.navigate([`/categories/${this.categoryId}/${this.subcategoryId}/${this.item?.id}`])
   }
 
-  onGetItemId(id: string | undefined) {
-    console.log(id);
+  onBasketBtnClick(id: string | undefined) {
     if (id) this.pagesDataService.getOrderedItems(id);
+  }
+
+  onFavoriteBtnClick(id: string | undefined) {
+    console.log(id)
+    if (id) this.pagesDataService.getFavoriteItems(id);
   }
 
 }

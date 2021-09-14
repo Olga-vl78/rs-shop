@@ -12,6 +12,8 @@ export class PagesDataService {
 
   orderedItems: IGoodsItem[] = [];
 
+  favoriteItems: IGoodsItem[] = [];
+
   constructor(
     private readonly backendService: BackendService,
   ) { }
@@ -25,6 +27,12 @@ export class PagesDataService {
   async getOrderedItems(id: string) {
     const item = await this.backendService.fetchItem(id);
     this.orderedItems.push(item);
+  }
+
+  async getFavoriteItems(id: string) {
+    const item = await this.backendService.fetchItem(id);
+    this.favoriteItems.push(item);
+    console.log(this.favoriteItems)
   }
 
   clearItems() {
