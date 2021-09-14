@@ -8,6 +8,7 @@ import { OrdersContainerComponent } from './components/orders-container/orders-c
 import { OrdersTableComponent } from './components/orders-table/orders-table.component';
 import { FavoriteItemsPageComponent } from './pages/favorite-items-page/favorite-items-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { LoginPopupComponent } from './components/login-popup/login-popup.component';
 
 const routes: Routes = [
   //{ path: '', component: OrderPageComponent, pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
     OrderFormComponent,
     FavoriteItemComponent,
     FavoriteItemsContainerComponent,
-    FavoriteItemsPageComponent
+    FavoriteItemsPageComponent,
+    LoginPopupComponent
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes)

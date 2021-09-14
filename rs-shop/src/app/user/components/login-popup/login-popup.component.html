@@ -1,0 +1,22 @@
+<div class="cover">
+    <!-- [ngClass]="{'cover-hidden' : $isAuth | async}"> -->
+
+    <form class="form">
+        <div class="form__close-item">x</div>
+        <h2 class="form__title">Вход</h2>
+        <div class="form__input-wrap">
+            <label>Электронная почта</label>
+            <input #inputEmail type="email" class="user__name form__input" required
+                (input)="onGetEmailInputValue(inputEmail)">
+        </div>
+        <div class="form__input-wrap">
+            <label>Пароль</label>
+            <input #inputPassword type="password" class="user__password form__input" required
+                pattern="[0-9a-zA-Z!@#$%^&*]{1,}" (input)="onGetPasswordInputValue(inputPassword)">
+        </div>
+        <button type="button" class="submit-btn" (click)="onSubmit()"
+            [ngClass]="inputEmail.validity.valid && inputPassword.validity.valid ? 'activ-btn' : ''">Войти</button>
+        <button class="forget-btn">Не помню пароль</button>
+        <button class="registration-btn">Регистрация</button>
+    </form>
+</div>
