@@ -3,11 +3,11 @@ import { ICategory } from 'src/app/shared/models/category.model';
 import { BackendService } from '../../services/backend.service';
 
 @Component({
-  selector: 'app-category-nav',
-  templateUrl: './category-nav.component.html',
-  styleUrls: ['./category-nav.component.scss']
+  selector: 'app-header-category-nav',
+  templateUrl: './header-category-nav.component.html',
+  styleUrls: ['./header-category-nav.component.scss']
 })
-export class CategoryNavComponent implements OnInit {
+export class HeaderCategoryNavComponent implements OnInit {
   categories: ICategory[] = [];
 
   constructor(

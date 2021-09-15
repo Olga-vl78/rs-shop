@@ -8,11 +8,11 @@ const MIN_SEARCH_WORD_LENGTH: number = 2;
 const SEARCH_INTERVAL_SEC: number = 700;
 
 @Component({
-  selector: 'app-main-nav',
-  templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.scss']
+  selector: 'app-header-nav',
+  templateUrl: './header-nav.component.html',
+  styleUrls: ['./header-nav.component.scss']
 })
-export class MainNavComponent implements OnInit {
+export class HeaderNavComponent implements OnInit {
   @ViewChild('searchText', { static: true }) searchInput: ElementRef<HTMLInputElement> | undefined;
 
   isEmpty: boolean = true;

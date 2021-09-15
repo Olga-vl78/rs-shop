@@ -9,7 +9,6 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    //component: CatalogPageComponent,
     loadChildren: () => import('./goods/goods.module').then((m) => m.GoodsModule),
   },
   {
