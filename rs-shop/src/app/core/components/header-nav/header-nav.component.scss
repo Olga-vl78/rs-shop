@@ -36,6 +36,10 @@
     background-color: #fff;
 }
 
+.btn:hover {
+    box-shadow: 0 2px 2px rgb(207, 204, 204);
+}
+
 .nav__search,
 .dropdown {
     position: relative;
@@ -93,7 +97,6 @@
 
     ul {
         margin-top: 7px;
-        padding: 7px 0;
         background-color: #fff;
         list-style: none;
         box-shadow: 0 2px 4px gray;
