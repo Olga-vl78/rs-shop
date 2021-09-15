@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { PagesDataService } from '../../services/pages-data.service';
@@ -17,6 +17,11 @@ export class HeaderNavComponent implements OnInit {
 
   isEmpty: boolean = true;
 
+  isCategoriesPage: boolean = false;
+
+  isOrdersPage: boolean = false;
+
+
 
   constructor(
     private readonly router: Router,
@@ -25,14 +30,19 @@ export class HeaderNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeSearchInputChanges();
+
+    this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationEnd) {
+        if (routerEvent.url === '/categories') this.isCategoriesPage = true;
+        else this.isCategoriesPage = false;
+        if (routerEvent.url === '/order') this.isOrdersPage = true;
+        else this.isOrdersPage = false;
+      }
+    });
   }
 
   get $searchItems() {
     return this.pagesDataService.$searchItems;
-  }
-
-  goToCategoriesPage() {
-    this.router.navigate(['/categories']);
   }
 
   subscribeSearchInputChanges() {
@@ -53,6 +63,10 @@ export class HeaderNavComponent implements OnInit {
     this.pagesDataService.getSearchItems(inputValue);
     if (inputValue) this.isEmpty = false;
     console.log(this.isEmpty)
+  }
+
+  goToCategoriesPage() {
+    this.router.navigate(['/categories']);
   }
 
   goToItemDetailedPage(catId: string, subId: string, itemId: string) {

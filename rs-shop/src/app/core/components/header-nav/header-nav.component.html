@@ -1,7 +1,9 @@
 <nav class="nav">
+        <!--*ngIf="{segments: (activatedRoute.firstChild?.url | async) || []} as data"> [ngClass]="data.segments[0]?.path === 'categories' ? 'disabled' : ''">-->
         <div class="nav__logo"><a class="nav__logo-link" routerLink="/main">RS-shop.by</a></div>
-        <button class="nav__catalog-btn btn" (click)="goToCategoriesPage()"><img class="icon"
-                        src="assets/icons/catalog_stand.png">Каталог</button>
+        <button class="nav__catalog-btn btn" (click)="goToCategoriesPage()"
+                [ngClass]="isCategoriesPage ? 'disabled' : ''">
+                <img class="icon" src="assets/icons/catalog_stand.png">Каталог</button>
         <div class="nav__search scale">
                  <input #searchText class="nav__search-input" type="text" placeholder="Поиск товаров">
                 <div class="dropdown__menu">
@@ -24,10 +26,11 @@
                                         <img class="icon-avatar" src="assets/icons/avatar.svg">
                                         <button class="dropdown__enter-btn">Enter</button>
                                 </li>
-                                <li class="dropdown__list-item"><img class="icon" src="assets/icons/trolley.svg">Корзина
-                                </li>
-                                <li class="dropdown__list-item" routerLink="/favorite"><img class="icon"
-                                                src="assets/icons/heart_1.svg">Избранные товары</li>
+                                <li class="dropdown__list-item"><a routerLink="/order" class="dropdown__list-link"><img
+                                                        class="icon" src="assets/icons/trolley.svg">Корзина</a></li>
+                                <li class="dropdown__list-item"><a routerLink="/favorite"
+                                                class="dropdown__list-link"><img class="icon"
+                                                        src="assets/icons/heart_1.svg">Избранные товары</a></li>
                                 <li class="dropdown__list-item"><img class="icon"
                                                 src="assets/icons/view.svg">Просмотренные
                                 </li>
@@ -36,6 +39,6 @@
                         </ul>
                 </div>
         </div>
-        <button class="nav__account-busket btn" routerLink="/order"><img class="icon-arrow"
-                        src="assets/icons/trolley.svg">Корзина</button>
+        <button class="nav__account-busket btn" routerLink="/order" [ngClass]="isOrdersPage ? 'disabled' : ''"><img
+                        class="icon-arrow" src="assets/icons/trolley.svg">Корзина</button>
 </nav>

@@ -36,6 +36,12 @@
     background-color: #fff;
 }
 
+.disabled {
+    background-color: #ebedf0;
+    color: gray;
+    cursor: unset;
+}
+
 .btn:hover {
     box-shadow: 0 2px 2px rgb(207, 204, 204);
 }
@@ -63,21 +69,13 @@
             opacity: 1;
             visibility: visible;
         }
+
+        .nav__account-dropdown {
+            background-color: #ebedf0;
+            color: gray;
+        }
     }
 }
-/*
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-
-.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: scaleY(1);
-}
-*/
 
 .nav__search-input {
     width: 40rem;
@@ -106,10 +104,17 @@
             align-items: center;
             padding: 0.75rem 1.5rem;
             border: 1px solid #e5e5e5;
-            cursor: pointer;
+            //cursor: pointer;
 
             &:hover {
                 background-color: #e5e5e5;
+            }
+
+            .dropdown__list-link {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-decoration: none;
             }
         }
 
