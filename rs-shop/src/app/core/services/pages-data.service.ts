@@ -14,6 +14,8 @@ export class PagesDataService {
 
   favoriteItems: IGoodsItem[] = [];
 
+  popularItems: IGoodsItem[] = [];
+
   constructor(
     private readonly backendService: BackendService,
   ) { }
@@ -33,6 +35,24 @@ export class PagesDataService {
     const item = await this.backendService.fetchItem(id);
     this.favoriteItems.push(item);
     console.log(this.favoriteItems)
+  }
+
+  async getPopularItems() {
+    /*const items = await this.backendService.fetchCategories();
+    const idsData = items.map((item) => item.id);
+    console.log("idsData", idsData)
+    const allItems: IGoodsItem[] = [];
+    idsData.forEach((id) => {
+      this.backendService.fetchCategory(id)
+      .then((items) => {
+        console.log('items', items)
+        allItems.concat(items);
+      });*/
+
+    const itemsData = this.backendService.fetchCategory('electronics');
+    const popularItems = (await itemsData).filter((item) => item.rating === 5)
+    console.log(popularItems)
+    return popularItems;
   }
 
   clearItems() {

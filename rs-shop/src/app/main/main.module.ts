@@ -6,6 +6,8 @@ import { ToastModule } from 'primeng/toast';
 import { SharedModule } from '../shared/shared.module';
 import { BannersSliderComponent } from './components/banners-slider/banners-slider.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { PopularItemsSliderComponent } from './components/popular-items-slider/popular-items-slider.component';
+import { PopularItemCardComponent } from './components/popular-item-card/popular-item-card.component';
 
 
 
@@ -14,7 +16,9 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 @NgModule({
   declarations: [
     BannersSliderComponent,
-    MainPageComponent
+    MainPageComponent,
+    PopularItemsSliderComponent,
+    PopularItemCardComponent
   ],
   imports: [
     CommonModule, SharedModule, CarouselModule, ButtonModule, ToastModule

@@ -26,7 +26,7 @@ export class BackendService {
   }
 
   fetchCategory(catId: string) {
-    return this.http.get<ICategory>(`${BASEURL}/goods/category/${catId}`)
+    return this.http.get<IGoodsItem[]>(`${BASEURL}/goods/category/${catId}`)
       .pipe(
         catchError(this.handleError))
       .toPromise();
