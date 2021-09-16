@@ -38,13 +38,8 @@ export class SubcategoryCardsContainerComponent implements OnInit {
       .then((cats) => {
         const currentCategory = (cats.filter((cat) => cat.id === id))[0];
         this.subcategories = currentCategory.subCategories
+        console.log("this.subcategories", this.subcategories)
         return this.subcategories;
       });
   }
-  /*
-    getSubcategoryImg(subcategoryId: string) {
-      return this.backendService.fetchSubcategory(this.categoryId, subcategoryId)
-        .then((itemsData) => itemsData[0].imageUrls[0]);
-    }
-  */
 }
