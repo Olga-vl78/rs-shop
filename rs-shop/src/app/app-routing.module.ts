@@ -13,22 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'order',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+    loadChildren: () => import('./order/order.module').then((m) => m.OrderModule),
 
   },
   {
     path: 'favorite',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+    loadChildren: () => import('./favorite-goods/favorite-goods.module').then((m) => m.FavoriteGoodsModule),
 
-  },/*
-  {
-    path: 'subcategory',
-    loadChildren: () => import('./goods/goods.module').then((m) => m.GoodsModule),
   },
-  {
-    path: '**',
-    redirectTo: 'main',
-  },*/
+  /*
+    {
+      path: '**',
+      redirectTo: 'main',
+    },*/
 ];
 
 
