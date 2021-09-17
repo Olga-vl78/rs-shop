@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { ItemDetailedInfoComponent } from './components/item-detailed-info/item-detailed-info.component';
@@ -35,7 +36,7 @@ const routes: Routes = [
     ItemDetailedPageComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
+    CommonModule, RouterModule.forChild(routes), SharedModule
   ]
 })
 export class GoodsModule { }

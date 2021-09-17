@@ -12,7 +12,7 @@ import { OrderPageComponent } from './pages/order-page/order-page.component';
 
 const routes: Routes = [
   { path: '', component: OrderPageComponent, pathMatch: 'full' },
-  { path: '', component: FavoriteItemsPageComponent, pathMatch: 'full' },
+  // { path: '', component: FavoriteItemsPageComponent, pathMatch: 'full' },
 
 ];
 

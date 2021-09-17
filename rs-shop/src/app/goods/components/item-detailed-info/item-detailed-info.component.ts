@@ -13,11 +13,12 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 export class ItemDetailedInfoComponent implements OnInit {
   item: IGoodsItem | undefined;
 
-  itemId: string = '';
-
   imageUrl: string = '';
 
   subscriptions: Subscription[] = [];
+
+  itemId: string = '';
+
 
   constructor(
     private readonly router: Router,
@@ -36,9 +37,11 @@ export class ItemDetailedInfoComponent implements OnInit {
             .then((item) => {
               this.item = item;
               this.imageUrl = item.imageUrls[0];
+              console.log('ID', this.item.id)
             })
         }
       })
     )
   }
+
 }

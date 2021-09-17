@@ -17,7 +17,9 @@
                 <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
                 <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
             </div>
-            <button class="item__add-busket_btn">В корзину</button>
+            <!-- <button class="item__add-busket_btn">В корзину</button> -->
+            <app-add-to-basket-button [itemId]="item?.id"></app-add-to-basket-button>
+            <span>{{item?.id}}</span>
             <button class="item__add-favorites_btn"><img src="assets/icons/heart.svg" alt=""
                     class="item__favorites_icon icon">Добавить в
                 избранное</button>

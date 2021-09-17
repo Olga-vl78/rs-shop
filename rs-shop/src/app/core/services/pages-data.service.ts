@@ -11,6 +11,8 @@ export class PagesDataService {
   $searchItems = new BehaviorSubject<IGoodsItem[]>([]);
 
   orderedItems: IGoodsItem[] = [];
+  //$orderedItems = new BehaviorSubject<IGoodsItem[]>([]);
+
 
   favoriteItems: IGoodsItem[] = [];
 
@@ -26,16 +28,19 @@ export class PagesDataService {
     console.log(items)
   }
 
-  async getOrderedItems(id: string) {
+  async addToOrderedItems(id: string) {
     const item = await this.backendService.fetchItem(id);
     this.orderedItems.push(item);
+    //this.$orderedItems.value.concat(item)
   }
 
-  async getFavoriteItems(id: string) {
+  async addToFavoriteItems(id: string) {
     const item = await this.backendService.fetchItem(id);
     this.favoriteItems.push(item);
     console.log(this.favoriteItems)
   }
+
+
 
   async getPopularItems() {
     /*const items = await this.backendService.fetchCategories();

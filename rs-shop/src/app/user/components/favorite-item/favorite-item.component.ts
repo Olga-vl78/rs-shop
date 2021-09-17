@@ -28,10 +28,7 @@ export class FavoriteItemComponent implements OnInit {
 
   onGetItemId(id: string | undefined) {
     console.log(id);
-    if (id) this.pagesDataService.getOrderedItems(id);
+    if (id) this.pagesDataService.addToOrderedItems(id);
   }
 
-  getImageUrl(item: IGoodsItem) {
-    return item.imageUrls[0];
-  }
 }

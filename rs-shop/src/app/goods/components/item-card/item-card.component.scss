@@ -33,8 +33,7 @@ img {
     object-fit: contain;
 }
 
-.item__amount,
-.item__add-favorites_btn {
+.item__amount {
     display: flex;
     align-items: center;
 }
@@ -54,31 +53,39 @@ img {
     height: 30px;
 }
 
-.item__add-busket_btn {
-    width: 190px;
-    height: 40px;
-    background-color: #EA1653;
-    font-weight: 600;
-    color: #fff;
-}
+// .item__add-busket_btn {
+//     width: 190px;
+//     height: 40px;
+//     background-color: #EA1653;
+//     font-weight: 600;
+//     color: #fff;
+// }
 
-.item__add-busket_btn:hover {
-    background-color: #b30b3b;
-}
+// .item__add-busket_btn:hover {
+//     background-color: #b30b3b;
+// }
 
-.busket_btn-active {
-    background-color: #fff;
-    border: 2px solid #EA1653;
-    color: #EA1653;
-}
+// .item__go-busket_btn {
+//     width: 190px;
+//     height: 40px;
+//     background-color: #fff;
+//     font-weight: 600;
+//     border: 2px solid #EA1653;
+//     color: #EA1653;
+// }
 
-.item__add-favorites_btn {
+.item__add-favorites_btn,
+.item__go-favorites_btn  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 190px;
     height: 40px;
     background-color: transparent;
     color: #0072BC;
     border: 1px dotted #0072BC;
 }
+
 
 .item__add-favorites_btn:hover {
     color: #EA1653;

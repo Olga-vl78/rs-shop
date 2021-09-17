@@ -10,8 +10,21 @@
         <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
         <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
     </div>
-    <button class="item__add-busket_btn" (click)="onBasketBtnClick(item?.id)">В корзину</button>
-    <button class="item__add-favorites_btn" (click)="onFavoriteBtnClick(item?.id)"><img src="assets/icons/heart.svg"
-            alt="" class="item__favorites_icon icon">Добавить в
+    <!-- <button class="item__add-busket_btn" *ngIf="!isOrdered; else goToBusket" (click)="onBasketBtnClick(item?.id)">В
+        корзину</button>
+    <ng-template #goToBusket>
+        <button class="item__go-busket_btn" routerLink="/order">В корзинe</button>
+    </ng-template> -->
+
+    <app-add-to-basket-button [itemId]="item?.id"></app-add-to-basket-button>
+
+    <button class="item__add-favorites_btn" *ngIf="!isFavorite; else goToFavorite"
+        (click)="onFavoriteBtnClick(item?.id)"><img src="assets/icons/heart.svg" alt=""
+            class="item__favorites_icon icon">Добавить в
         избранное</button>
+    <ng-template #goToFavorite>
+        <button class="item__go-favorites_btn" routerLink="/favorite"><img src="assets/icons/heart_blue.svg" alt=""
+                class="item__favorites_icon icon">В избранном</button>
+    </ng-template>
+
 </div>

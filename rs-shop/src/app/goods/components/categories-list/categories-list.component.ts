@@ -38,8 +38,6 @@ export class CategoriesListComponent implements OnInit {
     this.backendService.fetchCategories()
       .then((cats) => this.onFetchCategories(cats));
     this.$currentCategoryId.subscribe((id) => this.getCategory(id));
-    //this.backendService.fetchSubcategory(this.$currentCategoryId.value, 'watches')
-    //.then((data) => console.log(data))
   }
 
   onFetchCategories(categories: ICategory[]) {
@@ -51,8 +49,6 @@ export class CategoriesListComponent implements OnInit {
 
   onCategoryMouseOver(id: string) {
     this.$currentCategoryId.next(id);
-    console.log('valeue', this.$currentCategoryId.value)
-
   }
 
   getCategory(id: string) {
