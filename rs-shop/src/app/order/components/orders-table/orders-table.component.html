@@ -18,9 +18,7 @@
                 <td class="td__picture"><img [src]="getImageUrl(item)" alt="" class="td__picture_img"></td>
                 <td class="td__name">
                     <p class="td__name_text">{{item?.name}}</p>
-                    <button class="item__add-favorites_btn btn"><img src="assets/icons/heart.svg" alt=""
-                            class="item__favorites_icon icon">Добавить в
-                        избранное</button>
+                    <app-add-to-favorite-button [itemId]="item?.id"></app-add-to-favorite-button>
                     <button class="item__delete_btn btn">удалить</button>
                 </td>
                 <td class="td__description">{{item?.description}}</td>
