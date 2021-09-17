@@ -30,14 +30,10 @@ export class AddToBasketButtonComponent implements OnInit {
 
   checkOrderedItems() {
     console.log('this.itemId', this.itemId)
-    //if (this.itemId) {
     const orderedItem = this.orderedItems.find((item) => item.id === this.itemId);
-    console.log('this.orderedItems', this.orderedItems)
-    console.log('orderedItem', orderedItem)
     if (orderedItem) {
       this.isOrdered = true;
     } else this.isOrdered = false;
-    //}
   }
 
   get orderedItems() {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/core/services/backend.service';
-import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 @Component({
@@ -19,17 +18,35 @@ export class ItemDetailedInfoComponent implements OnInit {
 
   itemId: string = '';
 
+  availableAmount: number = 0;
+
+  stars = [
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+  ]
 
   constructor(
-    private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
     private readonly backendService: BackendService,
-    private readonly pagesDataService: PagesDataService
   ) { }
 
   ngOnInit(): void {
-    //this.itemId = this.activatedRoute.snapshot.params.id;
-    this.subscriptions.push(
+    this.itemId = this.activatedRoute.snapshot.params.id;
+    if (this.itemId) {
+      this.backendService.fetchItem(this.itemId)
+        .then((item) => {
+          this.item = item;
+          this.imageUrl = item.imageUrls[0];
+          this.availableAmount = item.availableAmount;
+          this.getStarsColor(item.rating);
+          console.log('availableAmount', this.availableAmount)
+        })
+    }
+
+    /*this.subscriptions.push(
       this.activatedRoute.paramMap.subscribe((params) => {
         const id = params.get('id');
         if (id) {
@@ -37,11 +54,20 @@ export class ItemDetailedInfoComponent implements OnInit {
             .then((item) => {
               this.item = item;
               this.imageUrl = item.imageUrls[0];
+              this.getStarsColor(item.rating);
               console.log('ID', this.item.id)
             })
         }
       })
-    )
+    )*/
   }
 
+  getStarsColor(rating: number) {
+    console.log('amount', rating)
+    if (rating) {
+      for (let i = 0; i < this.stars.length; i++) {
+        if (i < rating) this.stars[i].color = '#0072BC';
+      }
+    }
+  }
 }

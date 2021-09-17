@@ -2,37 +2,23 @@
     <h3 class="item__title" (click)="goToItemDetailedPage()">{{item?.name}}</h3>
     <div class="item__pic"><img [src]="imageUrl" alt="" class="item__img"></div>
     <div class="item__amount">
-        <!-- <img src="assets/icons/tick.svg" alt=""class="item__amount_icon icon">  -->
-        <svg class="icon-color" [appColor]="item?.availableAmount || null" viewBox="0 0 24 24" width="24" height="24"
-            xmlns="http://www.w3.org/2000/svg">
+        <svg class="icon-amount_color" [appColor]="item?.availableAmount || null" viewBox="0 0 24 24" width="24"
+            height="24" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm4.71 7.71-5 5a1 1 0 0 1-1.42 0l-2-2a1 1 0 0 1 1.42-1.42l1.29 1.3 4.29-4.3a1 1 0 0 1 1.42 1.42Z" />
         </svg>
         В наличии
     </div>
     <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
-    <div class="item__rating">{{item?.rating}}
-        <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
-        <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
-        <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
-        <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
-        <img src="assets/icons/star.svg" alt="" class="item__rating_icon icon">
+    <div class="item__rating">
+        <svg class="icon-star_color" *ngFor="let star of stars" viewBox="0 0 48 48" width="30" height="30"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="m34.865 39.83-10.25-5.621-10.153 5.8 2.091-11.647-8.563-8.027 11.542-1.577L24.394 8l5.042 10.672L41 20.047l-8.426 8.173Z"
+                style="stroke:#fff;stroke-linecap:round;stroke-width:0;fill-rule:evenodd" [style.fill]="star.color" />
+        </svg>
     </div>
-    <!-- <button class="item__add-busket_btn" *ngIf="!isOrdered; else goToBusket" (click)="onBasketBtnClick(item?.id)">В
-        корзину</button>
-    <ng-template #goToBusket>
-        <button class="item__go-busket_btn" routerLink="/order">В корзинe</button>
-    </ng-template> -->
-
     <app-add-to-basket-button [itemId]="item?.id"></app-add-to-basket-button>
-
-    <button class="item__add-favorites_btn" *ngIf="!isFavorite; else goToFavorite"
-        (click)="onFavoriteBtnClick(item?.id)"><img src="assets/icons/heart.svg" alt=""
-            class="item__favorites_icon icon">Добавить в
-        избранное</button>
-    <ng-template #goToFavorite>
-        <button class="item__go-favorites_btn" routerLink="/favorite"><img src="assets/icons/heart_blue.svg" alt=""
-                class="item__favorites_icon icon">В избранном</button>
-    </ng-template>
+    <app-add-to-favorite-button [itemId]="item?.id"></app-add-to-favorite-button>
 
 </div>

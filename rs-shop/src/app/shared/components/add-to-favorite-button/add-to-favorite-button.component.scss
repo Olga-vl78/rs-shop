@@ -1,0 +1,23 @@
+.item__add-favorites_btn,
+.item__go-favorites_btn  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 190px;
+    height: 40px;
+    background-color: transparent;
+    color: #0072BC;
+    border: 1px dotted #0072BC;
+}
+
+
+.item__add-favorites_btn:hover {
+    color: #EA1653;
+    border: 1px dotted #EA1653;
+}
+
+.item__favorites_icon {
+    width: 30px;
+    height: 30px;
+}
+

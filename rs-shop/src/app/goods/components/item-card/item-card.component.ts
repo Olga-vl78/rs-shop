@@ -20,9 +20,15 @@ export class ItemCardComponent implements OnInit {
 
   subscriptions: Subscription[] = [];
 
-  //isOrdered: boolean = false;
-
   isFavorite: boolean = false;
+
+  stars = [
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+    { color: '#e5e5e5' },
+  ]
 
   constructor(
     private readonly router: Router,
@@ -44,53 +50,22 @@ export class ItemCardComponent implements OnInit {
     //this.categoryId = this.activatedRoute.snapshot.params.catId;
     //this.subcategoryId = this.activatedRoute.snapshot.params.subId;
     this.imageUrl = this.item?.imageUrls[0];
-    // this.checkOrderedItems(this.item?.id);
-    // console.log(this.orderedItems)
-    this.checkFavoriteItems()
+    this.getStarsColor()
   }
 
   goToItemDetailedPage() {
     this.router.navigate([`/categories/${this.categoryId}/${this.subcategoryId}/${this.item?.id}`])
   }
 
-  // onBasketBtnClick(id: string | undefined) {
-  //   if (id) this.pagesDataService.addToOrderedItems(id);
-  //   this.isOrdered = true;
-  // }
-
-  onFavoriteBtnClick(id: string | undefined) {
-    console.log(id)
-    if (id) this.pagesDataService.addToFavoriteItems(id);
-    this.isFavorite = true;
-  }
-
-  get favoriteItems() {
-    return this.pagesDataService.favoriteItems;
-  }
-
-
-  checkFavoriteItems() {
-    if (this.item) {
-      const orderedItem = this.favoriteItems.filter((item) => item.id === this.item?.id);
-      console.log(orderedItem[0]);
-      if (orderedItem[0]) {
-        this.isFavorite = true;
-      } else this.isFavorite = false;
+  getStarsColor() {
+    const amount = this.item?.rating;
+    console.log('amount', amount)
+    if (amount) {
+      for (let i = 0; i < this.stars.length; i++) {
+        if (i < amount) this.stars[i].color = '#0072BC';
+      }
     }
-    console.log('isFavorite', this.isFavorite)
+    console.log(this.stars)
   }
 
-  // checkOrderedItems(id: string | undefined) {
-  //   if (this.item) {
-  //     const orderedItem = this.orderedItems.filter((item) => item.id === id);
-  //     console.log(orderedItem[0]);
-  //     if (orderedItem[0]) {
-  //       this.isOrdered = true;
-  //     } else this.isOrdered = false;
-  //   }
-  // }
-
-  // get orderedItems() {
-  //   return this.pagesDataService.orderedItems;
-  // }
 }
