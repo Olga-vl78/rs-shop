@@ -40,7 +40,6 @@ export class ItemDetailedInfoComponent implements OnInit {
         .then((item) => {
           this.item = item;
           this.imageUrl = item.imageUrls[0];
-          this.availableAmount = item.availableAmount;
           this.getStarsColor(item.rating);
           console.log('availableAmount', this.availableAmount)
         })
