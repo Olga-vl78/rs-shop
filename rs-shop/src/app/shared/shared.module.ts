@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AddToBasketButtonComponent } from './components/add-to-basket-button/add-to-basket-button.component';
+import { ColorDirective } from './directives/color.directive';
 
 
 
@@ -9,9 +10,10 @@ import { AddToBasketButtonComponent } from './components/add-to-basket-button/ad
 
 @NgModule({
   declarations: [
-    AddToBasketButtonComponent
+    AddToBasketButtonComponent,
+    ColorDirective
   ],
   imports: [CommonModule, RouterModule],
-  exports: [CommonModule, AddToBasketButtonComponent],
+  exports: [CommonModule, AddToBasketButtonComponent, ColorDirective],
 })
 export class SharedModule { }
