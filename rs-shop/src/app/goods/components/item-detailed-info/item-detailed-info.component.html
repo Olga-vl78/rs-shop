@@ -2,10 +2,13 @@
     <div class="item__breadcrumbs">llllllllllllllllll</div>
     <h2 class="item__title">{{item?.name}}</h2>
     <div class="item__inner-wrapper">
-        <div class="item__slider">Slider</div>
-        <div class="item__pic">
-            <img [src]="imageUrl" alt="" class="item__img">
+        <div class="item__slider">
+            <div class="item__slide-border"></div>
+            <div class="item__slide" *ngFor="let slide of item?.imageUrls">
+                <img [src]="slide" alt="" class="item__slide-img">
+            </div>
         </div>
+        <app-item-pictures-slider [itemPictures]="item?.imageUrls"></app-item-pictures-slider>
         <div class="item__info">
             <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
             <div class="item__amount">
