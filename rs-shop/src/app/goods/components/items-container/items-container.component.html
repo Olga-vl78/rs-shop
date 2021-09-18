@@ -1,5 +1,14 @@
 <div class="items__wrapper">
+    <h2 class="items__subcategory-name">{{subcategoryName}}</h2>
+    <div class="devider"></div>
+    <div class="items__sorting">
+        <p class="items__sorting-text">Сортировать по:</p>
+        <button class="rating-sort-btn btn" (click)="onSortItemsByRating()">популярности</button>
+        <button class="price-sort-btn btn" (click)="onSortItemsByPrice()">цене</button>
+    </div>
+    <div class="devider"></div>
     <div class="items__container">
-        <app-item-card *ngFor="let item of items" [item]="item"></app-item-card>
+        <app-item-card *ngFor="let item of items | sort: ($sortOrder | async) : ($sortParam | async)" [item]="item">
+        </app-item-card>
     </div>
 </div>

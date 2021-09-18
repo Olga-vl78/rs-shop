@@ -3,12 +3,26 @@ import { BehaviorSubject } from 'rxjs';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 import { BackendService } from './backend.service';
 
+export enum SortOrder {
+  Asc = 'asc',
+  Desc = 'desc',
+}
+
+export enum SortParam {
+  Price = 'price',
+  Rating = 'rating',
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class PagesDataService {
 
   $searchItems = new BehaviorSubject<IGoodsItem[]>([]);
+
+  $sortOrder = new BehaviorSubject<SortOrder | null>(null);
+
+  $sortParam = new BehaviorSubject<SortParam | null>(null);
 
   orderedItems: IGoodsItem[] = [];
 
@@ -60,5 +74,10 @@ export class PagesDataService {
   clearItems() {
     this.$searchItems.next([]);
     console.log(this.$searchItems.value)
+  }
+
+  sortItemsByNum(sortingMode: SortOrder, param: SortParam) {
+    this.$sortOrder.next(sortingMode);
+    this.$sortParam.next(param);
   }
 }

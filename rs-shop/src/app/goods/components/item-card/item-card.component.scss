@@ -1,5 +1,5 @@
 .item {
-    width: 400px;
+    width: 398px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -31,6 +31,10 @@ img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+}
+
+.item__price {
+    font-size: 18px;
 }
 
 .item__amount {

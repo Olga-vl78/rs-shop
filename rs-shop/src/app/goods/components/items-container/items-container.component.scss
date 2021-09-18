@@ -4,6 +4,44 @@
     padding: 20px 10px;
 }
 
+.items__sorting {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    .items__sorting-text {
+        font-size: 16px;
+        font-weight: 900;
+    }
+
+    .btn {
+        color: #0072BC;
+        text-decoration-color: #0072BC;
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        background-color: transparent;
+    }
+
+    .btn:hover {
+        color: #EA1653;
+        text-decoration-color: #EA1653;
+    }
+}
+
+.devider {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.items__subcategory-name {
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
 .items__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

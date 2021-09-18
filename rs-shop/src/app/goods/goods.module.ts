@@ -17,6 +17,7 @@ import { CategoriesPageComponent } from './pages/categories-page/categories-page
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { ItemDetailedPageComponent } from './pages/item-detailed-page/item-detailed-page.component';
 import { SubcategoryPageComponent } from './pages/subcategory-page/subcategory-page.component';
+import { SortPipe } from './pipes/sort.pipe';
 
 const routes: Routes = [
   { path: '', component: CategoriesPageComponent, pathMatch: 'full' },
@@ -38,7 +39,8 @@ const routes: Routes = [
     CategoryPageComponent,
     ItemDetailedInfoComponent,
     ItemDetailedPageComponent,
-    ItemPicturesSliderComponent
+    ItemPicturesSliderComponent,
+    SortPipe
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes), SharedModule, CarouselModule, ButtonModule, ToastModule
