@@ -26,6 +26,7 @@ thead {
 .tr {
     border-top: 1px dotted gray;
     border-bottom: 1px dotted gray;
+    padding: 20px;
 }
 
 .td__quantity,
@@ -35,42 +36,14 @@ thead {
 }
 
 .td__name {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     cursor: pointer;
 }
 .td__name_text {
     color: #0072BC;
-    margin-bottom: 20px;
-}
-
-.btn {
-    background-color: transparent;
-}
-
-.item__add-favorites_btn {
-    width: 190px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    color: #0072BC;
-    border: 1px dotted #0072BC;
-    margin-bottom: 10px;
-}
-
-
-
-.item__add-favorites_btn:hover {
-    color: #EA1653;
-    border: 1px dotted #EA1653;
-}
-
-.favorites_btn-active {
-    color: #EA1653;
-    border: 1px dotted #EA1653;
-}
-
-.item__favorites_icon {
-    width: 30px;
-    height: 30px;
+    margin-bottom: 30px;
 }
 
 .item__delete_btn {
@@ -78,6 +51,8 @@ thead {
     text-decoration-color: #EA1653;
     text-decoration-line: underline;
     text-decoration-style: dotted;
+    background-color: transparent;
+
 }
 
 .td__picture {

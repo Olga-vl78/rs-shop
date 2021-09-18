@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IBanner } from '../../models/banner.module';
+import { PagesDataService } from 'src/app/core/services/pages-data.service';
 
 @Component({
   selector: 'app-banners-slider',
@@ -8,19 +8,13 @@ import { IBanner } from '../../models/banner.module';
 })
 export class BannersSliderComponent implements OnInit {
 
-  bannersData: IBanner[] = [
-    { image: 'assets/images/slider_apple.jpg' },
-    { image: 'assets/images/slider_atlant.jpg' },
-    { image: 'assets/images/slider_books.jpg' },
-    { image: 'assets/images/slider_huawei.jpg' },
-    { image: 'assets/images/slider_samsung.jpg' },
-    { image: 'assets/images/slider_school.jpg' },
-    { image: 'assets/images/slider_радиаторы.jpg' },
-  ]
-
-  constructor() { }
+  constructor(private readonly pagesDataService: PagesDataService) { }
 
   ngOnInit(): void {
+  }
+
+  get bannersData() {
+    return this.pagesDataService.bannersData;
   }
 
 }

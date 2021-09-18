@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IBanner } from 'src/app/main/models/banner.module';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 import { BackendService } from './backend.service';
 
@@ -11,12 +12,20 @@ export class PagesDataService {
   $searchItems = new BehaviorSubject<IGoodsItem[]>([]);
 
   orderedItems: IGoodsItem[] = [];
-  //$orderedItems = new BehaviorSubject<IGoodsItem[]>([]);
-
 
   favoriteItems: IGoodsItem[] = [];
 
   popularItems: IGoodsItem[] = [];
+
+  bannersData: IBanner[] = [
+    { image: 'assets/images/slider_apple.jpg' },
+    { image: 'assets/images/slider_atlant.jpg' },
+    { image: 'assets/images/slider_books.jpg' },
+    { image: 'assets/images/slider_huawei.jpg' },
+    { image: 'assets/images/slider_samsung.jpg' },
+    { image: 'assets/images/slider_school.jpg' },
+    { image: 'assets/images/slider_радиаторы.jpg' },
+  ]
 
   constructor(
     private readonly backendService: BackendService,

@@ -22,8 +22,36 @@
     font-weight: 600;
 }
 
+.orders__btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .orders__back-btn {
     background-color: transparent;
     color: #0072BC;
     text-decoration: underline;
+
+    &:hover {
+        color: #c10000;
+    }
+}
+
+.orders__checkout-btn {
+    width: 190px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0072BC;
+    color: #fff;
+
+    &:hover {
+        background-color: #085080;
+    }
+}
+
+.hidden {
+    display: none;
 }

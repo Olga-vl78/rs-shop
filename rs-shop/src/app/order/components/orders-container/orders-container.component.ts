@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders-container.component.scss']
 })
 export class OrdersContainerComponent implements OnInit {
+  isCheckout: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onCheckoutBtnClick() {
+    this.isCheckout = true;
   }
 
 }
