@@ -43,4 +43,11 @@ export class SubcategoryComponent implements OnInit {
     }
   }
 
+  goToDetailedInfoPage(itemId: string) {
+    console.log(`/categories/${this.categoryId}/${this.subcategory?.id}/${itemId}`)
+    if (this.subcategory) {
+      this.router.navigate([`/categories/${this.categoryId}/${this.subcategory.id}/${itemId}`])
+    }
+  }
+
 }

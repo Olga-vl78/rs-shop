@@ -1,6 +1,6 @@
 :host{
     width: 400px;
-    //height: 500px;
+    //height: 473px;
     //overflow: hidden;
 }
 
@@ -10,24 +10,13 @@
     cursor: pointer;
 }
 
-.subcategory__name:hover {
+.subcategory__name:hover,
+.subcategory__list-item:hover {
     color: #8f0808;
+    cursor: pointer;
 }
 
 .subcategory__list-item {
     padding: 5px 0;
     line-height: 2;
-}
-
-.subcategory__list-link {
-    text-decoration: none;
-    color: #000;
-}
-
-.subcategory__list-item {
-    &:hover {
-        .subcategory__list-link {
-            color: #8f0808;
-        }
-    }
 }

@@ -57,15 +57,11 @@ export class CategoriesListComponent implements OnInit {
     if (category) {
       this.categoryName = category.name;
       this.subcategories = category.subCategories;
-      console.log('subcategories: before', this.subcategories)
-
       this.subcategories.forEach((subcat) => {
         if (category)
           this.backendService.fetchSubcategory(category.id, subcat.id)
             .then((itemsData) => subcat.items = itemsData)
       })
-      console.log(this.categoryName)
-      console.log('subcategories: after', this.subcategories)
     }
   }
 
