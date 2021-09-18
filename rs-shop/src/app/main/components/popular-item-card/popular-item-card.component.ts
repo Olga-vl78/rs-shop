@@ -22,6 +22,7 @@ export class PopularItemCardComponent implements OnInit {
     // this.pagesDataService.getPopularItems()
     //   .then((items) => this.items = items);
 
+    console.log('card', this.goodsItem);
     this.imageUrl = this.goodsItem?.imageUrls[0];
   }
 

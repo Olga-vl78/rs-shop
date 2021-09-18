@@ -4,12 +4,13 @@
     <div class="item__inner-wrapper">
         <div class="item__slider">
             <div class="item__slide-border"></div>
-            <div class="item__slide" *ngFor="let slide of item?.imageUrls">
-                <img [src]="slide" alt="" class="item__slide-img">
+            <div class="item__slide" *ngFor="let slide of item?.imageUrls; let idx = index " (click)="itemNumber = idx">
+                <img [src]="slide" alt="" class="item__slide-img" ngClass="{active: idx === itemNumber}">
             </div>
         </div>
-        <app-item-pictures-slider [itemPictures]="item?.imageUrls"></app-item-pictures-slider>
-        <div class="item__info">
+        <app-item-pictures-slider [itemPictures]="item?.imageUrls" [(itemNumber)]="itemNumber">
+        </app-item-pictures-slider>
+        <div class=" item__info">
             <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
             <div class="item__amount">
                 <svg class="icon-amount_color" [appColor]="item?.availableAmount || null" viewBox="0 0 24 24" width="24"

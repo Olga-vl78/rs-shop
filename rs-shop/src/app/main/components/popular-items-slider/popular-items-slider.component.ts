@@ -8,14 +8,27 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
   styleUrls: ['./popular-items-slider.component.scss']
 })
 export class PopularItemsSliderComponent implements OnInit {
-  items: IGoodsItem[] = [];
-
+  items: IGoodsItem[][] = [];
 
   constructor(private readonly pagesDataService: PagesDataService) { }
 
   ngOnInit(): void {
     this.pagesDataService.getPopularItems()
-      .then((items) => this.items = items)
-  }
+      .then((items: IGoodsItem[]) => {
 
+        const result: IGoodsItem[][] = [];
+        let entry: IGoodsItem[] = [];
+        items.forEach((item, idx) => {
+          console.log(idx);
+          if (idx % 2 === 0) {
+            entry = [item];
+          } else {
+            entry.push(item);
+            result.push(entry);
+          }
+        });
+
+        this.items = result;
+      });
+  }
 }

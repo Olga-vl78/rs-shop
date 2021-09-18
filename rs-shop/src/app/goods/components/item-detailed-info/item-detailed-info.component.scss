@@ -1,3 +1,7 @@
+:host {
+    --posSlider: 0;
+
+
 .item {
     max-width: 1200px;
     margin: 0 auto;
@@ -47,11 +51,7 @@
     border: 3px solid #0072BC;
     z-index: 10;
     transition-duration: 333ms;
-    transform: translate(0px, 0px);
-
-    &:hover {
-        transform: translate(0px, 65px);
-    }
+    transform: translate(0px, var(--posSlider));
 }
 
 .item__slide-img {
@@ -183,4 +183,6 @@ img {
 
 .icon-amount_color {
     fill: blue;
+}
+
 }

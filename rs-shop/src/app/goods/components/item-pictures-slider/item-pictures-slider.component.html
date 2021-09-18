@@ -1,5 +1,6 @@
 <p-carousel [value]="itemPictures" [style]="{'max-width':'600px', 'margin-top':'1em'}" verticalViewPortHeight="445px"
-    [numVisible]="1" [numScroll]="1" orientation="vertical" [autoplayInterval]="5000" [circular]="true">
+    [numVisible]="1" [numScroll]="1" orientation="vertical" [showIndicators]="false" [showNavigators]="false"
+    (onPage)="onPage($event)" [page]="itemNumber">
     <ng-template let-pic pTemplate="item">
         <div class="item__pic">
             <img [src]="pic" alt="" class="item__pic-img">

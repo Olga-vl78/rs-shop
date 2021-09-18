@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/core/services/backend.service';
@@ -19,6 +19,8 @@ export class ItemDetailedInfoComponent implements OnInit {
   itemId: string = '';
 
   availableAmount: number = 0;
+
+  itemNumber = 0;
 
   stars = [
     { color: '#e5e5e5' },
@@ -68,4 +70,12 @@ export class ItemDetailedInfoComponent implements OnInit {
       }
     }
   }
+
+
+  @HostBinding("style.--posSlider")
+  get posSlider() {
+
+    return this.itemNumber * 65 + 'px';
+  }
+
 }

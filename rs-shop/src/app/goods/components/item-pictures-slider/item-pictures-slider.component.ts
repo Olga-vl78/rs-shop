@@ -1,16 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-item-pictures-slider',
   templateUrl: './item-pictures-slider.component.html',
   styleUrls: ['./item-pictures-slider.component.scss']
 })
-export class ItemPicturesSliderComponent implements OnInit {
+export class ItemPicturesSliderComponent {
   @Input() itemPictures: any = [];
 
-  constructor() { }
+  @Input() itemNumber: number = 0;
 
-  ngOnInit(): void {
+  @Output() itemNumberChange = new EventEmitter<number>();
+
+  onPage(event: { page: number }) {
+
+    this.itemNumberChange.emit(event.page);
   }
 
 }
