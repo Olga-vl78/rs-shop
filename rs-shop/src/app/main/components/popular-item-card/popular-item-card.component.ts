@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
@@ -8,7 +8,9 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
   styleUrls: ['./popular-item-card.component.scss']
 })
 export class PopularItemCardComponent implements OnInit {
-  items: IGoodsItem[] = [];
+  //items: IGoodsItem[] = [];
+
+  @Input() goodsItem: IGoodsItem | undefined = undefined;
 
   imageUrl: string | undefined = '';
 
@@ -17,10 +19,10 @@ export class PopularItemCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.pagesDataService.getPopularItems()
-      .then((items) => {
-        this.items = items;
-      })
+    // this.pagesDataService.getPopularItems()
+    //   .then((items) => this.items = items);
+
+    this.imageUrl = this.goodsItem?.imageUrls[0];
   }
 
   getImageUrl(item: IGoodsItem) {

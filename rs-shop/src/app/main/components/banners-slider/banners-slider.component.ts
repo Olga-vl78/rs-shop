@@ -13,8 +13,8 @@ export class BannersSliderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get bannersData() {
-    return this.pagesDataService.bannersData;
+  get banners() {
+    return this.pagesDataService.banners;
   }
 
 }

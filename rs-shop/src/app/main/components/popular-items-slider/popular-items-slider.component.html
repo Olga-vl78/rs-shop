@@ -1,2 +1,8 @@
-<h2 class="items__title">Популярные товары</h2>
-<app-popular-item-card></app-popular-item-card>
+<!-- <h2 class="items__title">Популярные товары</h2>
+<app-popular-item-card></app-popular-item-card> -->
+<p-carousel [value]="items" [numVisible]="3" [numScroll]="3" [style]="{'max-width':'1000px', 'margin':'0 auto'}"
+    [showIndicators]="true" [showNavigators]="true">
+    <ng-template let-goodsItem pTemplate="item">
+        <app-popular-item-card [goodsItem]="goodsItem"></app-popular-item-card>
+    </ng-template>
+</p-carousel>

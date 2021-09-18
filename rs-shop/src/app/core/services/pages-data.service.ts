@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IBanner } from 'src/app/main/models/banner.module';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 import { BackendService } from './backend.service';
 
@@ -17,14 +16,14 @@ export class PagesDataService {
 
   popularItems: IGoodsItem[] = [];
 
-  bannersData: IBanner[] = [
-    { image: 'assets/images/slider_apple.jpg' },
-    { image: 'assets/images/slider_atlant.jpg' },
-    { image: 'assets/images/slider_books.jpg' },
-    { image: 'assets/images/slider_huawei.jpg' },
-    { image: 'assets/images/slider_samsung.jpg' },
-    { image: 'assets/images/slider_school.jpg' },
-    { image: 'assets/images/slider_радиаторы.jpg' },
+  banners: string[] = [
+    'assets/images/slider_apple.jpg',
+    'assets/images/slider_atlant.jpg',
+    'assets/images/slider_books.jpg',
+    'assets/images/slider_huawei.jpg',
+    'assets/images/slider_samsung.jpg',
+    'assets/images/slider_school.jpg',
+    'assets/images/slider_радиаторы.jpg',
   ]
 
   constructor(
@@ -40,7 +39,6 @@ export class PagesDataService {
   async addToOrderedItems(id: string) {
     const item = await this.backendService.fetchItem(id);
     this.orderedItems.push(item);
-    //this.$orderedItems.value.concat(item)
   }
 
   async addToFavoriteItems(id: string) {
@@ -49,22 +47,12 @@ export class PagesDataService {
     console.log(this.favoriteItems)
   }
 
-
-
   async getPopularItems() {
-    /*const items = await this.backendService.fetchCategories();
-    const idsData = items.map((item) => item.id);
-    console.log("idsData", idsData)
-    const allItems: IGoodsItem[] = [];
-    idsData.forEach((id) => {
-      this.backendService.fetchCategory(id)
-      .then((items) => {
-        console.log('items', items)
-        allItems.concat(items);
-      });*/
-
-    const itemsData = this.backendService.fetchCategory('electronics');
-    const popularItems = (await itemsData).filter((item) => item.rating === 5)
+    const categories = await this.backendService.fetchCategories();
+    const idsData = categories.map((category) => category.id);
+    const itemsDataFirst = await this.backendService.fetchCategory(idsData[1]);
+    const itemsDataSecond = await this.backendService.fetchCategory(idsData[2]);
+    const popularItems = itemsDataFirst.concat(itemsDataSecond).filter((item) => item.rating === 5);
     console.log(popularItems)
     return popularItems;
   }
