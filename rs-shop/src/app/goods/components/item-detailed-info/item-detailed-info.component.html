@@ -14,9 +14,9 @@
                     <path
                         d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm4.71 7.71-5 5a1 1 0 0 1-1.42 0l-2-2a1 1 0 0 1 1.42-1.42l1.29 1.3 4.29-4.3a1 1 0 0 1 1.42 1.42Z" />
                 </svg>
-                В наличии {{item?.availableAmount || null}}
+                В наличии
             </div>
-            <div class="item__rating">{{item?.rating}}
+            <div class="item__rating">
                 <svg class="icon-star_color" *ngFor="let star of stars" viewBox="0 0 48 48" width="30" height="30"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -37,9 +37,9 @@
     </div>
     <div class="item__description">
         <div class="item__btns-wrapper">
-            <button class="item__review-btn btn btn-active">Descr</button>
-            <button class="item__feedback-btn btn">Feedback</button>
-            <button class="item__questions-btn btn">Questions</button>
+            <button class="item__review-btn btn btn-active">Обзор</button>
+            <button class="item__feedback-btn btn">Отзывы</button>
+            <button class="item__questions-btn btn">Вопрос-ответ</button>
             <div class="item__btns-border"></div>
         </div>
         <p class="item__description-text">{{item?.description}}</p>
