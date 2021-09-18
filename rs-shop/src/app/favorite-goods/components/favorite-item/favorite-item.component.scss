@@ -40,32 +40,9 @@ img {
     object-fit: contain;
 }
 
-.item__rating_icon {
-    width: 30px;
-    height: 30px;
-}
-
 .item__price {
     font-size: 16px;
     font-weight: 600;
-}
-
-.item__add-busket_btn {
-    width: 190px;
-    height: 40px;
-    background-color: #EA1653;
-    font-weight: 600;
-    color: #fff;
-}
-
-.item__add-busket_btn:hover {
-    background-color: #b30b3b;
-}
-
-.busket_btn-active {
-    background-color: #fff;
-    border: 2px solid #EA1653;
-    color: #EA1653;
 }
 
 .item__delete_btn {

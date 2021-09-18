@@ -43,5 +43,4 @@ export class ItemCardComponent implements OnInit {
   goToItemDetailedPage() {
     this.router.navigate([`/categories/${this.categoryId}/${this.subcategoryId}/${this.item?.id}`])
   }
-
 }

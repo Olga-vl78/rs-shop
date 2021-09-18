@@ -1,7 +1,7 @@
 <div class="item">
     <div class="item__pic"><img [src]="imageUrl" alt="" class="item__img"></div>
     <div class="item__wrapper">
-        <h3 class="item__title">{{item?.name}}</h3>
+        <h3 class="item__title" (click)="goToItemDetailedPage(item?.id)">{{item?.name}}</h3>
         <app-item-rating [itemRating]="item?.rating"></app-item-rating>
         <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
         <app-add-to-basket-button [itemId]="item?.id"></app-add-to-basket-button>

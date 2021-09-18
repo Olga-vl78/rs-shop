@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BackendService } from 'src/app/core/services/backend.service';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
@@ -17,7 +19,9 @@ export class OrdersTableComponent implements OnInit {
   isEmpty: boolean = true;
 
   constructor(
-    private readonly pagesDataService: PagesDataService
+    private readonly pagesDataService: PagesDataService,
+    private readonly backendService: BackendService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
@@ -63,5 +67,14 @@ export class OrdersTableComponent implements OnInit {
   checkItems() {
     if (this.items.length === 0) this.isEmpty = true;
     else this.isEmpty = false;
+  }
+
+  goToItemDetailedPage(itemId: string | undefined) {
+    if (itemId) {
+      this.backendService.fetchItem(itemId)
+        .then((item) => {
+          this.router.navigate([`/categories/${item.category}/${item.subCategory}/${itemId}`])
+        })
+    }
   }
 }

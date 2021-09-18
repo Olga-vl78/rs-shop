@@ -17,7 +17,7 @@
             <tr class="tr" *ngFor="let item of items">
                 <td class="td__picture"><img [src]="getImageUrl(item)" alt="" class="td__picture_img"></td>
                 <td class="td__name">
-                    <p class="td__name_text">{{item?.name}}</p>
+                    <p class="td__name_text" (click)="goToItemDetailedPage(item?.id)">{{item?.name}}</p>
                     <app-add-to-favorite-button [itemId]="item?.id"></app-add-to-favorite-button>
                     <button class="item__delete_btn btn">удалить</button>
                 </td>

@@ -17,19 +17,16 @@ export class AddToBasketButtonComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkOrderedItems();
-    console.log('BUTTON INIT')
   }
 
   onBasketBtnClick(id: string | undefined) {
     if (id) {
       this.pagesDataService.addToOrderedItems(id);
-      console.log("id", id);
       this.isOrdered = true;
     }
   }
 
   checkOrderedItems() {
-    console.log('this.itemId', this.itemId)
     const orderedItem = this.orderedItems.find((item) => item.id === this.itemId);
     if (orderedItem) {
       this.isOrdered = true;
@@ -39,5 +36,4 @@ export class AddToBasketButtonComponent implements OnInit {
   get orderedItems() {
     return this.pagesDataService.orderedItems;
   }
-
 }
