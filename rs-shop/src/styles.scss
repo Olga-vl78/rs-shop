@@ -138,7 +138,7 @@ table {
 }
 
 button {
-    border: none;//here
+    border: none;
     outline: none;
     cursor: pointer;
     font: inherit;
@@ -148,7 +148,8 @@ input {
     font: inherit;
 }
 
-input:focus {
+input:focus,
+select:focus {
     outline: 0;
 }
 :focus::-webkit-input-placeholder {

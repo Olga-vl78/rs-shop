@@ -1,24 +1,60 @@
-<form action="" class="form user">
+<form action="" class="form user" [formGroup]="form" (ngSubmit)="submit()">
     <h3 class="form__title">Личные данные</h3>
     <div class="form__devider"></div>
     <div class="form__wrapper">
-        <label>Имя Фамилия:</label>
-        <input type="text" class="user__name" minlength="3" maxlength="50" required>
+        <label>*Имя Фамилия:</label>
+        <input type="text" class="user__name" formControlName="name">
+        <div class="validator" *ngIf="name?.invalid && name?.touched">
+            <small *ngIf="name?.errors?.required">Поле не может быть пустым</small>
+            <small *ngIf="name?.errors?.minlength">Количество символов должно быть больше или равно
+                {{name?.errors?.minlength.requiredLength}}. Текущее количество символов
+                {{name?.errors?.minlength.actualLength}}
+            </small>
+            <small *ngIf="name?.errors?.maxlength">Количество символов должно быть меньше или равно
+                {{name?.errors?.maxlength.requiredLength}}. Текущее количество символов
+                {{name?.errors?.maxlength.actualLength}}
+            </small>
+        </div>
         <label>*E-mail:</label>
-        <input type="text" class="user__e-mail">
+        <input type="email" class="user__e-mail" formControlName="email">
+        <div class="validator" *ngIf="email?.invalid && email?.touched">
+            <small *ngIf="email?.errors?.required">Поле не может быть пустым</small>
+            <small *ngIf="email?.errors?.email">Некорректно заполенено поле email</small>
+        </div>
     </div>
 
     <h3 class="form__title">Доставка</h3>
     <div class="form__devider"></div>
     <div class="form__wrapper">
-        <label>Город/населенный пункт:</label>
-        <input type="text" class="user__city">
+        <label>*Город/населенный пункт:</label>
+        <input type="text" class="user__city" formControlName="city">
+        <div class="validator" *ngIf="city?.invalid && city?.touched">
+            <small *ngIf="city?.errors?.required">Поле не может быть пустым</small>
+            <small *ngIf="city?.errors?.minlength">Количество символов должно быть больше или равно
+                {{city?.errors?.minlength.requiredLength}}. Текущее количество символов
+                {{city?.errors?.minlength.actualLength}}
+            </small>
+            <small *ngIf="city?.errors?.maxlength">Количество символов должно быть меньше или равно
+                {{city?.errors?.maxlength.requiredLength}}. Текущее количество символов
+                {{city?.errors?.maxlength.actualLength}}
+            </small>
+        </div>
     </div>
 
     <div class="form__wrapper">
-
         <label>*Адрес доставки</label>
-        <input type="text" class="user__address" placeholder="Улица, дом" minlength="3" maxlength="250" required>
+        <input type="text" class="user__address" placeholder="Улица, дом" formControlName="address">
+        <div class="validator" *ngIf="address?.invalid && address?.touched">
+            <small *ngIf="address?.errors?.required">Поле не может быть пустым</small>
+            <small *ngIf="address?.errors?.minlength">Количество символов должно быть больше или равно
+                {{address?.errors?.minlength.requiredLength}}. Текущее количество символов
+                {{address?.errors?.minlength.actualLength}}
+            </small>
+            <small *ngIf="address?.errors?.maxlength">Количество символов должно быть меньше или равно
+                {{address?.errors?.maxlength.requiredLength}}. Текущее количество символов
+                {{address?.errors?.maxlength.actualLength}}
+            </small>
+        </div>
         <div class="form__inner-wrapper">
             <input type="text" class="user__entrance address-detailes" placeholder="Подъезд">
             <input type="text" class="user__floor address-detailes" placeholder="Этаж">
@@ -27,21 +63,57 @@
     </div>
 
     <div class="form__wrapper">
-        <label>Время доставки: </label>
         <div class="form__inner-wrapper">
-            <input type="text" class="hours">
-            <input type="text" class="minutes">
+            <div class="form__wrapper">
+                <label>*Дата доставки: </label>
+                <select class="date" formControlName="date">
+                    <option>23 сентября 2021г.</option>
+                    <option>24 сентября 2021г.</option>
+                    <option>25 сентября 2021г.</option>
+                    <option>26 сентября 2021г.</option>
+                    <option>27 сентября 2021г.</option>
+                </select>
+                <div class="validator" *ngIf="date?.invalid && date?.touched">
+                    <small *ngIf="date?.errors?.required">Поле не может быть пустым</small>
+                    <small *ngIf="date?.errors?.pattern">Поле может содержать только цифры</small>
+                </div>
+            </div>
+            <div class="form__wrapper">
+                <label>*Время доставки: </label>
+                <select class="time" formControlName="time">
+                    <option>14:00 - 17:00</option>
+                    <option>15:00 - 18:00</option>
+                    <option>16:00 - 19:00</option>
+                    <option>17:00 - 20:00</option>
+                    <option>18:00 - 21:00</option>
+                    <option>19:00 - 22:00</option>
+                </select>
+                <div class="validator" *ngIf="time?.invalid && time?.touched">
+                    <small *ngIf="time?.errors?.required">Поле не может быть пустым</small>
+                    <small *ngIf="time?.errors?.pattern">Поле может содержать только цифры</small>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="form__wrapper">
         <label>*Телефон:</label>
-        <input type="text" class="user__phone">
+        <input type="text" class="user__phone" formControlName="phone">
+        <div class="validator" *ngIf="phone?.invalid && phone?.touched">
+            <small *ngIf="phone?.errors?.required">Поле не может быть пустым</small>
+            <small *ngIf="phone?.errors?.pattern">Поле может содержать только цифры</small>
+        </div>
     </div>
 
     <div class="form__wrapper">
         <label>Комментарий:</label>
-        <textarea class="user__comments" maxlength="250"></textarea>
+        <textarea class="user__comments" maxlength="250" formControlName="comments"></textarea>
+        <div class="validator" *ngIf="comments?.invalid && comments?.touched">
+            <small *ngIf="comments?.errors?.maxlength">Количество символов должно быть меньше или равно
+                {{comments?.errors?.maxlength.requiredLength}}. Текущее количество символов
+                {{comments?.errors?.maxlength.actualLength}}
+            </small>
+        </div>
     </div>
 
     <div class="form__devider gray"></div>
@@ -49,7 +121,8 @@
     <div class="form__wrapper align-right">
         <p class="amount">Стоимость заказа с доставкой:</p>
         <p class="amount-to-pay">К оплате:</p>
-        <button class="confirm-btn" (click)="onConfirmBtnClick()">Подтвердить заказ</button>
+        <button type="submit" class="confirm-btn" (click)="onConfirmBtnClick()" [disabled]="form.invalid">Подтвердить
+            заказ</button>
     </div>
     <p>Ваш заказ создан успешно, ожидайте доставку в указанное время</p>
 
