@@ -8,8 +8,6 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
   styleUrls: ['./popular-item-card.component.scss']
 })
 export class PopularItemCardComponent implements OnInit {
-  //items: IGoodsItem[] = [];
-
   @Input() goodsItem: IGoodsItem | undefined = undefined;
 
   imageUrl: string | undefined = '';
@@ -19,10 +17,6 @@ export class PopularItemCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.pagesDataService.getPopularItems()
-    //   .then((items) => this.items = items);
-
-    console.log('card', this.goodsItem);
     this.imageUrl = this.goodsItem?.imageUrls[0];
   }
 

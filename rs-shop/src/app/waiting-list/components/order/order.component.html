@@ -1,0 +1,58 @@
+<!-- <ul class="order">
+    <li class="order__num order__item"><span class="order__item-text">Номер заказа: </span><span
+            class="order__item-info">1978</span></li>
+    <li class="order__date order__item"><span class="order__item-text">Дата: </span><span
+            class="order__item-info">19.09.2020</span></li>
+    <li class="order__price order__item"><span span class="order__item-text">Стоимость: </span><span
+            class="order__item-info">2159 p.</span></li>
+    <li class="order__payment order__item"><span span class="order__item-text">Метод оплаты: </span><span
+            class="order__item-info">Наличные</span>
+    </li>
+    <li class="order__delivery order__item"><span span class="order__item-text">Доставка: </span><span
+            class="order__item-info">Курьером</span></li>
+</ul> -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="th__order-num">Номер заказа</th>
+            <th class="th__date">Дата</th>
+            <th class="th__payment">Метод оплаты</th>
+            <th class="th__delivery">Доставка</th>
+            <th class="th__total-price">Стоимость</th>
+            <th class="th__buttons"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="tr__order-info">
+            <!-- *ngFor="let item of items"> -->
+            <td class="td__order-num order-info">{{orderNum}}</td>
+            <td class="td__date order-info">19.09.2020</td>
+            <td class="td__price order-info">Наличные</td>
+            <td class="td__delivery order-info">Курьером</td>
+            <td class="td__quantity order-info">2159 p.</td>
+            <td class="td__button">
+                <button class="item__detailes_btn btn" (click)="onDetailesBtnClick()">Детали заказа</button>
+            </td>
+        </tr>
+        <tr class="tr__subheader" [ngClass]="isDetailes ? '' : 'hidden'">
+            <th></th>
+            <th class="th__name subheader">Товар</th>
+            <th class="th__price subheader">Цена</th>
+            <th class="th__quantity subheader">Количество</th>
+            <th class="th__total-price subheader">Стоимость</th>
+            <th class="th__buttons"></th>
+        </tr>
+        <tr class="tr__order-detailes" [ngClass]="isDetailes ? '' : 'hidden'" *ngFor="let item of orderedItems">
+            <td></td>
+            <td class="td__name order-detales">{{item.name}}</td>
+            <td class="td__price order-detales">{{item.price}} p.</td>
+            <td class="td__quantity order-detales">1</td>
+            <td class="td__total-price order-detales">{{getTotalSum(item.price)}} p.</td>
+            <td class="td__buttons">
+                <button class="item__delete_btn btn">Удалить</button>
+                <button class="item__edit_btn btn">Изменить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

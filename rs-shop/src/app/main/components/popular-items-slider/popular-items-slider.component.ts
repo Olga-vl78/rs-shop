@@ -19,7 +19,6 @@ export class PopularItemsSliderComponent implements OnInit {
         const result: IGoodsItem[][] = [];
         let entry: IGoodsItem[] = [];
         items.forEach((item, idx) => {
-          console.log(idx);
           if (idx % 2 === 0) {
             entry = [item];
           } else {

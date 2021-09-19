@@ -21,6 +21,13 @@ const routes: Routes = [
     loadChildren: () => import('./favorite-goods/favorite-goods.module').then((m) => m.FavoriteGoodsModule),
 
   },
+  {
+    path: 'waiting-list',
+    loadChildren: () => import('./waiting-list/waiting-list.module').then((m) => m.WaitingListModule),
+
+  },
+
+
   /*
     {
       path: '**',
