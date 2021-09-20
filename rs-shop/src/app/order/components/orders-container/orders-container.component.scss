@@ -29,6 +29,11 @@
     justify-content: space-between;
 }
 
+.orders__btn-inner-wrap {
+    display: flex;
+    gap: 10px;
+}
+
 .orders__back-btn {
     background-color: transparent;
     color: #0072BC;
@@ -39,7 +44,8 @@
     }
 }
 
-.orders__checkout-btn {
+.orders__checkout-btn,
+.orders__login-btn {
     width: 190px;
     height: 40px;
     display: flex;
@@ -50,6 +56,11 @@
 
     &:hover {
         background-color: #085080;
+    }
+
+    &:disabled {
+        background-color: #ada6a6;
+        cursor: unset;
     }
 }
 

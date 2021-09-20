@@ -13,8 +13,6 @@ const BASEURL = 'http://localhost:3004';
 })
 export class BackendService {
 
-  categoriesUrl: string = `${BASEURL}/categories`;
-
   constructor(private readonly http: HttpClient) {
   }
 

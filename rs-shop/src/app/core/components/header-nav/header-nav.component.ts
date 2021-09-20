@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { AuthService } from 'src/app/user/services/auth.service';
 import { PagesDataService } from '../../services/pages-data.service';
 
 const MIN_SEARCH_WORD_LENGTH: number = 2;
@@ -25,7 +26,8 @@ export class HeaderNavComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
-    private readonly pagesDataService: PagesDataService
+    private readonly pagesDataService: PagesDataService,
+    private readonly authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +45,14 @@ export class HeaderNavComponent implements OnInit {
 
   get $searchItems() {
     return this.pagesDataService.$searchItems;
+  }
+
+  get $isLogin() {
+    return this.authService.$isLogin;
+  }
+
+  get $isAuth() {
+    return this.authService.$isAuth;
   }
 
   subscribeSearchInputChanges() {
@@ -63,6 +73,15 @@ export class HeaderNavComponent implements OnInit {
     this.pagesDataService.getSearchItems(inputValue);
     if (inputValue) this.isEmpty = false;
     console.log(this.isEmpty)
+  }
+
+  onLoginBtnClick() {
+    this.authService.isAuthorization();
+  }
+
+  onLogoutBtnClick() {
+    this.authService.logout();
+    this.router.navigate(['/main'])
   }
 
   goToCategoriesPage() {

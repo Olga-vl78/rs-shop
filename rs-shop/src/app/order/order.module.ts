@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { UserModule } from '../user/user.module';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { OrdersContainerComponent } from './components/orders-container/orders-container.component';
 import { OrdersTableComponent } from './components/orders-table/orders-table.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
     OrderFormComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), FormsModule, ReactiveFormsModule, SharedModule
+    CommonModule, RouterModule.forChild(routes), FormsModule, ReactiveFormsModule, SharedModule, UserModule
   ]
 })
 export class OrderModule { }

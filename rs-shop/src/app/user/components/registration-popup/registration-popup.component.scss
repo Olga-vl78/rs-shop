@@ -1,22 +1,9 @@
-  .cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(71, 68, 68, 0.534);
-    z-index: 10;
-  }
-
-  .cover-hidden {
-    display: none;  }
-
   .form {
     position: fixed;
     top: 200px;
     left: calc(50vw - 240px);
     width: 480px;
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -112,7 +99,7 @@
   }
 
   .submit-btn {
-    width: 100px;
+    width: 200px;
     height: 40px;
     font-size: 16px;
     font-weight: 800;
@@ -129,12 +116,7 @@
     pointer-events: unset;
   }
 
-  .user__password {
-      margin-bottom: 20px;
-  }
-
-  .registration-btn {
-      font-size: 16px;
+  .back-btn {
       background-color: transparent;
       color: #2F80ED;
   }

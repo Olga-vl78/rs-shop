@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login-popup',
@@ -6,18 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-popup.component.scss']
 })
 export class LoginPopupComponent implements OnInit {
-  email: string = '';
+  login: string = '';
 
   password: string = '';
 
-  constructor() { }
+  constructor(
+    private readonly authService: AuthService,
+    private readonly userSevice: UserService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  get $isRegistration() {
+    return this.authService.$isRegistration;
+  }
+
   onGetEmailInputValue(input: HTMLInputElement) {
     if (input.validity.valid) {
-      this.email = input.value;
+      this.login = input.value;
     }
   }
 
@@ -27,9 +36,23 @@ export class LoginPopupComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    //this.userService.login(this.login, this.password);
-    //this.router.navigate(['/main']);
+  onCloseItemClick() {
+    this.authService.isNotAuthorization();
+  }
+
+  onRegistrationBtnClick() {
+    this.authService.$isRegistration.next(true);
+  }
+
+  async onSubmit() {
+    this.authService.login(this.login, this.password);
+    const response = await this.userSevice.loginUser({
+      login: this.login,
+      password: this.password,
+    })
+    this.authService.userToken = response.token;
+    // const users = await this.userSevice.getUsers()
+    // console.log(users)
   }
 
 }

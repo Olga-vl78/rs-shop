@@ -24,7 +24,12 @@
                         <ul class="dropdown__list">
                                 <li class="dropdown__list-item item-avatar">
                                         <img class="icon-avatar" src="assets/icons/avatar.svg">
-                                        <button class="dropdown__enter-btn">Enter</button>
+                                        <button class="dropdown__enter-btn" (click)="onLogoutBtnClick()"
+                                                *ngIf="($isLogin | async); else login">Выйти</button>
+                                        <ng-template #login>
+                                                <button class="dropdown__enter-btn"
+                                                        (click)="onLoginBtnClick()">Войти</button>
+                                        </ng-template>
                                 </li>
                                 <li class="dropdown__list-item"><a routerLink="/order" class="dropdown__list-link"><img
                                                         class="icon" src="assets/icons/trolley.svg">Корзина</a></li>
@@ -42,3 +47,4 @@
         <button class="nav__account-busket btn" routerLink="/order" [ngClass]="isOrdersPage ? 'disabled' : ''"><img
                         class="icon-arrow" src="assets/icons/trolley.svg">Корзина</button>
 </nav>
+<app-login-popup *ngIf="($isLogin | async) === false && ($isAuth | async)"></app-login-popup>

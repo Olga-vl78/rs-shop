@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FavoriteItemComponent } from './favorite-item.component';
+import { RegistrationPopupComponent } from './registration-popup.component';
 
-describe('FavoriteItemComponent', () => {
-  let component: FavoriteItemComponent;
-  let fixture: ComponentFixture<FavoriteItemComponent>;
+describe('RegistrationPopupComponent', () => {
+  let component: RegistrationPopupComponent;
+  let fixture: ComponentFixture<RegistrationPopupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FavoriteItemComponent ]
+      declarations: [ RegistrationPopupComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FavoriteItemComponent);
+    fixture = TestBed.createComponent(RegistrationPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

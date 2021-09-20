@@ -5,34 +5,41 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  userHash: string = '';
+  userToken: string = '';
 
-  userEmail: string = 'Your name';
+  userLogin: string = 'Your name';
 
   $isAuth = new BehaviorSubject<boolean>(false);
 
   $isLogin = new BehaviorSubject<boolean>(false);
 
-  login(email: string, password: string) {
-    this.userHash = btoa(`${email}:${password}`);
-    this.userEmail = email;
-    this.$isAuth.next(true);
-    localStorage.setItem(this.userHash, `${email}`);
+  $isRegistration = new BehaviorSubject<boolean>(false);
+
+  login(login: string, password: string) {
+    this.userLogin = login;
+    this.$isLogin.next(true);
+    this.$isAuth.next(false);
+    localStorage.setItem(this.userLogin, `${password}`);
   }
 
   logout() {
-    if (this.isUserHash()) localStorage.removeItem(this.userHash);
-    this.userHash = '';
-    this.userEmail = '';
+    if (this.isUserLogin()) {
+      localStorage.removeItem(this.userLogin);
+    }
+    this.userLogin = '';
     this.$isAuth.next(false);
     this.$isLogin.next(false);
   }
 
-  get authToken() {
-    return this.userHash;
+  isUserLogin() {
+    return this.userLogin && Object.keys(localStorage);
   }
 
-  isUserHash() {
-    return this.userHash && Object.keys(localStorage);
+  isAuthorization() {
+    this.$isAuth.next(true);
+  }
+
+  isNotAuthorization() {
+    this.$isAuth.next(false);
   }
 }

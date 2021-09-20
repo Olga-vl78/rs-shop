@@ -7,8 +7,15 @@
     </div>
     <div class="orders__btn-wrapper" [ngClass]="isCheckout ? 'hidden' : ''">
         <button class="orders__back-btn" routerLink="/categories">← Вернуться к покупкам</button>
-        <button class="orders__checkout-btn" [ngClass]="isEmpty ? 'hidden' : ''" (click)="onCheckoutBtnClick()">Оформить
-            заказ</button>
+        <div class="orders__btn-inner-wrap">
+            <button class="orders__login-btn" [ngClass]="isEmpty ? 'hidden' : ''" (click)="onLoginBtnClick()"
+                [disabled]="($isLogin | async)">Войти в
+                аккаунт</button>
+            <button class="orders__checkout-btn" [ngClass]="isEmpty ? 'hidden' : ''" (click)="onCheckoutBtnClick()"
+                [disabled]="($isLogin | async) === false">Оформить
+                заказ</button>
+        </div>
     </div>
     <app-order-form *ngIf="isCheckout"></app-order-form>
 </div>
+<app-login-popup *ngIf="($isLogin | async) === false && ($isAuth | async)"></app-login-popup>

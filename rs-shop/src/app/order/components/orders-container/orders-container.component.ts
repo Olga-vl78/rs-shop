@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
+import { AuthService } from 'src/app/user/services/auth.service';
 
 @Component({
   selector: 'app-orders-container',
@@ -12,7 +13,8 @@ export class OrdersContainerComponent implements OnInit {
   isEmpty: boolean = true;
 
   constructor(
-    private readonly pagesDataService: PagesDataService
+    private readonly pagesDataService: PagesDataService,
+    private readonly authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -23,13 +25,28 @@ export class OrdersContainerComponent implements OnInit {
     return this.pagesDataService.orderedItems;
   }
 
+  get $isLogin() {
+    return this.authService.$isLogin;
+  }
+
+  get $isAuth() {
+    return this.authService.$isAuth;
+  }
+
   onCheckoutBtnClick() {
     this.isCheckout = true;
+  }
+
+  onLoginBtnClick() {
+    this.authService.isAuthorization();
+    console.log("login", this.$isLogin.value)
   }
 
   checkOrderedItems() {
     if (this.orderedItems.length === 0) this.isEmpty = true;
     else this.isEmpty = false;
+    console.log("check", this.$isLogin.value)
+
   }
 
 }
