@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 import { BackendService } from './backend.service';
 
+
 export enum SortOrder {
   Asc = 'asc',
   Desc = 'desc',
@@ -88,5 +89,18 @@ export class PagesDataService {
         item.amount = amount;
       }
     });
+  }
+
+  transformOrderedItems() {
+    const itemsArray: any = [];
+    this.orderedItems.forEach((item) => {
+      const itemData = {
+        id: item.id,
+        amount: item.amount,
+      }
+      itemsArray.push(itemData);
+    })
+    console.log(itemsArray);
+    return itemsArray;
   }
 }

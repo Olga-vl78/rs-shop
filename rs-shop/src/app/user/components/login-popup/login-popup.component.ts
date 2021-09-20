@@ -51,6 +51,7 @@ export class LoginPopupComponent implements OnInit {
       password: this.password,
     })
     this.authService.userToken = response.token;
+    console.log(response.token)
     // const users = await this.userSevice.getUsers()
     // console.log(users)
   }

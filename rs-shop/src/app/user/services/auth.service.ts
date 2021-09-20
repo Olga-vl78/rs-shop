@@ -31,6 +31,18 @@ export class AuthService {
     this.$isLogin.next(false);
   }
 
+
+  getAuthHeaders(): { [key: string]: string } {
+    if (this.userToken) {
+      console.log('headers', this.userToken)
+      return {
+        'Authorization': `Bearer ${this.userToken}`
+      }
+    } else {
+      return {};
+    }
+  }
+
   isUserLogin() {
     return this.userLogin && Object.keys(localStorage);
   }

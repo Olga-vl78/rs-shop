@@ -16,19 +16,19 @@
     <thead>
         <tr>
             <th class="th__order-num">Номер заказа</th>
-            <th class="th__date">Дата</th>
+            <th class="th__date">Дата доставки</th>
             <th class="th__payment">Метод оплаты</th>
             <th class="th__delivery">Доставка</th>
             <th class="th__total-price">Сумма к оплате</th>
             <th class="th__buttons"></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let order of orders">
         <tr class="tr__order-info">
-            <td class="td__order-num order-info">{{orderNum}}</td>
-            <td class="td__date order-info">19.09.2020</td>
+            <td class="td__order-num order-info">{{order.id}}</td>
+            <td class="td__date order-info">{{order.details.timeToDeliver}}</td>
             <td class="td__price order-info">Наличные</td>
-            <td class="td__delivery order-info">Курьером</td>
+            <td class="td__delivery order-info">Курьером по адресу: {{order.details.address}}</td>
             <td class="td__quantity order-info">2159 p.</td>
             <td class="td__button">
                 <button class="item__detailes_btn btn" (click)="onDetailesBtnClick()">Детали заказа</button>

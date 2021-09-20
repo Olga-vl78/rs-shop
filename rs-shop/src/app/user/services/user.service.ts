@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IUserAuth } from '../models/user-auth.model';
 import { IUserInfo } from '../models/user-info.model';
+import { IUserOrder } from '../models/user-order.model';
 import { AuthService } from './auth.service';
 
 const BASEURL = 'http://localhost:3004';
@@ -18,7 +19,14 @@ export class UserService {
     private readonly authService: AuthService
   ) { }
 
-
+  getHeaders(): { headers: { [header: string]: string } } {
+    return {
+      headers: {
+        ...this.authService.getAuthHeaders(),
+        'Content-Type': 'application/json',
+      }
+    }
+  }
 
   addUser(user: IUserInfo): Promise<any> {
     return this.http.post<IUserInfo>(`${BASEURL}/users/register`, user) //, this.getHeaders())
@@ -35,7 +43,22 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get<any>(`${BASEURL}/users`)
+    return this.http.get(`${BASEURL}/users`)
+      .pipe(
+        catchError(this.handleError))
+      .toPromise();
+  }
+
+  addOrder(order: IUserOrder) {
+    return this.http.post(`${BASEURL}/users/order`, order, { ...this.getHeaders(), responseType: 'text' })
+      .pipe(
+        catchError(this.handleError)
+      )
+      .toPromise();
+  }
+
+  getUserInfo() {
+    return this.http.get(`${BASEURL}/users/userInfo`, this.getHeaders())
       .pipe(
         catchError(this.handleError))
       .toPromise();

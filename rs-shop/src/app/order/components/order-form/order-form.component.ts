@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PagesDataService } from 'src/app/core/services/pages-data.service';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-order-form',
@@ -10,7 +12,11 @@ import { Router } from '@angular/router';
 export class OrderFormComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private readonly router: Router) {
+  constructor(
+    private readonly router: Router,
+    private readonly userService: UserService,
+    private readonly pagesDataService: PagesDataService
+  ) {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       email: new FormControl('', [Validators.email, Validators.required]),
@@ -62,10 +68,21 @@ export class OrderFormComponent implements OnInit {
     this.router.navigate(['/waiting-list'])
   }
 
-  submit() {
-    console.log('Form submitted', this.form);
+  async submit() {
     const formData = { ...this.form.value };
     console.log('FormData:', formData);
+
+    const response = await this.userService.addOrder({
+      items: this.pagesDataService.transformOrderedItems(),
+      details: {
+        name: formData.name,
+        address: formData.address,
+        phone: formData.phone,
+        timeToDeliver: `${formData.date} ${formData.time}`,
+        comment: formData.comments,
+      }
+    });
+
     this.onConfirmBtnClick();
   }
 }
