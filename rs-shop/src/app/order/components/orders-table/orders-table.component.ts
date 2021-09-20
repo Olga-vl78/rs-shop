@@ -38,6 +38,11 @@ export class OrdersTableComponent implements OnInit {
     return item.imageUrls[0];
   }
 
+  onAmountInputChange(amount: string, id: string) {
+    if (id) this.pagesDataService.updateOrderedItems(+amount, id);
+    console.log('orders:', this.orderedItems)
+  }
+
   getOrderSum() {
     let priceSum: number = 0;
     this.items.forEach((item) => priceSum += (+item.price));
@@ -45,19 +50,30 @@ export class OrdersTableComponent implements OnInit {
   }
 
   updateOrderSum() {
+    let priceSum: number = 0;
+    this.orderedItems.forEach((item) => {
+      if (item.amount) priceSum += (+item.price * item?.amount)
+    })
+    return priceSum;
   }
 
-  addOrderQuantity(input: HTMLInputElement) {
+  addOrderQuantity(input: HTMLInputElement, itemId: string) {
     let counter: number = +input.value;
     counter++;
-    return input.value = counter.toString();
+    input.value = counter.toString();
+    this.onAmountInputChange(input.value, itemId);
+    this.orderSum = this.updateOrderSum();
+    return input.value;
   }
 
-  reduceOrderQuantity(input: HTMLInputElement) {
+  reduceOrderQuantity(input: HTMLInputElement, itemId: string) {
     let counter: number = +input.value;
     counter--;
     if (counter < 0) counter = 0;
-    return input.value = counter.toString();
+    input.value = counter.toString();
+    this.onAmountInputChange(input.value, itemId);
+    this.orderSum = this.updateOrderSum();
+    return input.value;
   }
 
   getTotalPrice(price: number, quantity: string) {

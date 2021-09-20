@@ -59,12 +59,13 @@ export class OrderFormComponent implements OnInit {
   }
 
   onConfirmBtnClick() {
-    //this.router.navigate(['/waiting-list'])
+    this.router.navigate(['/waiting-list'])
   }
 
   submit() {
     console.log('Form submitted', this.form);
     const formData = { ...this.form.value };
-    console.log('FormData:', formData)
+    console.log('FormData:', formData);
+    this.onConfirmBtnClick();
   }
 }

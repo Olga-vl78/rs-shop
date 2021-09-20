@@ -24,10 +24,10 @@
                 <td class="td__description">{{item?.description}}</td>
                 <td class="td__quantity">
                     <div class="td__quantity-wrapper">
-                        <button class="td__quantity-plus_btn" (click)="addOrderQuantity(quantity)">+</button>
-                        <input #quantity type="text" class="td__quantity-total" [value]="1"
-                            (input)="getTotalPrice(item.price, quantity.value)">
-                        <button class="td__quantity-mines_btn" (click)="reduceOrderQuantity(quantity)">-</button>
+                        <button class="td__quantity-plus_btn" (click)="addOrderQuantity(quantity, item.id)">+</button>
+                        <input #quantity type="text" class="td__quantity-total" value="1">
+                        <button class="td__quantity-mines_btn"
+                            (click)="reduceOrderQuantity(quantity, item.id)">-</button>
                     </div>
                 </td>
                 <td class="td__delivery">Курьером: сегодня

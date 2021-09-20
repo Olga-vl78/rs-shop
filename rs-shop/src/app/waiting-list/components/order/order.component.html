@@ -46,8 +46,8 @@
             <td></td>
             <td class="td__name order-detales">{{item.name}}</td>
             <td class="td__price order-detales">{{item.price}} p.</td>
-            <td class="td__quantity order-detales">1</td>
-            <td class="td__total-price order-detales">{{getTotalSum(item.price)}} p.</td>
+            <td class="td__quantity order-detales">{{item.amount}}</td>
+            <td class="td__total-price order-detales">{{getTotalSum(item.price, item.amount)}} p.</td>
             <td class="td__buttons">
                 <button class="item__delete_btn btn">Удалить</button>
                 <button class="item__edit_btn btn">Изменить</button>

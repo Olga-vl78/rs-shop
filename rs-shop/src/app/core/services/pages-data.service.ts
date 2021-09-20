@@ -52,6 +52,7 @@ export class PagesDataService {
 
   async addToOrderedItems(id: string) {
     const item = await this.backendService.fetchItem(id);
+    item.amount = 1;
     this.orderedItems.push(item);
   }
 
@@ -79,5 +80,13 @@ export class PagesDataService {
   sortItemsByNum(sortingMode: SortOrder, param: SortParam) {
     this.$sortOrder.next(sortingMode);
     this.$sortParam.next(param);
+  }
+
+  updateOrderedItems(amount: number, id: string) {
+    this.orderedItems.map((item) => {
+      if (item.id === id) {
+        item.amount = amount;
+      }
+    });
   }
 }

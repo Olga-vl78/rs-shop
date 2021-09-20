@@ -10,4 +10,5 @@ export interface IGoodsItem {
     isFavorite: boolean;
     category?: string;
     subCategory?: string;
+    amount?: number;
 }
