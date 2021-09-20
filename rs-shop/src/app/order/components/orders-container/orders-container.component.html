@@ -7,7 +7,8 @@
     </div>
     <div class="orders__btn-wrapper" [ngClass]="isCheckout ? 'hidden' : ''">
         <button class="orders__back-btn" routerLink="/categories">← Вернуться к покупкам</button>
-        <button class="orders__checkout-btn" (click)="onCheckoutBtnClick()">Оформить заказ</button>
+        <button class="orders__checkout-btn" [ngClass]="isEmpty ? 'hidden' : ''" (click)="onCheckoutBtnClick()">Оформить
+            заказ</button>
     </div>
     <app-order-form *ngIf="isCheckout"></app-order-form>
 </div>

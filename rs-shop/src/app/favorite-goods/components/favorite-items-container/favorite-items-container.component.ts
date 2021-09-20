@@ -10,13 +10,24 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 export class FavoriteItemsContainerComponent implements OnInit {
   items: IGoodsItem[] = [];
 
+  isEmpty: boolean = true;
+
   constructor(
     private readonly pagesDataService: PagesDataService
   ) { }
 
   ngOnInit(): void {
-    this.items = this.pagesDataService.favoriteItems;
-    console.log(this.items)
+    this.items = this.favoriteItems;
+    this.checkFavoriteItems();
+  }
+
+  get favoriteItems() {
+    return this.pagesDataService.favoriteItems;
+  }
+
+  checkFavoriteItems() {
+    if (this.favoriteItems.length === 0) this.isEmpty = true;
+    else this.isEmpty = false;
   }
 
 }
