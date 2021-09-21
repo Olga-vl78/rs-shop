@@ -20,6 +20,10 @@ export class ItemsContainerComponent implements OnInit {
 
   sortingMode: SortOrder = SortOrder.Asc;
 
+  categoryName: string = '';
+
+  categories: string = 'Категории товаров'
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly backendService: BackendService,
@@ -29,6 +33,7 @@ export class ItemsContainerComponent implements OnInit {
   ngOnInit(): void {
     this.categoryId = this.activatedRoute.snapshot.params.catId;
     this.subcategoryId = this.activatedRoute.snapshot.params.subId;
+    this.getCtegoryName(this.categoryId);
     this.backendService.fetchSubcategory(this.categoryId, this.subcategoryId)
       .then((itemsData) => this.items = itemsData);
     this.backendService.fetchCategories()
@@ -65,5 +70,14 @@ export class ItemsContainerComponent implements OnInit {
       this.pagesDataService.sortItemsByNum(SortOrder.Desc, SortParam.Rating);
       this.sortingMode = SortOrder.Asc;
     }
+  }
+
+  getCtegoryName(id: string) {
+    this.backendService.fetchCategories()
+      .then((cats) => {
+        const currentCategory = (cats.filter((cat) => cat.id === id))[0];
+        this.categoryName = currentCategory.name;
+        return this.categoryName;
+      });
   }
 }

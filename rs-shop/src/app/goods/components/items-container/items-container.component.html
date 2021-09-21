@@ -1,4 +1,10 @@
 <div class="items__wrapper">
+    <ul class="breadcrumbs">
+        <li class="breadcrumbs__item"><a routerLink="/categories" class="breadcrumbs__link">{{categories}}</a><span
+                class="breadcrumbs__arrow">></span></li>
+        <li class="breadcrumbs__item"><a routerLink="/categories/{{categoryId}}" class="
+                breadcrumbs__link">{{categoryName}}</a></li>
+    </ul>
     <h2 class="items__subcategory-name">{{subcategoryName}}</h2>
     <div class="devider"></div>
     <div class="items__sorting">

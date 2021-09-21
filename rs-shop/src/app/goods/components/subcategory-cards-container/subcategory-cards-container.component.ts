@@ -19,6 +19,10 @@ export class SubcategoryCardsContainerComponent implements OnInit {
 
   categoryId: string = '';
 
+  categoryName: string = '';
+
+  categories: string = 'Категории товаров'
+
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -31,14 +35,15 @@ export class SubcategoryCardsContainerComponent implements OnInit {
         const id = params.get('catId');
         if (id) this.getSubcategories(id);
       }));
+    this.categoryId = this.activatedRoute.snapshot.params.catId;
   }
 
   getSubcategories(id: string) {
     this.backendService.fetchCategories()
       .then((cats) => {
         const currentCategory = (cats.filter((cat) => cat.id === id))[0];
+        this.categoryName = currentCategory.name;
         this.subcategories = currentCategory.subCategories
-        console.log("this.subcategories", this.subcategories)
         return this.subcategories;
       });
   }

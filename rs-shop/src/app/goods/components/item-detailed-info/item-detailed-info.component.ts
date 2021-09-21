@@ -1,6 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
@@ -14,9 +13,17 @@ export class ItemDetailedInfoComponent implements OnInit {
 
   imageUrl: string = '';
 
-  subscriptions: Subscription[] = [];
-
   itemId: string = '';
+
+  subcategoryId: string = '';
+
+  categoryId: string = '';
+
+  categories: string = 'Категории товаров';
+
+  categoryName: string = '';
+
+  subcategoryName: string = '';
 
   availableAmount: number = 0;
 
@@ -36,7 +43,10 @@ export class ItemDetailedInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.categoryId = this.activatedRoute.snapshot.params.catId;
+    this.subcategoryId = this.activatedRoute.snapshot.params.subId;
     this.itemId = this.activatedRoute.snapshot.params.id;
+    this.getNames(this.categoryId, this.subcategoryId);
     if (this.itemId) {
       this.backendService.fetchItem(this.itemId)
         .then((item) => {
@@ -45,21 +55,21 @@ export class ItemDetailedInfoComponent implements OnInit {
           this.getStarsColor(item.rating);
         })
     }
+  }
 
-    /*this.subscriptions.push(
-      this.activatedRoute.paramMap.subscribe((params) => {
-        const id = params.get('id');
-        if (id) {
-          this.backendService.fetchItem(id)
-            .then((item) => {
-              this.item = item;
-              this.imageUrl = item.imageUrls[0];
-              this.getStarsColor(item.rating);
-              console.log('ID', this.item.id)
-            })
-        }
+  getNames(catid: string, subcutId: string) {
+    this.backendService.fetchCategories()
+      .then((cats) => {
+        const currCategory = (cats.filter((cat) => cat.id === catid))[0];
+        this.categoryName = currCategory.name;
+        const subcategories = currCategory.subCategories
+        return subcategories;
       })
-    )*/
+      .then((subcats) => {
+        const currSubcategory = (subcats.filter((subcat) => subcat.id === subcutId))[0];
+        this.subcategoryName = currSubcategory.name;
+        return this.subcategoryName;
+      })
   }
 
   getStarsColor(rating: number) {

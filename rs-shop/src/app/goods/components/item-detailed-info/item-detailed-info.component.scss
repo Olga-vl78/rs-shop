@@ -185,4 +185,26 @@ img {
     fill: blue;
 }
 
+.breadcrumbs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+
+    .breadcrumbs__item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .breadcrumbs__link,
+    .breadcrumbs__arrow {
+        color: #717171;
+    }
+
+    .breadcrumbs__arrow {
+        font-size: 12px;
+    }
 }
+}
+
+
