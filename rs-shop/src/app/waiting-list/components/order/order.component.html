@@ -30,8 +30,11 @@
             <td class="td__price order-info">Наличные</td>
             <td class="td__delivery order-info">Курьером по адресу: {{order.details.address}}</td>
             <td class="td__quantity order-info">2159 p.</td>
-            <td class="td__button">
-                <button class="item__detailes_btn btn" (click)="onDetailesBtnClick()">Детали заказа</button>
+            <td class="td__buttons">
+                <button class="item__delete_btn btn" (click)="onDeleteBtnClick(order.id)">Удалить</button>
+                <button class="item__edit_btn btn">Изменить</button>
+                <button class="item__detailes_btn btn" (click)="onDetailesBtnClick()"><img src="assets/icons/arrow.svg"
+                        alt="" class="item__detailes-arrow" [ngClass]="isDetailes ? 'rotate' : ''"></button>
             </td>
         </tr>
         <tr class="tr__subheader" [ngClass]="isDetailes ? '' : 'hidden'">
@@ -48,10 +51,6 @@
             <td class="td__price order-detales">{{item.price}} p.</td>
             <td class="td__quantity order-detales">{{item.amount}}</td>
             <td class="td__total-price order-detales">{{getTotalSum(item.price, item.amount)}} p.</td>
-            <td class="td__buttons">
-                <button class="item__delete_btn btn">Удалить</button>
-                <button class="item__edit_btn btn">Изменить</button>
-            </td>
         </tr>
     </tbody>
 </table>

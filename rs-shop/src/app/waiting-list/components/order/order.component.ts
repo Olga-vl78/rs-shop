@@ -27,6 +27,14 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getOrders();
+  }
+
+  get orderedItems() {
+    return this.pagesDataService.orderedItems;
+  }
+
+  getOrders() {
     this.userService.getUserInfo()
       .then((ordersData) => {
         const userOrdersData: any = ordersData;
@@ -37,10 +45,6 @@ export class OrderComponent implements OnInit {
         this.orders = newOrders;
         return this.orders;
       })
-  }
-
-  get orderedItems() {
-    return this.pagesDataService.orderedItems;
   }
 
   transformOrder(order: IUserOrder) {
@@ -66,6 +70,11 @@ export class OrderComponent implements OnInit {
 
   getTotalSum(price: number, quantity: number = 1) {
     return price * quantity;
+  }
+
+  onDeleteBtnClick(id: string) {
+    this.userService.deleteOrder(id);
+    this.getOrders();
   }
 
 }

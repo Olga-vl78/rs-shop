@@ -64,6 +64,13 @@ export class UserService {
       .toPromise();
   }
 
+  deleteOrder(id: string) {
+    return this.http.delete(`${BASEURL}/users/order?id=${id}`, this.getHeaders())
+      .pipe(
+        catchError(this.handleError))
+      .toPromise();
+  }
+
   handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
