@@ -25,9 +25,9 @@ export class ItemDetailedInfoComponent implements OnInit {
 
   subcategoryName: string = '';
 
-  availableAmount: number = 0;
-
   itemNumber = 0;
+
+  isPopular: boolean = false;
 
   stars = [
     { color: '#e5e5e5' },
@@ -53,6 +53,7 @@ export class ItemDetailedInfoComponent implements OnInit {
           this.item = item;
           this.imageUrl = item.imageUrls[0];
           this.getStarsColor(item.rating);
+          this.onCheckItemRating(item.rating);
         })
     }
   }
@@ -86,6 +87,12 @@ export class ItemDetailedInfoComponent implements OnInit {
   get posSlider() {
 
     return this.itemNumber * 65 + 'px';
+  }
+
+  onCheckItemRating(rating: number) {
+    if (rating === 5) {
+      this.isPopular = true;
+    }
   }
 
 }

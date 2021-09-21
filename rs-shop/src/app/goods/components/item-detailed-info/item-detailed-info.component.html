@@ -17,7 +17,9 @@
         </div>
         <app-item-pictures-slider [itemPictures]="item?.imageUrls" [(itemNumber)]="itemNumber">
         </app-item-pictures-slider>
-        <div class=" item__info">
+        <div class="item__info">
+            <div class="item__icon" [ngClass]="isPopular ? '' : 'hidden'"><img src="assets/icons/like.svg" alt=""
+                    class="item__icon-img"></div>
             <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
             <div class="item__amount">
                 <svg class="icon-amount_color" [appColor]="item?.availableAmount || null" viewBox="0 0 24 24" width="24"
