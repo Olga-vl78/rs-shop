@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
+import { IUserOrderItem } from 'src/app/user/models/user-order-item.model';
 import { IUserOrder } from 'src/app/user/models/user-order.model';
 import { UserService } from 'src/app/user/services/user.service';
 import { getNextOrderNum } from '../../services/counter';
@@ -16,16 +17,14 @@ export class OrderComponent implements OnInit {
 
   orderNum = getNextOrderNum();
 
-  orders: IUserOrder[] = [];
+  orders: any = [];
 
 
   constructor(
     private readonly pagesDataService: PagesDataService,
     private readonly userService: UserService,
     private readonly backendService: BackendService
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.userService.getUserInfo()
@@ -33,19 +32,11 @@ export class OrderComponent implements OnInit {
         const userOrdersData: any = ordersData;
         const orders = userOrdersData.orders;
         console.log("orders", orders)
-        this.orders = orders;
+        const newOrders = orders.map((order: IUserOrder) => this.transformOrder(order));
+        console.log('newOrders', newOrders)
+        this.orders = newOrders;
         return this.orders;
       })
-
-
-    // .then((orders) => {
-    //   const fullOrders: any = [];
-    //   orders.forEach((order) => fullOrders.push(this.transformOrder(order)));
-    //   // this.fullOrders = fullOrders;
-    //   // console.log('this.fullOrders', this.fullOrders)
-    //   // return this.fullOrders;
-    //   this.$fullOrders.next(fullOrders);
-    // })
   }
 
   get orderedItems() {
@@ -54,19 +45,18 @@ export class OrderComponent implements OnInit {
 
   transformOrder(order: IUserOrder) {
     const items: IGoodsItem[] = [];
-    order.items.forEach((item) => {
+    order.items.forEach((item: IUserOrderItem) => {
       this.backendService.fetchItem(item.id)
-        .then((elem) => {
+        .then((elem: IGoodsItem) => {
           elem.amount = item.amount;
           items.push(elem);
         })
     })
     const newOrder = {
+      ...order,
       items: items,
-      detailes: order.details,
-      id: order.id,
     }
-    console.log(items);
+    console.log(newOrder);
     return newOrder;
   }
 

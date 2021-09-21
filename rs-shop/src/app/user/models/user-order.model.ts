@@ -1,10 +1,7 @@
+import { IUserOrderItem } from "./user-order-item.model";
+
 export interface IUserOrder {
-    items: [
-        {
-            id: string,
-            amount: 0
-        }
-    ],
+    items: IUserOrderItem[],
     details: {
         name: string,
         address: string,

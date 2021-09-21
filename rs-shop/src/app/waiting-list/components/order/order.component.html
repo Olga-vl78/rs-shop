@@ -42,7 +42,7 @@
             <th class="th__total-price subheader">Стоимость</th>
             <th class="th__buttons"></th>
         </tr>
-        <tr class="tr__order-detailes" [ngClass]="isDetailes ? '' : 'hidden'" *ngFor="let item of orderedItems">
+        <tr class="tr__order-detailes" [ngClass]="isDetailes ? '' : 'hidden'" *ngFor="let item of order.items">
             <td></td>
             <td class="td__name order-detales">{{item.name}}</td>
             <td class="td__price order-detales">{{item.price}} p.</td>

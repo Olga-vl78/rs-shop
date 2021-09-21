@@ -22,3 +22,7 @@ export interface IUserOrdersInfo {
         }
     ];
 }
+export interface IUserOrderItem {
+    id: string,
+    amount: number,
+}
