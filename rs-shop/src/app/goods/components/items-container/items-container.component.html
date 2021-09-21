@@ -12,9 +12,16 @@
         <button class="rating-sort-btn btn" (click)="onSortItemsByRating()">популярности</button>
         <button class="price-sort-btn btn" (click)="onSortItemsByPrice()">цене</button>
     </div>
-    <div class="devider"></div>
+    <div class="pagination">
+        <div class="page">
+            <span class="page__arrow-left" [ngClass]="isFirstPage ? 'hidden' : ''" (click)="goToPrevPage()">&lt;</span>
+            Страница {{pageNum}}
+            <span class="page__arrow-right" [ngClass]="isLastPage ? 'hidden' : ''" (click)="goToNextPage()">&gt;</span>
+        </div>
+    </div>
     <div class="items__container">
-        <app-item-card *ngFor="let item of items | sort: ($sortOrder | async) : ($sortParam | async)" [item]="item">
+        <app-item-card *ngFor="let item of ($pagesItems | async) | sort: ($sortOrder | async) : ($sortParam | async)"
+            [item]="item">
         </app-item-card>
     </div>
 </div>

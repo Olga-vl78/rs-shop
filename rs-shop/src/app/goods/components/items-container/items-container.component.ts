@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { PagesDataService, SortOrder, SortParam } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
+
+const ITEMS_PER_PAGE = 9;
 
 @Component({
   selector: 'app-items-container',
@@ -14,15 +17,26 @@ export class ItemsContainerComponent implements OnInit {
 
   categoryId: string = '';
 
-  subcategoryName: string = '';
-
   subcategoryId: string = '';
-
-  sortingMode: SortOrder = SortOrder.Asc;
 
   categoryName: string = '';
 
-  categories: string = 'Категории товаров'
+  subcategoryName: string = '';
+
+  categories: string = 'Категории товаров';
+
+  sortingMode: SortOrder = SortOrder.Asc;
+
+  pagesCount: number = 0;
+
+  pageNum: number = 1;
+
+  $pagesItems = new BehaviorSubject<IGoodsItem[]>([]);
+
+  isFirstPage: boolean = true;
+
+  isLastPage: boolean = false;
+
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -33,15 +47,8 @@ export class ItemsContainerComponent implements OnInit {
   ngOnInit(): void {
     this.categoryId = this.activatedRoute.snapshot.params.catId;
     this.subcategoryId = this.activatedRoute.snapshot.params.subId;
-    this.getCtegoryName(this.categoryId);
-    this.backendService.fetchSubcategory(this.categoryId, this.subcategoryId)
-      .then((itemsData) => this.items = itemsData);
-    this.backendService.fetchCategories()
-      .then((categories) => categories.filter((category) => category.id === this.categoryId))
-      .then((category) => category[0].subCategories.filter((subcat) => subcat.id === this.subcategoryId))
-      .then((subcategory) => {
-        this.subcategoryName = subcategory[0].name;
-      });
+    this.getNames(this.categoryId, this.subcategoryId);
+    this.getItems();
   }
 
   get $sortOrder() {
@@ -72,12 +79,50 @@ export class ItemsContainerComponent implements OnInit {
     }
   }
 
-  getCtegoryName(id: string) {
+  getItems() {
+    this.backendService.fetchSubcategory(this.categoryId, this.subcategoryId)
+      .then((itemsData) => {
+        this.items = itemsData;
+        this.pagesCount = Math.ceil(this.items.length / ITEMS_PER_PAGE);
+        this.$pagesItems.next(this.getPageItems());
+      });
+  }
+
+  getNames(catid: string, subcutId: string) {
     this.backendService.fetchCategories()
       .then((cats) => {
-        const currentCategory = (cats.filter((cat) => cat.id === id))[0];
-        this.categoryName = currentCategory.name;
-        return this.categoryName;
-      });
+        const currCategory = (cats.filter((cat) => cat.id === catid))[0];
+        this.categoryName = currCategory.name;
+        const subcategories = currCategory.subCategories
+        return subcategories;
+      })
+      .then((subcats) => {
+        const currSubcategory = (subcats.filter((subcat) => subcat.id === subcutId))[0];
+        this.subcategoryName = currSubcategory.name;
+        return this.subcategoryName;
+      })
+  }
+
+  goToNextPage() {
+    if (this.pageNum < this.pagesCount) this.pageNum += 1;
+    if (this.pageNum > 1) this.isFirstPage = false;
+    if (this.pageNum === this.pagesCount) this.isLastPage = true;
+
+    this.$pagesItems.next(this.getPageItems());
+  }
+
+  goToPrevPage() {
+    if (this.pageNum > 1) this.pageNum -= 1;
+    if (this.pageNum < this.pagesCount) this.isLastPage = false;
+    if (this.pageNum === 1) {
+      this.isFirstPage = true;
+    }
+    this.$pagesItems.next(this.getPageItems());
+  }
+
+  getPageItems() {
+    let startIdx = (this.pageNum - 1) * ITEMS_PER_PAGE;
+    let lastIdx = startIdx + ITEMS_PER_PAGE;
+    return this.items.slice(startIdx, lastIdx);
   }
 }
