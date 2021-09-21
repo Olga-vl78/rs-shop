@@ -53,7 +53,6 @@ export class CategoriesListComponent implements OnInit {
 
   getCategory(id: string) {
     let category = this.categories.find((cat) => cat.id === id);
-
     if (category) {
       this.categoryName = category.name;
       this.subcategories = category.subCategories;

@@ -1,25 +1,7 @@
-<!-- <div class="items__container">
-    <div class="item" *ngFor="let item of items">
-        <div class="item__pic"><img [src]="getImageUrl(item)" alt="" class="item__img"></div>
-        <div class="item__wrapper">
-            <h3 class="item__title">{{item?.name}}</h3>
-            <app-item-rating [itemRating]="item?.rating"></app-item-rating>
-            <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
-        </div>
-    </div>
-</div> -->
-<!--div class="item">
-    <div class="item__pic"><img [src]="imageUrl" alt="" class="item__img"></div>
-    <div class="item__wrapper">
-        <h3 class="item__title">{{goodsItem?.name}}</h3>
-        <app-item-rating [itemRating]="goodsItem?.rating"></app-item-rating>
-        <div class="item__price">{{goodsItem?.price | number : "0.2"}} p.</div>
-    </div>
-</div-->
 <div class="item">
     <div class="item__pic"><img [src]="imageUrl" alt="" class="item__img"></div>
     <div class="item__wrapper">
-        <h3 class="item__title">{{goodsItem?.name}}</h3>
+        <h3 class="item__title" (click)="goToItemDetailedPage(goodsItem?.name)">{{goodsItem?.name}}</h3>
         <app-item-rating [itemRating]="goodsItem?.rating"></app-item-rating>
         <div class="item__price">{{goodsItem?.price | number : "0.2"}} p.</div>
     </div>
