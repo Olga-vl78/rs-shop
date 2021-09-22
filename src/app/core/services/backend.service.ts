@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { ICategory } from 'src/app/shared/models/category.model';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
-const BASEURL = 'http://localhost:3004';
+const BASEURL = '';
 
 @Injectable({
   providedIn: 'root',

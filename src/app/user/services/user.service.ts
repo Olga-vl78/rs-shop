@@ -7,7 +7,7 @@ import { IUserInfo } from '../models/user-info.model';
 import { IUserOrder } from '../models/user-order.model';
 import { AuthService } from './auth.service';
 
-const BASEURL = 'http://localhost:3004';
+const BASEURL = '';
 
 @Injectable({
   providedIn: 'root',
