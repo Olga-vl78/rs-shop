@@ -1,7 +1,0 @@
-<button class="item__add-favorites_btn" *ngIf="!isFavorite; else goToFavorite" (click)="onFavoriteBtnClick(itemId)"><img
-        src="assets/icons/heart.svg" alt="" class="item__favorites_icon icon">Добавить в
-    избранное</button>
-<ng-template #goToFavorite>
-    <button class="item__go-favorites_btn" routerLink="/favorite"><img src="assets/icons/heart_blue.svg" alt=""
-            class="item__favorites_icon icon">В избранном</button>
-</ng-template>

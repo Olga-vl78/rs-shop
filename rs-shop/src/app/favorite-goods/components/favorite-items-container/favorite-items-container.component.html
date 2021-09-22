@@ -1,8 +1,0 @@
-<div class="items">
-    <h2 class="items__title">Избранные товары</h2>
-    <div class="items__devider"></div>
-    <p *ngIf="isEmpty" class="orders__text">Ваш список избранных товаров пуст</p>
-    <div class="items__container">
-        <app-favorite-item *ngFor="let item of items" [item]="item"></app-favorite-item>
-    </div>
-</div>

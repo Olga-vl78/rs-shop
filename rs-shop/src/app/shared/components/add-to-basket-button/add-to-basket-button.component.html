@@ -1,5 +1,0 @@
-<button class="item__add-busket_btn" *ngIf="!isOrdered; else goToBusket" (click)="onBasketBtnClick(itemId)">В
-    корзину</button>
-<ng-template #goToBusket>
-    <button class="item__go-busket_btn" routerLink="/order">В корзинe</button>
-</ng-template>
