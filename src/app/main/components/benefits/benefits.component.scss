@@ -44,3 +44,21 @@
     width: 40px;
     height: 40px;
 }
+
+.benefits__instruction {
+    margin-bottom: 20px;
+    padding-left: 145px;
+}
+
+.benefits__instruction-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: dotted;
+    color: #0072BC;
+}
+
+.benefits__instruction-icon {
+    width: 30px;
+    height: 30px;
+}

@@ -14,6 +14,7 @@
 .item {
     width: 280px;
     height: 160px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,4 +59,23 @@ img {
 .item__price {
     font-size: 16px;
     font-weight: 600;
+}
+
+.item__icon-popular {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 95px;
+    left: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #EA1653;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.item__icon-img {
+    width: 20px;
+    height: 20px;
 }
