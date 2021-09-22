@@ -16,8 +16,6 @@ export class ItemRatingComponent implements OnInit {
     { color: '#e5e5e5' },
   ];
 
-  constructor() {}
-
   ngOnInit(): void {
     this.getStarsColor();
   }

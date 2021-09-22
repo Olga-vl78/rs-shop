@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './registration-popup.component.html',
   styleUrls: ['./registration-popup.component.scss'],
 })
-export class RegistrationPopupComponent implements OnInit {
+export class RegistrationPopupComponent {
   login: string = '';
 
   password: string = '';
@@ -20,8 +20,6 @@ export class RegistrationPopupComponent implements OnInit {
     private readonly userService: UserService,
     private readonly authService: AuthService,
   ) {}
-
-  ngOnInit(): void {}
 
   onGetLoginlInputValue(input: HTMLInputElement) {
     if (input.validity.valid) {
@@ -61,17 +59,4 @@ export class RegistrationPopupComponent implements OnInit {
     console.log(response.token);
     this.authService.$isRegistration.next(false);
   }
-
-  // async onSubmit() {
-  //   this.userService.addUser({
-  //     firstName: this.firstName,
-  //     lastName: this.lastName,
-  //     login: this.login,
-  //     password: this.password,
-  // firstName: 'Ines',
-  // lastName: 'Lowe',
-  // login: 'Warner',
-  // password: 'ea',
-  //   })
-  // }
 }

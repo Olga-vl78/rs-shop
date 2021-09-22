@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './login-popup.component.html',
   styleUrls: ['./login-popup.component.scss'],
 })
-export class LoginPopupComponent implements OnInit {
+export class LoginPopupComponent {
   login: string = '';
 
   password: string = '';
@@ -15,9 +15,7 @@ export class LoginPopupComponent implements OnInit {
   constructor(
     private readonly authService: AuthService,
     private readonly userSevice: UserService,
-  ) { }
-
-  ngOnInit(): void { }
+  ) {}
 
   get $isRegistration() {
     return this.authService.$isRegistration;

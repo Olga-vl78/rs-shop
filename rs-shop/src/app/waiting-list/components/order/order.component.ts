@@ -24,7 +24,7 @@ export class OrderComponent implements OnInit {
     private readonly pagesDataService: PagesDataService,
     private readonly userService: UserService,
     private readonly backendService: BackendService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getOrders();
@@ -82,7 +82,6 @@ export class OrderComponent implements OnInit {
 
   onSubmitOrder(isSubmitted: boolean) {
     if (isSubmitted) this.getOrders();
-
   }
 
   getSum(price: number, quantity: number = 1) {
@@ -93,7 +92,7 @@ export class OrderComponent implements OnInit {
     let orderSum: number = 0;
     order.items.forEach((item) => {
       if (item.amount) orderSum += item?.amount * item.price;
-    })
+    });
     return orderSum;
   }
 }

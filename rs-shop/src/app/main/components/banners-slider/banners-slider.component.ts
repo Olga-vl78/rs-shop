@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
 
 @Component({
@@ -6,10 +6,8 @@ import { PagesDataService } from 'src/app/core/services/pages-data.service';
   templateUrl: './banners-slider.component.html',
   styleUrls: ['./banners-slider.component.scss'],
 })
-export class BannersSliderComponent implements OnInit {
+export class BannersSliderComponent {
   constructor(private readonly pagesDataService: PagesDataService) {}
-
-  ngOnInit(): void {}
 
   get banners() {
     return this.pagesDataService.banners;

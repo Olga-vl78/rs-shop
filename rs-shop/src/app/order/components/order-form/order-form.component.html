@@ -118,8 +118,9 @@
     <div class="form__devider gray"></div>
 
     <div class="form__wrapper align-right">
-        <p class="amount">Стоимость заказа с доставкой:</p>
-        <p class="amount-to-pay">К оплате:</p>
+        <p class="amount">Стоимость заказа с доставкой: <span class="amount-num">{{getOrderSum() | number : "0.2"}}
+                p.</span></p>
+        <p class="amount-to-pay">К оплате: <span class="amount-num">{{getOrderSum() | number : "0.2"}} p.</span></p>
         <button type="submit" class="confirm-btn" [disabled]="form.invalid">Подтвердить
             заказ</button>
     </div>

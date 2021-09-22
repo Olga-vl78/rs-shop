@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendService } from 'src/app/core/services/backend.service';
-import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
 @Component({
@@ -14,11 +13,7 @@ export class PopularItemCardComponent implements OnInit {
 
   imageUrl: string | undefined = '';
 
-  constructor(
-    private readonly pagesDataService: PagesDataService,
-    private readonly backendService: BackendService,
-    private readonly router: Router,
-  ) {}
+  constructor(private readonly backendService: BackendService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.imageUrl = this.goodsItem?.imageUrls[0];

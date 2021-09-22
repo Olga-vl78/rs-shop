@@ -22,7 +22,7 @@ export class OrdersTableComponent implements OnInit {
     private readonly pagesDataService: PagesDataService,
     private readonly backendService: BackendService,
     private readonly router: Router,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.items = this.orderedItems;
@@ -40,7 +40,6 @@ export class OrdersTableComponent implements OnInit {
 
   onAmountInputChange(amount: string, id: string) {
     if (id) this.pagesDataService.updateOrderedItems(+amount, id);
-    console.log('orders:', this.orderedItems);
   }
 
   getOrderSum() {

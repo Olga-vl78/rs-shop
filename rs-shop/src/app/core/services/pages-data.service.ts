@@ -44,7 +44,7 @@ export class PagesDataService {
     'assets/images/slider_радиаторы.jpg',
   ];
 
-  constructor(private readonly backendService: BackendService) { }
+  constructor(private readonly backendService: BackendService) {}
 
   async getSearchItems(inputValue: string) {
     const items = await this.backendService.fetchSearchResult(inputValue);

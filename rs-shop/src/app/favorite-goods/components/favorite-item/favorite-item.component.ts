@@ -17,8 +17,8 @@ export class FavoriteItemComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly backendService: BackendService,
-    private readonly pagesDataService: PagesDataService
-  ) { }
+    private readonly pagesDataService: PagesDataService,
+  ) {}
 
   ngOnInit(): void {
     this.imageUrl = this.item?.imageUrls[0];
@@ -26,16 +26,15 @@ export class FavoriteItemComponent implements OnInit {
 
   onDeleteBtnClick(itemId: string | undefined) {
     const items = this.pagesDataService.favoriteItems;
-    console.log('items before', items)
+    console.log('items before', items);
     if (itemId) {
       const index = items.findIndex((item) => item.id === itemId);
       if (index > -1) {
         items.splice(index, 1);
       }
     }
-    console.log('items after', items)
+    console.log('items after', items);
   }
-
 
   goToItemDetailedPage(itemId: string | undefined) {
     if (itemId) {

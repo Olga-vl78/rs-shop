@@ -29,4 +29,4 @@ const routes: Routes = [{ path: '', component: OrderPageComponent, pathMatch: 'f
     UserModule,
   ],
 })
-export class OrderModule { }
+export class OrderModule {}

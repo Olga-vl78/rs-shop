@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/user/services/user.service';
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss'],
 })
-export class OrderFormComponent implements OnInit {
+export class OrderFormComponent {
   form: FormGroup;
 
   isSubmitted: boolean = false;
@@ -43,8 +43,6 @@ export class OrderFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
-
   get name() {
     return this.form.get('name');
   }
@@ -75,6 +73,18 @@ export class OrderFormComponent implements OnInit {
 
   get time() {
     return this.form.get('time');
+  }
+
+  get orderedItems() {
+    return this.pagesDataService.orderedItems;
+  }
+
+  getOrderSum() {
+    let orderSum: number = 0;
+    this.orderedItems.forEach((item) => {
+      if (item.amount) orderSum += item?.amount * item.price;
+    });
+    return orderSum;
   }
 
   goToWaitingList() {

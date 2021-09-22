@@ -8,9 +8,8 @@ describe('SuccessOrderPopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuccessOrderPopupComponent ]
-    })
-    .compileComponents();
+      declarations: [SuccessOrderPopupComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

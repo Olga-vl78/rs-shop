@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PagesDataService } from 'src/app/core/services/pages-data.service';
 import { IUserOrder } from 'src/app/user/models/user-order.model';
@@ -7,16 +7,16 @@ import { UserService } from 'src/app/user/services/user.service';
 @Component({
   selector: 'app-edit-form-popup',
   templateUrl: './edit-form-popup.component.html',
-  styleUrls: ['./edit-form-popup.component.scss']
+  styleUrls: ['./edit-form-popup.component.scss'],
 })
-export class EditFormPopupComponent implements OnInit {
+export class EditFormPopupComponent {
   form: FormGroup;
 
   @Output() submitOrder = new EventEmitter();
 
   constructor(
     private readonly pagesDataService: PagesDataService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
   ) {
     this.form = new FormGroup({
       address: new FormControl('', [
@@ -28,8 +28,6 @@ export class EditFormPopupComponent implements OnInit {
       time: new FormControl('', [Validators.required]),
     });
   }
-
-  ngOnInit(): void { }
 
   get address() {
     return this.form.get('address');

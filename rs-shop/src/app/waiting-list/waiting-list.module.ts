@@ -25,4 +25,4 @@ const routes: Routes = [{ path: '', component: WaitingListPageComponent, pathMat
     SharedModule,
   ],
 })
-export class WaitingListModule { }
+export class WaitingListModule {}

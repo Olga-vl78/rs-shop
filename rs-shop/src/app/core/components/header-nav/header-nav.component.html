@@ -1,5 +1,4 @@
 <nav class="nav">
-        <!--*ngIf="{segments: (activatedRoute.firstChild?.url | async) || []} as data"> [ngClass]="data.segments[0]?.path === 'categories' ? 'disabled' : ''">-->
         <div class="nav__logo"><a class="nav__logo-link" routerLink="/main">RS-shop.by</a></div>
         <button class="nav__catalog-btn btn" (click)="goToCategoriesPage()"
                 [ngClass]="isCategoriesPage ? 'disabled' : ''">

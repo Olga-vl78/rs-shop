@@ -22,18 +22,8 @@ export class ItemCardComponent implements OnInit {
   constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.subscriptions.push(
-      this.activatedRoute.paramMap.subscribe((params) => {
-        const categoryId = params.get('catId');
-        const subcategoryId = params.get('subId');
-        if (categoryId && subcategoryId) {
-          this.categoryId = categoryId;
-          this.subcategoryId = subcategoryId;
-        }
-      }),
-    );
-    //this.categoryId = this.activatedRoute.snapshot.params.catId;
-    //this.subcategoryId = this.activatedRoute.snapshot.params.subId;
+    this.categoryId = this.activatedRoute.snapshot.params.catId;
+    this.subcategoryId = this.activatedRoute.snapshot.params.subId;
     this.imageUrl = this.item?.imageUrls[0];
   }
 

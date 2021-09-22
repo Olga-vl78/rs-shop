@@ -30,7 +30,13 @@ td {
     text-align: center;
 }
 
+.th__date {
+    width: 175px;
+}
 
+.th__total-price {
+    width: 225px;
+}
 .tr__order-info {
     border-top: 1px dotted gray;
     border-bottom: 1px dotted gray;
@@ -96,4 +102,3 @@ td {
 .hidden {
     display: none;
 }
-

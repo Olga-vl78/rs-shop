@@ -13,7 +13,7 @@ const BASEURL = 'http://localhost:3004';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private readonly http: HttpClient, private readonly authService: AuthService) { }
+  constructor(private readonly http: HttpClient, private readonly authService: AuthService) {}
 
   getHeaders(): { headers: { [header: string]: string } } {
     return {

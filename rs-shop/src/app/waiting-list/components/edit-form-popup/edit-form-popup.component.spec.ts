@@ -8,9 +8,8 @@ describe('EditFormPopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditFormPopupComponent ]
-    })
-    .compileComponents();
+      declarations: [EditFormPopupComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

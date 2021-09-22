@@ -12,7 +12,7 @@ export class FavoriteItemsContainerComponent implements OnInit {
 
   isEmpty: boolean = true;
 
-  constructor(private readonly pagesDataService: PagesDataService) { }
+  constructor(private readonly pagesDataService: PagesDataService) {}
 
   ngOnInit(): void {
     this.items = this.favoriteItems;
