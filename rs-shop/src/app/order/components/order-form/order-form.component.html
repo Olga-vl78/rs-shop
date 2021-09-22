@@ -123,6 +123,5 @@
         <button type="submit" class="confirm-btn" [disabled]="form.invalid">Подтвердить
             заказ</button>
     </div>
-    <p>Ваш заказ создан успешно, ожидайте доставку в указанное время</p>
-
 </form>
+<app-success-order-popup *ngIf="isSubmitted"></app-success-order-popup>

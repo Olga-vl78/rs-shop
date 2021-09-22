@@ -12,6 +12,8 @@ import { UserService } from 'src/app/user/services/user.service';
 export class OrderFormComponent implements OnInit {
   form: FormGroup;
 
+  isSubmitted: boolean = false;
+
   constructor(
     private readonly router: Router,
     private readonly userService: UserService,
@@ -75,13 +77,20 @@ export class OrderFormComponent implements OnInit {
     return this.form.get('time');
   }
 
-  onConfirmBtnClick() {
+  goToWaitingList() {
     this.router.navigate(['/waiting-list']);
+  }
+
+  showPopup() {
+    this.isSubmitted = true;
+    setTimeout(() => {
+      this.isSubmitted = false;
+      this.goToWaitingList();
+    }, 3000);
   }
 
   async submit() {
     const formData = { ...this.form.value };
-    console.log('FormData:', formData);
     await this.userService.addOrder({
       items: this.pagesDataService.transformOrderedItems(),
       details: {
@@ -93,6 +102,6 @@ export class OrderFormComponent implements OnInit {
       },
     });
     this.pagesDataService.clearOrderedItems();
-    this.onConfirmBtnClick();
+    this.showPopup();
   }
 }
