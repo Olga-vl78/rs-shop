@@ -25,6 +25,8 @@ export class CategoriesListComponent implements OnInit {
 
   categoryName: string = 'Бытовая техника';
 
+  categoryId: string = '';
+
   $currentCategoryId = new BehaviorSubject<string>('appliances');
 
   $currentItems = new BehaviorSubject<IGoodsItem[]>([]);
@@ -48,9 +50,10 @@ export class CategoriesListComponent implements OnInit {
   }
 
   getCategory(id: string) {
-    let category = this.categories.find((cat) => cat.id === id);
+    const category = this.categories.find((cat) => cat.id === id);
     if (category) {
       this.categoryName = category.name;
+      this.categoryId = category.id;
       this.subcategories = category.subCategories;
       this.subcategories.forEach((subcat) => {
         if (category)

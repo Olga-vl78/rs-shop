@@ -8,7 +8,7 @@
     <div class="category__info">
         <h2 class="category__name">{{categoryName}}</h2>
         <div class="category__info-container">
-            <app-subcategory *ngFor="let subcategory of subcategories" [subcategory]="subcategory"></app-subcategory>
+            <app-subcategory *ngFor="let subcategory of subcategories" [subcategory]="subcategory" [categoryId]="categoryId"></app-subcategory>
         </div>
     </div>
 </div>

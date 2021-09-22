@@ -29,12 +29,6 @@ export class SubcategoryCardsContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.subscriptions.push(
-    //   this.activatedRoute.paramMap.subscribe((params) => {
-    //     const id = params.get('catId');
-    //     if (id) this.getSubcategories(id);
-    //   }),
-    // );
     const categoryId = this.activatedRoute.snapshot.params.catId;
     this.categoryId = categoryId;
     this.getSubcategories(categoryId);
@@ -46,7 +40,6 @@ export class SubcategoryCardsContainerComponent implements OnInit {
       if (currentCategory) {
         this.categoryName = currentCategory.name;
         this.subcategories = currentCategory.subCategories;
-        //return this.subcategories;
         }
     });
   }
