@@ -18,19 +18,16 @@ export class SubcategoryComponent implements OnInit {
   constructor(private readonly router: Router, private readonly backendService: BackendService) {}
 
   ngOnInit(): void {
-    this.backendService.fetchCategories().then((categories) => {
+    this.backendService.fetchCategories()
+    .then((categories) => {
       if (this.subcategory) this.getCategoryId(categories, this.subcategory.id);
     });
   }
 
   getCategoryId(categories: ICategory[], id: string) {
     categories.forEach((cat) => {
-      const subcategory = cat.subCategories.filter((subcat) => {
-        if (subcat.id === id) {
-          return subcat;
-        } else return;
-      });
-      if (subcategory && cat.subCategories.includes(subcategory[0])) this.categoryId = cat.id;
+      const subcategory = cat.subCategories.find((subcat) => subcat.id === id);
+      if (subcategory && cat.subCategories.includes(subcategory)) this.categoryId = cat.id;
     });
   }
 
