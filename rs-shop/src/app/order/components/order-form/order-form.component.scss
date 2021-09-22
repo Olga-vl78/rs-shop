@@ -95,6 +95,22 @@ textarea {
     margin-bottom: 20px;
 }
 
+.user__phone {
+    padding-left: 15px;
+}
+
+.user__phone-wrap {
+    position: relative;
+    margin-right: -20px;
+}
+
+.user__phone-wrap:before {
+    position: absolute;
+    content:"+";
+    top: 6px;
+    left: 5px;
+}
+
 .amount,
 .amount-to-pay {
     margin-bottom: 10px;

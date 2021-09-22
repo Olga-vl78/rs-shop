@@ -97,7 +97,7 @@
 
     <div class="form__wrapper">
         <label>*Телефон:</label>
-        <input type="text" class="user__phone" formControlName="phone">
+        <span class="user__phone-wrap"><input type="text" class="user__phone" formControlName="phone"></span>
         <div class="validator" *ngIf="phone?.invalid && phone?.touched">
             <small *ngIf="phone?.errors?.required">Поле не может быть пустым</small>
             <small *ngIf="phone?.errors?.pattern">Поле может содержать только цифры</small>
