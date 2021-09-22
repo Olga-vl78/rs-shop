@@ -50,6 +50,7 @@ export class EditFormPopupComponent {
   }
 
   async submit(order: IUserOrder | null) {
+    this.submitOrder.emit(true);
     const formData = { ...this.form.value };
     if (order) {
       order.details.address = formData.address;
