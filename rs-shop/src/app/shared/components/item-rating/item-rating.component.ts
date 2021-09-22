@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-item-rating',
   templateUrl: './item-rating.component.html',
-  styleUrls: ['./item-rating.component.scss']
+  styleUrls: ['./item-rating.component.scss'],
 })
 export class ItemRatingComponent implements OnInit {
   @Input() itemRating: number | undefined = undefined;
@@ -14,9 +14,9 @@ export class ItemRatingComponent implements OnInit {
     { color: '#e5e5e5' },
     { color: '#e5e5e5' },
     { color: '#e5e5e5' },
-  ]
+  ];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.getStarsColor();

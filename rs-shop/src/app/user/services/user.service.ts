@@ -10,64 +10,63 @@ import { AuthService } from './auth.service';
 const BASEURL = 'http://localhost:3004';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-  constructor(
-    private readonly http: HttpClient,
-    private readonly authService: AuthService
-  ) { }
+  constructor(private readonly http: HttpClient, private readonly authService: AuthService) { }
 
   getHeaders(): { headers: { [header: string]: string } } {
     return {
       headers: {
         ...this.authService.getAuthHeaders(),
         'Content-Type': 'application/json',
-      }
-    }
+      },
+    };
   }
 
   addUser(user: IUserInfo): Promise<any> {
-    return this.http.post<IUserInfo>(`${BASEURL}/users/register`, user) //, this.getHeaders())
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .post<IUserInfo>(`${BASEURL}/users/register`, user) //, this.getHeaders())
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   loginUser(user: IUserAuth): Promise<any> {
-    return this.http.post<IUserAuth>(`${BASEURL}/users/login`, user)
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .post<IUserAuth>(`${BASEURL}/users/login`, user)
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   getUsers() {
-    return this.http.get(`${BASEURL}/users`)
-      .pipe(
-        catchError(this.handleError))
-      .toPromise();
+    return this.http.get(`${BASEURL}/users`).pipe(catchError(this.handleError)).toPromise();
   }
 
   addOrder(order: IUserOrder) {
-    return this.http.post(`${BASEURL}/users/order`, order, { ...this.getHeaders(), responseType: 'text' })
-      .pipe(
-        catchError(this.handleError)
-      )
+    return this.http
+      .post(`${BASEURL}/users/order`, order, { ...this.getHeaders(), responseType: 'text' })
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   getUserInfo() {
-    return this.http.get(`${BASEURL}/users/userInfo`, this.getHeaders())
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .get(`${BASEURL}/users/userInfo`, this.getHeaders())
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   deleteOrder(id: string) {
-    return this.http.delete(`${BASEURL}/users/order?id=${id}`, this.getHeaders())
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .delete(`${BASEURL}/users/order?id=${id}`, this.getHeaders())
+      .pipe(catchError(this.handleError))
+      .toPromise();
+  }
+
+  updateOrder(order: IUserOrder) {
+    return this.http
+      .put(`${BASEURL}/users/order`, order, this.getHeaders())
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
@@ -79,5 +78,4 @@ export class UserService {
     }
     return throwError('Something bad happens; please try again later');
   }
-
 }

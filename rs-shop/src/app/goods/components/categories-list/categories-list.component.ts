@@ -8,11 +8,9 @@ import { ISubcategory } from 'src/app/shared/models/subcategory.model';
 @Component({
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
-  styleUrls: ['./categories-list.component.scss']
+  styleUrls: ['./categories-list.component.scss'],
 })
 export class CategoriesListComponent implements OnInit {
-
-
   categories: ICategory[] = [];
 
   categoriesSrc = [
@@ -20,8 +18,8 @@ export class CategoriesListComponent implements OnInit {
     'assets/icons/electronics.svg',
     'assets/icons/computer.svg',
     'assets/icons/sofa.svg',
-    'assets/icons/painting.svg'
-  ]
+    'assets/icons/painting.svg',
+  ];
 
   subcategories: ISubcategory[] = [];
 
@@ -31,18 +29,16 @@ export class CategoriesListComponent implements OnInit {
 
   $currentItems = new BehaviorSubject<IGoodsItem[]>([]);
 
-
-  constructor(private readonly backendService: BackendService) { }
+  constructor(private readonly backendService: BackendService) {}
 
   ngOnInit(): void {
-    this.backendService.fetchCategories()
-      .then((cats) => this.onFetchCategories(cats));
+    this.backendService.fetchCategories().then((cats) => this.onFetchCategories(cats));
     this.$currentCategoryId.subscribe((id) => this.getCategory(id));
   }
 
   onFetchCategories(categories: ICategory[]) {
     let index = 0;
-    categories.forEach((category) => category.src = this.categoriesSrc[index++]);
+    categories.forEach((category) => (category.src = this.categoriesSrc[index++]));
     this.categories = categories;
     this.subcategories = this.categories[0].subCategories;
   }
@@ -58,14 +54,16 @@ export class CategoriesListComponent implements OnInit {
       this.subcategories = category.subCategories;
       this.subcategories.forEach((subcat) => {
         if (category)
-          this.backendService.fetchSubcategory(category.id, subcat.id)
-            .then((itemsData) => subcat.items = itemsData)
-      })
+          this.backendService
+            .fetchSubcategory(category.id, subcat.id)
+            .then((itemsData) => (subcat.items = itemsData));
+      });
     }
   }
 
   onFetchItems(subcatId: string) {
-    this.backendService.fetchSubcategory(this.$currentCategoryId.value, subcatId)
+    this.backendService
+      .fetchSubcategory(this.$currentCategoryId.value, subcatId)
       .then((items) => this.$currentItems.next(items));
   }
 }

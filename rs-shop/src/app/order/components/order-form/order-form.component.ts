@@ -7,7 +7,7 @@ import { UserService } from 'src/app/user/services/user.service';
 @Component({
   selector: 'app-order-form',
   templateUrl: './order-form.component.html',
-  styleUrls: ['./order-form.component.scss']
+  styleUrls: ['./order-form.component.scss'],
 })
 export class OrderFormComponent implements OnInit {
   form: FormGroup;
@@ -15,22 +15,33 @@ export class OrderFormComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly userService: UserService,
-    private readonly pagesDataService: PagesDataService
+    private readonly pagesDataService: PagesDataService,
   ) {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
       email: new FormControl('', [Validators.email, Validators.required]),
-      city: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-      address: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]),
+      city: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
+      address: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(250),
+      ]),
       phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+(?!.)/)]),
       comments: new FormControl('', [Validators.maxLength(250)]),
       date: new FormControl('', [Validators.required]),
-      time: new FormControl('', [Validators.required])
+      time: new FormControl('', [Validators.required]),
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get name() {
     return this.form.get('name');
@@ -65,14 +76,13 @@ export class OrderFormComponent implements OnInit {
   }
 
   onConfirmBtnClick() {
-    this.router.navigate(['/waiting-list'])
+    this.router.navigate(['/waiting-list']);
   }
 
   async submit() {
     const formData = { ...this.form.value };
     console.log('FormData:', formData);
-
-    const response = await this.userService.addOrder({
+    await this.userService.addOrder({
       items: this.pagesDataService.transformOrderedItems(),
       details: {
         name: formData.name,
@@ -80,9 +90,9 @@ export class OrderFormComponent implements OnInit {
         phone: formData.phone,
         timeToDeliver: `${formData.date} ${formData.time}`,
         comment: formData.comments,
-      }
+      },
     });
-
+    this.pagesDataService.clearOrderedItems();
     this.onConfirmBtnClick();
   }
 }

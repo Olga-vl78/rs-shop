@@ -43,7 +43,7 @@
 
     <div class="form__wrapper">
         <label>*Адрес доставки</label>
-        <input type="text" class="user__address" placeholder="Улица, дом" formControlName="address">
+        <input type="text" class="user__address" placeholder="Улица, дом, квартира" formControlName="address">
         <div class="validator" *ngIf="address?.invalid && address?.touched">
             <small *ngIf="address?.errors?.required">Поле не может быть пустым</small>
             <small *ngIf="address?.errors?.minlength">Количество символов должно быть больше или равно
@@ -58,7 +58,6 @@
         <div class="form__inner-wrapper">
             <input type="text" class="user__entrance address-detailes" placeholder="Подъезд">
             <input type="text" class="user__floor address-detailes" placeholder="Этаж">
-            <input type="text" class="user__apartment address-detailes" placeholder="Квартира">
         </div>
     </div>
 
@@ -67,11 +66,11 @@
             <div class="form__wrapper">
                 <label>*Дата доставки: </label>
                 <select class="date" formControlName="date">
-                    <option>23 сентября 2021г.</option>
-                    <option>24 сентября 2021г.</option>
                     <option>25 сентября 2021г.</option>
                     <option>26 сентября 2021г.</option>
                     <option>27 сентября 2021г.</option>
+                    <option>28 сентября 2021г.</option>
+                    <option>29 сентября 2021г.</option>
                 </select>
                 <div class="validator" *ngIf="date?.invalid && date?.touched">
                     <small *ngIf="date?.errors?.required">Поле не может быть пустым</small>

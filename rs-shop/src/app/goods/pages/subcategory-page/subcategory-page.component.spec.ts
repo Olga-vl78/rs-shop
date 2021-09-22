@@ -8,9 +8,8 @@ describe('SubcategoryPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubcategoryPageComponent ]
-    })
-    .compileComponents();
+      declarations: [SubcategoryPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

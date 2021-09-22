@@ -5,7 +5,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-registration-popup',
   templateUrl: './registration-popup.component.html',
-  styleUrls: ['./registration-popup.component.scss']
+  styleUrls: ['./registration-popup.component.scss'],
 })
 export class RegistrationPopupComponent implements OnInit {
   login: string = '';
@@ -16,14 +16,12 @@ export class RegistrationPopupComponent implements OnInit {
 
   lastName: string = '';
 
-
   constructor(
     private readonly userService: UserService,
-    private readonly authService: AuthService
-  ) { }
+    private readonly authService: AuthService,
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onGetLoginlInputValue(input: HTMLInputElement) {
     if (input.validity.valid) {
@@ -60,7 +58,7 @@ export class RegistrationPopupComponent implements OnInit {
       login: this.login,
       password: this.password,
     });
-    console.log(response.token)
+    console.log(response.token);
     this.authService.$isRegistration.next(false);
   }
 

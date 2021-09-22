@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemsContainerComponent } from './items-container.component';
 
-
 describe('SubcategoryContainerComponent', () => {
   let component: ItemsContainerComponent;
   let fixture: ComponentFixture<ItemsContainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ItemsContainerComponent]
+      declarations: [ItemsContainerComponent],
     }).compileComponents();
   });
 

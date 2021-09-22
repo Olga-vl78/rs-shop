@@ -8,9 +8,8 @@ describe('ItemPicturesSliderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemPicturesSliderComponent ]
-    })
-    .compileComponents();
+      declarations: [ItemPicturesSliderComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

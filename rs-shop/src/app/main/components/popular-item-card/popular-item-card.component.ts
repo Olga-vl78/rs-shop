@@ -7,7 +7,7 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 @Component({
   selector: 'app-popular-item-card',
   templateUrl: './popular-item-card.component.html',
-  styleUrls: ['./popular-item-card.component.scss']
+  styleUrls: ['./popular-item-card.component.scss'],
 })
 export class PopularItemCardComponent implements OnInit {
   @Input() goodsItem: IGoodsItem | undefined = undefined;
@@ -17,8 +17,8 @@ export class PopularItemCardComponent implements OnInit {
   constructor(
     private readonly pagesDataService: PagesDataService,
     private readonly backendService: BackendService,
-    private readonly router: Router
-  ) { }
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.imageUrl = this.goodsItem?.imageUrls[0];
@@ -32,7 +32,7 @@ export class PopularItemCardComponent implements OnInit {
   async getSearchItems(itemName: string | undefined) {
     if (itemName) {
       const items = await this.backendService.fetchSearchResult(itemName);
-      console.log(items)
+      console.log(items);
     }
   }
 
@@ -43,5 +43,4 @@ export class PopularItemCardComponent implements OnInit {
       this.router.navigate([`/categories/${item.category}/${item.subCategory}/${item.id}`]);
     }
   }
-
 }

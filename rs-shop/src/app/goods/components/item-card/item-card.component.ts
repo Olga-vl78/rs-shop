@@ -6,7 +6,7 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.component.html',
-  styleUrls: ['./item-card.component.scss']
+  styleUrls: ['./item-card.component.scss'],
 })
 export class ItemCardComponent implements OnInit {
   @Input() item: IGoodsItem | undefined = undefined;
@@ -19,10 +19,7 @@ export class ItemCardComponent implements OnInit {
 
   subscriptions: Subscription[] = [];
 
-  constructor(
-    private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute,
-  ) { }
+  constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -33,14 +30,14 @@ export class ItemCardComponent implements OnInit {
           this.categoryId = categoryId;
           this.subcategoryId = subcategoryId;
         }
-      })
-    )
+      }),
+    );
     //this.categoryId = this.activatedRoute.snapshot.params.catId;
     //this.subcategoryId = this.activatedRoute.snapshot.params.subId;
     this.imageUrl = this.item?.imageUrls[0];
   }
 
   goToItemDetailedPage() {
-    this.router.navigate([`/categories/${this.categoryId}/${this.subcategoryId}/${this.item?.id}`])
+    this.router.navigate([`/categories/${this.categoryId}/${this.subcategoryId}/${this.item?.id}`]);
   }
 }

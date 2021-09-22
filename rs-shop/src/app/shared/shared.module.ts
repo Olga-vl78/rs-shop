@@ -6,11 +6,6 @@ import { AddToFavoriteButtonComponent } from './components/add-to-favorite-butto
 import { ItemRatingComponent } from './components/item-rating/item-rating.component';
 import { ColorDirective } from './directives/color.directive';
 
-
-
-
-
-
 @NgModule({
   declarations: [
     AddToBasketButtonComponent,
@@ -19,6 +14,12 @@ import { ColorDirective } from './directives/color.directive';
     ItemRatingComponent,
   ],
   imports: [CommonModule, RouterModule],
-  exports: [CommonModule, AddToBasketButtonComponent, AddToFavoriteButtonComponent, ColorDirective, ItemRatingComponent],
+  exports: [
+    CommonModule,
+    AddToBasketButtonComponent,
+    AddToFavoriteButtonComponent,
+    ColorDirective,
+    ItemRatingComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -9,15 +9,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    LoginPopupComponent,
-    RegistrationPopupComponent
-  ],
-  imports: [
-    CommonModule, RouterModule.forChild(routes)
-  ],
-  exports: [
-    LoginPopupComponent
-  ]
+  declarations: [LoginPopupComponent, RegistrationPopupComponent],
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  exports: [LoginPopupComponent],
 })
-export class UserModule { }
+export class UserModule {}

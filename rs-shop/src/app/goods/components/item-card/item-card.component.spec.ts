@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemCardComponent } from './item-card.component';
 
-
 describe('SubcategoryCardComponent', () => {
   let component: ItemCardComponent;
   let fixture: ComponentFixture<ItemCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ItemCardComponent]
+      declarations: [ItemCardComponent],
     }).compileComponents();
   });
 

@@ -7,7 +7,7 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 @Component({
   selector: 'app-orders-table',
   templateUrl: './orders-table.component.html',
-  styleUrls: ['./orders-table.component.scss']
+  styleUrls: ['./orders-table.component.scss'],
 })
 export class OrdersTableComponent implements OnInit {
   items: IGoodsItem[] = [];
@@ -21,8 +21,8 @@ export class OrdersTableComponent implements OnInit {
   constructor(
     private readonly pagesDataService: PagesDataService,
     private readonly backendService: BackendService,
-    private readonly router: Router
-  ) { }
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.items = this.orderedItems;
@@ -40,20 +40,20 @@ export class OrdersTableComponent implements OnInit {
 
   onAmountInputChange(amount: string, id: string) {
     if (id) this.pagesDataService.updateOrderedItems(+amount, id);
-    console.log('orders:', this.orderedItems)
+    console.log('orders:', this.orderedItems);
   }
 
   getOrderSum() {
     let priceSum: number = 0;
-    this.items.forEach((item) => priceSum += (+item.price));
+    this.items.forEach((item) => (priceSum += +item.price));
     return priceSum;
   }
 
   updateOrderSum() {
     let priceSum: number = 0;
     this.orderedItems.forEach((item) => {
-      if (item.amount) priceSum += (+item.price * item?.amount)
-    })
+      if (item.amount) priceSum += +item.price * item?.amount;
+    });
     return priceSum;
   }
 
@@ -87,10 +87,9 @@ export class OrdersTableComponent implements OnInit {
 
   goToItemDetailedPage(itemId: string | undefined) {
     if (itemId) {
-      this.backendService.fetchItem(itemId)
-        .then((item) => {
-          this.router.navigate([`/categories/${item.category}/${item.subCategory}/${itemId}`])
-        })
+      this.backendService.fetchItem(itemId).then((item) => {
+        this.router.navigate([`/categories/${item.category}/${item.subCategory}/${itemId}`]);
+      });
     }
   }
 }

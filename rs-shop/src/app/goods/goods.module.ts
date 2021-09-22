@@ -40,10 +40,15 @@ const routes: Routes = [
     ItemDetailedInfoComponent,
     ItemDetailedPageComponent,
     ItemPicturesSliderComponent,
-    SortPipe
+    SortPipe,
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), SharedModule, CarouselModule, ButtonModule, ToastModule
-  ]
+    CommonModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+    CarouselModule,
+    ButtonModule,
+    ToastModule,
+  ],
 })
-export class GoodsModule { }
+export class GoodsModule {}

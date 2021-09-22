@@ -10,7 +10,7 @@ const ITEMS_PER_PAGE = 9;
 @Component({
   selector: 'app-items-container',
   templateUrl: './items-container.component.html',
-  styleUrls: ['./items-container.component.scss']
+  styleUrls: ['./items-container.component.scss'],
 })
 export class ItemsContainerComponent implements OnInit {
   items: IGoodsItem[] = [];
@@ -37,12 +37,11 @@ export class ItemsContainerComponent implements OnInit {
 
   isLastPage: boolean = false;
 
-
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly backendService: BackendService,
-    private readonly pagesDataService: PagesDataService
-  ) { }
+    private readonly pagesDataService: PagesDataService,
+  ) {}
 
   ngOnInit(): void {
     this.categoryId = this.activatedRoute.snapshot.params.catId;
@@ -80,27 +79,27 @@ export class ItemsContainerComponent implements OnInit {
   }
 
   getItems() {
-    this.backendService.fetchSubcategory(this.categoryId, this.subcategoryId)
-      .then((itemsData) => {
-        this.items = itemsData;
-        this.pagesCount = Math.ceil(this.items.length / ITEMS_PER_PAGE);
-        this.$pagesItems.next(this.getPageItems());
-      });
+    this.backendService.fetchSubcategory(this.categoryId, this.subcategoryId).then((itemsData) => {
+      this.items = itemsData;
+      this.pagesCount = Math.ceil(this.items.length / ITEMS_PER_PAGE);
+      this.$pagesItems.next(this.getPageItems());
+    });
   }
 
   getNames(catid: string, subcutId: string) {
-    this.backendService.fetchCategories()
+    this.backendService
+      .fetchCategories()
       .then((cats) => {
-        const currCategory = (cats.filter((cat) => cat.id === catid))[0];
+        const currCategory = cats.filter((cat) => cat.id === catid)[0];
         this.categoryName = currCategory.name;
-        const subcategories = currCategory.subCategories
+        const subcategories = currCategory.subCategories;
         return subcategories;
       })
       .then((subcats) => {
-        const currSubcategory = (subcats.filter((subcat) => subcat.id === subcutId))[0];
+        const currSubcategory = subcats.filter((subcat) => subcat.id === subcutId)[0];
         this.subcategoryName = currSubcategory.name;
         return this.subcategoryName;
-      })
+      });
   }
 
   goToNextPage() {

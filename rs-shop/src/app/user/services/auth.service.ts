@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   userToken: string = '';
@@ -31,13 +31,12 @@ export class AuthService {
     this.$isLogin.next(false);
   }
 
-
   getAuthHeaders(): { [key: string]: string } {
     if (this.userToken) {
-      console.log('headers', this.userToken)
+      console.log('headers', this.userToken);
       return {
-        'Authorization': `Bearer ${this.userToken}`
-      }
+        Authorization: `Bearer ${this.userToken}`,
+      };
     } else {
       return {};
     }

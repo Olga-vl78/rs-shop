@@ -6,7 +6,7 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 @Component({
   selector: 'app-item-detailed-info',
   templateUrl: './item-detailed-info.component.html',
-  styleUrls: ['./item-detailed-info.component.scss']
+  styleUrls: ['./item-detailed-info.component.scss'],
 })
 export class ItemDetailedInfoComponent implements OnInit {
   item: IGoodsItem | undefined;
@@ -35,12 +35,12 @@ export class ItemDetailedInfoComponent implements OnInit {
     { color: '#e5e5e5' },
     { color: '#e5e5e5' },
     { color: '#e5e5e5' },
-  ]
+  ];
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly backendService: BackendService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.categoryId = this.activatedRoute.snapshot.params.catId;
@@ -48,33 +48,33 @@ export class ItemDetailedInfoComponent implements OnInit {
     this.itemId = this.activatedRoute.snapshot.params.id;
     this.getNames(this.categoryId, this.subcategoryId);
     if (this.itemId) {
-      this.backendService.fetchItem(this.itemId)
-        .then((item) => {
-          this.item = item;
-          this.imageUrl = item.imageUrls[0];
-          this.getStarsColor(item.rating);
-          this.onCheckItemRating(item.rating);
-        })
+      this.backendService.fetchItem(this.itemId).then((item) => {
+        this.item = item;
+        this.imageUrl = item.imageUrls[0];
+        this.getStarsColor(item.rating);
+        this.onCheckItemRating(item.rating);
+      });
     }
   }
 
   getNames(catid: string, subcutId: string) {
-    this.backendService.fetchCategories()
+    this.backendService
+      .fetchCategories()
       .then((cats) => {
-        const currCategory = (cats.filter((cat) => cat.id === catid))[0];
+        const currCategory = cats.filter((cat) => cat.id === catid)[0];
         this.categoryName = currCategory.name;
-        const subcategories = currCategory.subCategories
+        const subcategories = currCategory.subCategories;
         return subcategories;
       })
       .then((subcats) => {
-        const currSubcategory = (subcats.filter((subcat) => subcat.id === subcutId))[0];
+        const currSubcategory = subcats.filter((subcat) => subcat.id === subcutId)[0];
         this.subcategoryName = currSubcategory.name;
         return this.subcategoryName;
-      })
+      });
   }
 
   getStarsColor(rating: number) {
-    console.log('amount', rating)
+    console.log('amount', rating);
     if (rating) {
       for (let i = 0; i < this.stars.length; i++) {
         if (i < rating) this.stars[i].color = '#0072BC';
@@ -82,10 +82,8 @@ export class ItemDetailedInfoComponent implements OnInit {
     }
   }
 
-
-  @HostBinding("style.--posSlider")
+  @HostBinding('style.--posSlider')
   get posSlider() {
-
     return this.itemNumber * 65 + 'px';
   }
 
@@ -94,5 +92,4 @@ export class ItemDetailedInfoComponent implements OnInit {
       this.isPopular = true;
     }
   }
-
 }

@@ -8,9 +8,8 @@ describe('PopularItemsSliderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopularItemsSliderComponent ]
-    })
-    .compileComponents();
+      declarations: [PopularItemsSliderComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

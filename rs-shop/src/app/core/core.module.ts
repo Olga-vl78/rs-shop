@@ -9,19 +9,15 @@ import { HeaderInfoComponent } from './components/header-info/header-info.compon
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 import { HeaderComponent } from './components/header/header.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     HeaderInfoComponent,
     HeaderNavComponent,
-    HeaderCategoryNavComponent
+    HeaderCategoryNavComponent,
   ],
-  imports: [
-    CommonModule, SharedModule, RouterModule, UserModule
-  ],
-  exports: [HeaderComponent, FooterComponent]
+  imports: [CommonModule, SharedModule, RouterModule, UserModule],
+  exports: [HeaderComponent, FooterComponent],
 })
-export class CoreModule { }
+export class CoreModule {}

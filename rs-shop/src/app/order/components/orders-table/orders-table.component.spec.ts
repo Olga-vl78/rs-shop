@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrdersTableComponent } from './orders-table.component';
 
-
 describe('OrderCardComponent', () => {
   let component: OrdersTableComponent;
   let fixture: ComponentFixture<OrdersTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OrdersTableComponent]
+      declarations: [OrdersTableComponent],
     }).compileComponents();
   });
 

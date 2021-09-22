@@ -5,49 +5,46 @@ import { catchError } from 'rxjs/operators';
 import { ICategory } from 'src/app/shared/models/category.model';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
-
 const BASEURL = 'http://localhost:3004';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BackendService {
-
-  constructor(private readonly http: HttpClient) {
-  }
+  constructor(private readonly http: HttpClient) {}
 
   fetchCategories() {
-    return this.http.get<ICategory[]>(`${BASEURL}/categories`)
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .get<ICategory[]>(`${BASEURL}/categories`)
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   fetchCategory(catId: string) {
-    return this.http.get<IGoodsItem[]>(`${BASEURL}/goods/category/${catId}`)
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .get<IGoodsItem[]>(`${BASEURL}/goods/category/${catId}`)
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   fetchSubcategory(catId: string, subcatId: string) {
-    return this.http.get<IGoodsItem[]>(`${BASEURL}/goods/category/${catId}/${subcatId}`)
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .get<IGoodsItem[]>(`${BASEURL}/goods/category/${catId}/${subcatId}`)
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   fetchItem(itemId: string) {
-    return this.http.get<IGoodsItem>(`${BASEURL}/goods/item/${itemId}`)
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .get<IGoodsItem>(`${BASEURL}/goods/item/${itemId}`)
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 
   fetchSearchResult(searchInputValue: string) {
-    return this.http.get<IGoodsItem[]>(`${BASEURL}/goods/search?text=${searchInputValue}`)
-      .pipe(
-        catchError(this.handleError))
+    return this.http
+      .get<IGoodsItem[]>(`${BASEURL}/goods/search?text=${searchInputValue}`)
+      .pipe(catchError(this.handleError))
       .toPromise();
   }
 

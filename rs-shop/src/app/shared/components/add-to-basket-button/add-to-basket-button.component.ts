@@ -4,16 +4,14 @@ import { PagesDataService } from 'src/app/core/services/pages-data.service';
 @Component({
   selector: 'app-add-to-basket-button',
   templateUrl: './add-to-basket-button.component.html',
-  styleUrls: ['./add-to-basket-button.component.scss']
+  styleUrls: ['./add-to-basket-button.component.scss'],
 })
 export class AddToBasketButtonComponent implements OnInit {
   @Input() itemId: string | undefined = '';
 
   isOrdered: boolean = false;
 
-  constructor(
-    private readonly pagesDataService: PagesDataService
-  ) { }
+  constructor(private readonly pagesDataService: PagesDataService) {}
 
   ngOnInit(): void {
     this.checkOrderedItems();

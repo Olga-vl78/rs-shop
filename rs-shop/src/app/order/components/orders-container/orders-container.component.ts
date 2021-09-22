@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/user/services/auth.service';
 @Component({
   selector: 'app-orders-container',
   templateUrl: './orders-container.component.html',
-  styleUrls: ['./orders-container.component.scss']
+  styleUrls: ['./orders-container.component.scss'],
 })
 export class OrdersContainerComponent implements OnInit {
   isCheckout: boolean = false;
@@ -14,8 +14,8 @@ export class OrdersContainerComponent implements OnInit {
 
   constructor(
     private readonly pagesDataService: PagesDataService,
-    private readonly authService: AuthService
-  ) { }
+    private readonly authService: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.checkOrderedItems();
@@ -39,14 +39,12 @@ export class OrdersContainerComponent implements OnInit {
 
   onLoginBtnClick() {
     this.authService.isAuthorization();
-    console.log("login", this.$isLogin.value)
+    console.log('login', this.$isLogin.value);
   }
 
   checkOrderedItems() {
     if (this.orderedItems.length === 0) this.isEmpty = true;
     else this.isEmpty = false;
-    console.log("check", this.$isLogin.value)
-
+    console.log('check', this.$isLogin.value);
   }
-
 }

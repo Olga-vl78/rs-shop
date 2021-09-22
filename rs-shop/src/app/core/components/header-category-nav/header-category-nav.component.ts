@@ -5,15 +5,14 @@ import { BackendService } from '../../services/backend.service';
 @Component({
   selector: 'app-header-category-nav',
   templateUrl: './header-category-nav.component.html',
-  styleUrls: ['./header-category-nav.component.scss']
+  styleUrls: ['./header-category-nav.component.scss'],
 })
 export class HeaderCategoryNavComponent implements OnInit {
   categories: ICategory[] = [];
 
-  constructor(
-    private readonly backendService: BackendService) { }
+  constructor(private readonly backendService: BackendService) {}
 
   ngOnInit(): void {
-    this.backendService.fetchCategories().then((cats) => this.categories = cats);
+    this.backendService.fetchCategories().then((cats) => (this.categories = cats));
   }
 }

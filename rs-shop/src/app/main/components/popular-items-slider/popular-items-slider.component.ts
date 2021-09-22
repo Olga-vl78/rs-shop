@@ -5,29 +5,27 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 @Component({
   selector: 'app-popular-items-slider',
   templateUrl: './popular-items-slider.component.html',
-  styleUrls: ['./popular-items-slider.component.scss']
+  styleUrls: ['./popular-items-slider.component.scss'],
 })
 export class PopularItemsSliderComponent implements OnInit {
   items: IGoodsItem[][] = [];
 
-  constructor(private readonly pagesDataService: PagesDataService) { }
+  constructor(private readonly pagesDataService: PagesDataService) {}
 
   ngOnInit(): void {
-    this.pagesDataService.getPopularItems()
-      .then((items: IGoodsItem[]) => {
-
-        const result: IGoodsItem[][] = [];
-        let entry: IGoodsItem[] = [];
-        items.forEach((item, idx) => {
-          if (idx % 2 === 0) {
-            entry = [item];
-          } else {
-            entry.push(item);
-            result.push(entry);
-          }
-        });
-
-        this.items = result;
+    this.pagesDataService.getPopularItems().then((items: IGoodsItem[]) => {
+      const result: IGoodsItem[][] = [];
+      let entry: IGoodsItem[] = [];
+      items.forEach((item, idx) => {
+        if (idx % 2 === 0) {
+          entry = [item];
+        } else {
+          entry.push(item);
+          result.push(entry);
+        }
       });
+
+      this.items = result;
+    });
   }
 }

@@ -2,13 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { SortOrder, SortParam } from 'src/app/core/services/pages-data.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
-
-
 @Pipe({
-  name: 'sort'
+  name: 'sort',
 })
 export class SortPipe implements PipeTransform {
-
   transform(
     array: IGoodsItem[] | null,
     sortingMode: SortOrder | null,

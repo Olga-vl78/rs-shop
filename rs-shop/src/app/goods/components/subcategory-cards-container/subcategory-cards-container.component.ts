@@ -8,7 +8,7 @@ import { ISubcategory } from 'src/app/shared/models/subcategory.model';
 @Component({
   selector: 'app-subcategory-cards-container',
   templateUrl: './subcategory-cards-container.component.html',
-  styleUrls: ['./subcategory-cards-container.component.scss']
+  styleUrls: ['./subcategory-cards-container.component.scss'],
 })
 export class SubcategoryCardsContainerComponent implements OnInit {
   subscriptions: Subscription[] = [];
@@ -21,30 +21,29 @@ export class SubcategoryCardsContainerComponent implements OnInit {
 
   categoryName: string = '';
 
-  categories: string = 'Категории товаров'
-
+  categories: string = 'Категории товаров';
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly backendService: BackendService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
       this.activatedRoute.paramMap.subscribe((params) => {
         const id = params.get('catId');
         if (id) this.getSubcategories(id);
-      }));
+      }),
+    );
     this.categoryId = this.activatedRoute.snapshot.params.catId;
   }
 
   getSubcategories(id: string) {
-    this.backendService.fetchCategories()
-      .then((cats) => {
-        const currentCategory = (cats.filter((cat) => cat.id === id))[0];
-        this.categoryName = currentCategory.name;
-        this.subcategories = currentCategory.subCategories
-        return this.subcategories;
-      });
+    this.backendService.fetchCategories().then((cats) => {
+      const currentCategory = cats.filter((cat) => cat.id === id)[0];
+      this.categoryName = currentCategory.name;
+      this.subcategories = currentCategory.subCategories;
+      return this.subcategories;
+    });
   }
 }

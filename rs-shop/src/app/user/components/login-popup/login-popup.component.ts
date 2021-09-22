@@ -5,7 +5,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-login-popup',
   templateUrl: './login-popup.component.html',
-  styleUrls: ['./login-popup.component.scss']
+  styleUrls: ['./login-popup.component.scss'],
 })
 export class LoginPopupComponent implements OnInit {
   login: string = '';
@@ -14,11 +14,10 @@ export class LoginPopupComponent implements OnInit {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly userSevice: UserService
+    private readonly userSevice: UserService,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get $isRegistration() {
     return this.authService.$isRegistration;
@@ -49,11 +48,8 @@ export class LoginPopupComponent implements OnInit {
     const response = await this.userSevice.loginUser({
       login: this.login,
       password: this.password,
-    })
+    });
     this.authService.userToken = response.token;
-    console.log(response.token)
-    // const users = await this.userSevice.getUsers()
-    // console.log(users)
+    console.log(response.token);
   }
-
 }

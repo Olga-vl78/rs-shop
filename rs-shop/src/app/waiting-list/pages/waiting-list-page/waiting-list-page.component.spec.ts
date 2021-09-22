@@ -8,9 +8,8 @@ describe('WaitingListPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WaitingListPageComponent ]
-    })
-    .compileComponents();
+      declarations: [WaitingListPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

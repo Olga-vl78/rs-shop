@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
+import { IUserOrder } from 'src/app/user/models/user-order.model';
 import { BackendService } from './backend.service';
-
 
 export enum SortOrder {
   Asc = 'asc',
@@ -15,15 +15,18 @@ export enum SortParam {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PagesDataService {
-
   $searchItems = new BehaviorSubject<IGoodsItem[]>([]);
 
   $sortOrder = new BehaviorSubject<SortOrder | null>(null);
 
   $sortParam = new BehaviorSubject<SortParam | null>(null);
+
+  isEditMode: boolean = false;
+
+  currentOrder: IUserOrder | null = null;
 
   orderedItems: IGoodsItem[] = [];
 
@@ -39,16 +42,14 @@ export class PagesDataService {
     'assets/images/slider_samsung.jpg',
     'assets/images/slider_school.jpg',
     'assets/images/slider_радиаторы.jpg',
-  ]
+  ];
 
-  constructor(
-    private readonly backendService: BackendService,
-  ) { }
+  constructor(private readonly backendService: BackendService) { }
 
   async getSearchItems(inputValue: string) {
     const items = await this.backendService.fetchSearchResult(inputValue);
     this.$searchItems.next(items);
-    console.log(items)
+    console.log(items);
   }
 
   async addToOrderedItems(id: string) {
@@ -60,7 +61,7 @@ export class PagesDataService {
   async addToFavoriteItems(id: string) {
     const item = await this.backendService.fetchItem(id);
     this.favoriteItems.push(item);
-    console.log(this.favoriteItems)
+    console.log(this.favoriteItems);
   }
 
   async getPopularItems() {
@@ -69,13 +70,12 @@ export class PagesDataService {
     const itemsDataFirst = await this.backendService.fetchCategory(idsData[1]);
     const itemsDataSecond = await this.backendService.fetchCategory(idsData[2]);
     const popularItems = itemsDataFirst.concat(itemsDataSecond).filter((item) => item.rating === 5);
-    console.log(popularItems)
+    console.log(popularItems);
     return popularItems;
   }
 
   clearItems() {
     this.$searchItems.next([]);
-    console.log(this.$searchItems.value)
   }
 
   sortItemsByNum(sortingMode: SortOrder, param: SortParam) {
@@ -97,10 +97,13 @@ export class PagesDataService {
       const itemData = {
         id: item.id,
         amount: item.amount,
-      }
+      };
       itemsArray.push(itemData);
-    })
-    console.log(itemsArray);
+    });
     return itemsArray;
+  }
+
+  clearOrderedItems() {
+    this.orderedItems = [];
   }
 }

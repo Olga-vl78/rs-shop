@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderInfoComponent } from './header-info.component';
 
-
 describe('GeneralInfoComponent', () => {
   let component: HeaderInfoComponent;
   let fixture: ComponentFixture<HeaderInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderInfoComponent]
+      declarations: [HeaderInfoComponent],
     }).compileComponents();
   });
 

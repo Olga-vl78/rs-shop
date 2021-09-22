@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CategoriesPageComponent } from './categories-page.component';
 
-
 describe('CatalogPageComponent', () => {
   let component: CategoriesPageComponent;
   let fixture: ComponentFixture<CategoriesPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CategoriesPageComponent]
+      declarations: [CategoriesPageComponent],
     }).compileComponents();
   });
 

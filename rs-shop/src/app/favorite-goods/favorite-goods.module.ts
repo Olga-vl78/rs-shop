@@ -6,13 +6,14 @@ import { FavoriteItemComponent } from './components/favorite-item/favorite-item.
 import { FavoriteItemsContainerComponent } from './components/favorite-items-container/favorite-items-container.component';
 import { FavoriteItemsPageComponent } from './pages/favorite-items-page/favorite-items-page.component';
 
-
-const routes: Routes = [
-  { path: '', component: FavoriteItemsPageComponent, pathMatch: 'full' },
-];
+const routes: Routes = [{ path: '', component: FavoriteItemsPageComponent, pathMatch: 'full' }];
 
 @NgModule({
-  declarations: [FavoriteItemComponent, FavoriteItemsContainerComponent, FavoriteItemsPageComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), SharedModule]
+  declarations: [
+    FavoriteItemComponent,
+    FavoriteItemsContainerComponent,
+    FavoriteItemsPageComponent,
+  ],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 })
-export class FavoriteGoodsModule { }
+export class FavoriteGoodsModule {}

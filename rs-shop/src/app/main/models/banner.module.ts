@@ -1,3 +1,3 @@
 export interface IBanner {
-    image: string;
+  image: string;
 }

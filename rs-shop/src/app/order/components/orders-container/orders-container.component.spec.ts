@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrdersContainerComponent } from './orders-container.component';
 
-
 describe('OrderCardsContainerComponent', () => {
   let component: OrdersContainerComponent;
   let fixture: ComponentFixture<OrdersContainerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OrdersContainerComponent]
+      declarations: [OrdersContainerComponent],
     }).compileComponents();
   });
 

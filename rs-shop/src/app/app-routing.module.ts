@@ -14,19 +14,17 @@ const routes: Routes = [
   {
     path: 'order',
     loadChildren: () => import('./order/order.module').then((m) => m.OrderModule),
-
   },
   {
     path: 'favorite',
-    loadChildren: () => import('./favorite-goods/favorite-goods.module').then((m) => m.FavoriteGoodsModule),
-
+    loadChildren: () =>
+      import('./favorite-goods/favorite-goods.module').then((m) => m.FavoriteGoodsModule),
   },
   {
     path: 'waiting-list',
-    loadChildren: () => import('./waiting-list/waiting-list.module').then((m) => m.WaitingListModule),
-
+    loadChildren: () =>
+      import('./waiting-list/waiting-list.module').then((m) => m.WaitingListModule),
   },
-
 
   /*
     {
@@ -35,9 +33,8 @@ const routes: Routes = [
     },*/
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

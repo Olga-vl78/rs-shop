@@ -1,7 +1,7 @@
-import { IGoodsItem } from "./goods-item.model";
+import { IGoodsItem } from './goods-item.model';
 
 export interface ISubcategory {
-    id: string;
-    name: string;
-    items?: IGoodsItem[];
+  id: string;
+  name: string;
+  items?: IGoodsItem[];
 }

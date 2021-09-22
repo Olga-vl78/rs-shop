@@ -8,9 +8,8 @@ describe('AddToFavoriteButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddToFavoriteButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [AddToFavoriteButtonComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

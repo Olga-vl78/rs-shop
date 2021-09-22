@@ -9,11 +9,8 @@ import { CoreModule } from './core/core.module';
 import { GoodsModule } from './goods/goods.module';
 import { MainModule } from './main/main.module';
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -26,6 +23,6 @@ import { MainModule } from './main/main.module';
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

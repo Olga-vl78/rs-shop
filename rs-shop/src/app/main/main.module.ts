@@ -9,20 +9,14 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { PopularItemsSliderComponent } from './components/popular-items-slider/popular-items-slider.component';
 import { PopularItemCardComponent } from './components/popular-item-card/popular-item-card.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     BannersSliderComponent,
     MainPageComponent,
     PopularItemsSliderComponent,
-    PopularItemCardComponent
+    PopularItemCardComponent,
   ],
-  imports: [
-    CommonModule, SharedModule, CarouselModule, ButtonModule, ToastModule
-  ],
-  exports: [CommonModule, BannersSliderComponent, MainPageComponent]
+  imports: [CommonModule, SharedModule, CarouselModule, ButtonModule, ToastModule],
+  exports: [CommonModule, BannersSliderComponent, MainPageComponent],
 })
-export class MainModule { }
+export class MainModule {}

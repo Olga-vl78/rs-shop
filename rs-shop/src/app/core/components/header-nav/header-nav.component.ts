@@ -11,7 +11,7 @@ const SEARCH_INTERVAL_SEC: number = 700;
 @Component({
   selector: 'app-header-nav',
   templateUrl: './header-nav.component.html',
-  styleUrls: ['./header-nav.component.scss']
+  styleUrls: ['./header-nav.component.scss'],
 })
 export class HeaderNavComponent implements OnInit {
   @ViewChild('searchText', { static: true }) searchInput: ElementRef<HTMLInputElement> | undefined;
@@ -22,13 +22,11 @@ export class HeaderNavComponent implements OnInit {
 
   isOrdersPage: boolean = false;
 
-
-
   constructor(
     private readonly router: Router,
     private readonly pagesDataService: PagesDataService,
-    private readonly authService: AuthService
-  ) { }
+    private readonly authService: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.subscribeSearchInputChanges();
@@ -72,7 +70,7 @@ export class HeaderNavComponent implements OnInit {
   onSearchInputChange(inputValue: string) {
     this.pagesDataService.getSearchItems(inputValue);
     if (inputValue) this.isEmpty = false;
-    console.log(this.isEmpty)
+    console.log(this.isEmpty);
   }
 
   onLoginBtnClick() {
@@ -81,7 +79,7 @@ export class HeaderNavComponent implements OnInit {
 
   onLogoutBtnClick() {
     this.authService.logout();
-    this.router.navigate(['/main'])
+    this.router.navigate(['/main']);
   }
 
   goToCategoriesPage() {
