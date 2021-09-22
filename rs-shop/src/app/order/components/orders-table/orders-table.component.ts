@@ -22,7 +22,7 @@ export class OrdersTableComponent implements OnInit {
     private readonly pagesDataService: PagesDataService,
     private readonly backendService: BackendService,
     private readonly router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.items = this.orderedItems;
@@ -83,6 +83,16 @@ export class OrdersTableComponent implements OnInit {
   checkItems() {
     if (this.items.length === 0) this.isEmpty = true;
     else this.isEmpty = false;
+  }
+
+  onDeleteBtnClick(itemId: string | undefined) {
+    const items = this.pagesDataService.orderedItems;
+    if (itemId) {
+      const index = items.findIndex((item) => item.id === itemId);
+      if (index > -1) {
+        items.splice(index, 1);
+      }
+    }
   }
 
   goToItemDetailedPage(itemId: string | undefined) {
