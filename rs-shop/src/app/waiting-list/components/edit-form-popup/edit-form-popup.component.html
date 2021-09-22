@@ -51,6 +51,6 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="submit-btn" [disabled]="form.invalid">Подтвердить
+    <button type="submit" class="submit-btn" [disabled]="form.invalid" (click)="submitOrder.emit(true)">Подтвердить
         изменения</button>
 </form>
