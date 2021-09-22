@@ -8,6 +8,7 @@ import { BannersSliderComponent } from './components/banners-slider/banners-slid
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { PopularItemsSliderComponent } from './components/popular-items-slider/popular-items-slider.component';
 import { PopularItemCardComponent } from './components/popular-item-card/popular-item-card.component';
+import { BenefitsComponent } from './components/benefits/benefits.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PopularItemCardComponent } from './components/popular-item-card/popular
     MainPageComponent,
     PopularItemsSliderComponent,
     PopularItemCardComponent,
+    BenefitsComponent,
   ],
   imports: [CommonModule, SharedModule, CarouselModule, ButtonModule, ToastModule],
   exports: [CommonModule, BannersSliderComponent, MainPageComponent],
