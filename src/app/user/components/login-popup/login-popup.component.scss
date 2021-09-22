@@ -1,0 +1,141 @@
+  .cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(71, 68, 68, 0.534);
+    z-index: 10;
+  }
+
+  .cover-hidden {
+    display: none;
+  }
+
+  .form {
+    position: fixed;
+    top: 200px;
+    left: calc(50vw - 240px);
+    width: 480px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .form__close-item {
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    background-image: none;
+    background-color: #fff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  :focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+
+  :focus::-moz-placeholder {
+    color: transparent;
+  }
+
+  :focus:-moz-placeholder {
+    color: transparent;
+  }
+
+  :focus:-ms-input-placeholder {
+    color: transparent;
+  }
+
+  input:focus:invalid {
+    border-bottom: 2px solid red;
+  }
+
+  .form__title,
+  .form__close-item {
+      font-size: 24px;
+      font-weight: 900;
+  }
+
+  .form__close-item {
+    align-self: flex-end;
+    color: #b1aeae;
+  }
+
+  .form__input-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .form__input {
+    width: 360px;
+    height: 40px;
+    padding: 2px !important;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid #b1aeae;
+  }
+
+  .form__input::placeholder {
+    color: #a9acab;
+  }
+
+  .form__input:valid {
+    border-bottom: 2px solid #07c;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #b1aeae;
+  }
+
+  .submit-btn {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 800;
+    outline: none;
+    background-color: #b1aeae;
+    border-radius: 5px;
+    pointer-events: none;
+    color: #fff;
+  }
+
+  .activ-btn {
+    background-color: #07c;
+    color: #fff;
+    pointer-events: unset;
+  }
+
+  .user__password {
+      margin-bottom: 20px;
+  }
+
+  .registration-btn {
+      font-size: 16px;
+      background-color: transparent;
+      color: #2F80ED;
+  }

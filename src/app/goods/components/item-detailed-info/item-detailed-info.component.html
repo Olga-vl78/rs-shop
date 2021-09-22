@@ -1,0 +1,64 @@
+<div class="item">
+    <ul class="breadcrumbs">
+        <li class="breadcrumbs__item"><a routerLink="/categories" class="breadcrumbs__link">{{categories}}</a><span
+                class="breadcrumbs__arrow">></span></li>
+        <li class="breadcrumbs__item"><a routerLink="/categories/{{categoryId}}" class="
+                breadcrumbs__link">{{categoryName}}</a><span class="breadcrumbs__arrow">></span></li>
+        <li class="breadcrumbs__item"><a routerLink="/categories/{{categoryId}}" class="
+                    breadcrumbs__link">{{subcategoryName}}</a></li>
+    </ul>
+    <h2 class="item__title">{{item?.name}}</h2>
+    <div class="item__inner-wrapper">
+        <div class="item__slider">
+            <div class="item__slide-border"></div>
+            <div class="item__slide" *ngFor="let slide of item?.imageUrls; let idx = index " (click)="itemNumber = idx">
+                <img [src]="slide" alt="" class="item__slide-img" ngClass="{active: idx === itemNumber}">
+            </div>
+        </div>
+        <app-item-pictures-slider [itemPictures]="item?.imageUrls" [(itemNumber)]="itemNumber">
+        </app-item-pictures-slider>
+        <div class="item__info">
+            <div class="item__icon" [ngClass]="isPopular ? '' : 'hidden'"><img src="assets/icons/like.svg" alt=""
+                    class="item__icon-img"></div>
+            <div class="item__price">{{item?.price | number : "0.2"}} p.</div>
+            <div class="item__amount">
+                <svg class="icon-amount_color" [appColor]="item?.availableAmount || null" viewBox="0 0 24 24" width="24"
+                    height="24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm4.71 7.71-5 5a1 1 0 0 1-1.42 0l-2-2a1 1 0 0 1 1.42-1.42l1.29 1.3 4.29-4.3a1 1 0 0 1 1.42 1.42Z" />
+                </svg>
+                В наличии
+            </div>
+            <div class="item__rating">
+                <svg class="icon-star_color" *ngFor="let star of stars" viewBox="0 0 48 48" width="30" height="30"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m34.865 39.83-10.25-5.621-10.153 5.8 2.091-11.647-8.563-8.027 11.542-1.577L24.394 8l5.042 10.672L41 20.047l-8.426 8.173Z"
+                        style="stroke:#fff;stroke-linecap:round;stroke-width:0;fill-rule:evenodd"
+                        [style.fill]="star.color" />
+                </svg>
+            </div>
+            <app-add-to-basket-button [itemId]="itemId"></app-add-to-basket-button>
+            <app-add-to-favorite-button [itemId]="itemId"></app-add-to-favorite-button>
+
+            <p class="item__text">
+                Доставка по Минску
+                курьером до клиента — завтра, бесплатно
+                самовывоз в Минске — завтра, бесплатно
+            </p>
+        </div>
+    </div>
+    <div class="item__description">
+        <div class="item__btns-wrapper">
+            <button class="item__review-btn btn btn-active">Обзор</button>
+            <button class="item__feedback-btn btn">Отзывы</button>
+            <button class="item__questions-btn btn">Вопрос-ответ</button>
+            <div class="item__btns-border"></div>
+        </div>
+        <p class="item__description-text">{{item?.description}}</p>
+        <p class="item__static-text">Информация о товаре предоставлена для ознакомления и не является публичной офертой.
+            Производители оставляют за собой право изменять внешний вид, характеристики и комплектацию товара,
+            предварительно не уведомляя продавцов и потребителей. Просим вас отнестись с пониманием к данному факту и
+            заранее приносим извинения за возможные неточности в описании и фотографиях товара.</p>
+    </div>
+</div>

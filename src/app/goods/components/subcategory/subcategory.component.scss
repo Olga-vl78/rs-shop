@@ -1,0 +1,20 @@
+:host{
+    width: 400px;
+}
+
+.subcategory__name {
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.subcategory__name:hover,
+.subcategory__list-item:hover {
+    color: #8f0808;
+    cursor: pointer;
+}
+
+.subcategory__list-item {
+    padding: 5px 0;
+    line-height: 2;
+}

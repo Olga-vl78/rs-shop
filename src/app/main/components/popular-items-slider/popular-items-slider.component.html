@@ -1,0 +1,6 @@
+<p-carousel [value]="items" [numVisible]="3" [numScroll]="3" [style]="{'max-width':'1000px', 'margin':'0 auto'}">
+    <ng-template let-goodsItem pTemplate="item">
+        <app-popular-item-card [goodsItem]="goodsItem[0]"></app-popular-item-card>
+        <app-popular-item-card [goodsItem]="goodsItem[1]"></app-popular-item-card>
+    </ng-template>
+</p-carousel>

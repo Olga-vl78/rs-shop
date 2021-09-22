@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <ul class="breadcrumbs">
+        <li class="breadcrumbs__item"><a routerLink="/categories" class="breadcrumbs__link">{{categories}}</a></li>
+    </ul>
+    <h2 class="items__category-name">{{categoryName}}</h2>
+    <div class="devider"></div>
+
+    <div class="card__container">
+        <app-subcategory-card *ngFor="let subcategory of subcategories" [subcategory]="subcategory">
+        </app-subcategory-card>
+    </div>
+</div>

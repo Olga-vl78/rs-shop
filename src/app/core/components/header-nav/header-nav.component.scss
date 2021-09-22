@@ -1,0 +1,176 @@
+.nav {
+    max-width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo{
+    width: 11rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg,#941e94,#e52e6b);
+}
+
+.nav__logo-link {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.btn {
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #cccaca;
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.disabled {
+    background-color: #ebedf0;
+    color: gray;
+    cursor: unset;
+}
+
+.btn:hover {
+    box-shadow: 0 2px 2px rgb(207, 204, 204);
+}
+
+.nav__search,
+.dropdown {
+    position: relative;
+
+    .dropdown__arrow {
+        transition: transform 0.2s;
+    }
+
+    .dropdown__menu {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        .dropdown__arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown__menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav__account-dropdown {
+            background-color: #ebedf0;
+            color: gray;
+        }
+    }
+}
+
+.nav__search-input {
+    width: 40rem;
+    height: 3rem;
+    padding: 8px 40px;
+    border: solid #cccaca 1px;
+    border-radius: 30px;
+    background: url(~src/assets/icons/loupe.svg) no-repeat 10px;
+}
+
+.dropdown__menu {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    width: 530px;
+    z-index: 100;
+
+    ul {
+        margin-top: 7px;
+        background-color: #fff;
+        list-style: none;
+        box-shadow: 0 2px 4px gray;
+
+        .dropdown__list-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e5e5e5;
+
+            &:hover {
+                background-color: #e5e5e5;
+            }
+
+            .dropdown__list-link {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-decoration: none;
+            }
+        }
+
+        .item-avatar:hover {
+            background-color: #fff;
+            cursor: unset;
+        }
+    }
+}
+
+.nav__search.scale,
+.dropdown.scale {
+    .dropdown__menu {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    &:hover {
+        .dropdown__menu {
+            transform: scaleY(1);
+        }
+    }
+}
+
+.account-dropdown  {
+    width: 240px;
+}
+
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-avatar {
+    width: 54px;
+    height: 54px;
+}
+
+.icon-arrow {
+    width: 16px;
+    height: 16px;
+}
+
+.dropdown__list-item {
+    display: flex;
+    gap: 10px;
+}
+
+.item-avatar {
+    flex-direction: column;
+}
+
+.dropdown__enter-btn {
+    width: 140px;
+    height: 35px;
+    background-color: #0077CC;
+    font-weight: 600;
+    color: #fff;
+}
