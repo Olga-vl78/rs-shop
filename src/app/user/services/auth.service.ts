@@ -36,9 +36,8 @@ export class AuthService {
       return {
         Authorization: `Bearer ${this.userToken}`,
       };
-    } else {
-      return {};
     }
+    return {};
   }
 
   isUserLogin() {

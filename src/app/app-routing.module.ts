@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'main',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'main',
@@ -35,13 +35,15 @@ const routes: Routes = [
     {
       path: '**',
       redirectTo: 'main',
-    },*/
+    }, */
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    useHash: true
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

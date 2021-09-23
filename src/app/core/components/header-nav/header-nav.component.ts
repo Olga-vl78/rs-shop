@@ -95,6 +95,6 @@ export class HeaderNavComponent implements OnInit {
     setTimeout(() => {
       this.goToItemDetailedPage(catId, subId, itemId);
       this.clearInputValue(input);
-    }, 1000)
+    }, 1000);
   }
 }

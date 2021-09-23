@@ -41,13 +41,12 @@ export class SubcategoryCardsContainerComponent implements OnInit {
   }
 
   getSubcategories(id: string) {
-    this.backendService.fetchCategories()
-    .then((cats) => {
+    this.backendService.fetchCategories().then((cats) => {
       const currentCategory = cats.find((cat) => cat.id === id);
       if (currentCategory) {
         this.categoryName = currentCategory.name;
         this.subcategories = currentCategory.subCategories;
-        }
+      }
     });
   }
 }

@@ -49,13 +49,15 @@ export class LoginPopupComponent {
   }
 
   async onSubmit(login: HTMLInputElement, password: HTMLInputElement) {
-    const response = await this.userSevice.loginUser({
-      login: this.login,
-      password: this.password,
-    }).catch((error) => console.log(error));
+    const response = await this.userSevice
+      .loginUser({
+        login: this.login,
+        password: this.password,
+      })
+      .catch((error) => console.log(error));
     if (response == undefined) {
       this.isLoginError = true;
-      this.clearForm(login, password)
+      this.clearForm(login, password);
     } else {
       this.isLoginError = false;
       this.authService.login(this.login, this.password);

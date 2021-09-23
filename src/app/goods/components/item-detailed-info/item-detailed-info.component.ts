@@ -61,7 +61,7 @@ export class ItemDetailedInfoComponent implements OnInit {
             this.imageUrl = item.imageUrls[0];
             this.getStarsColor(item.rating);
             this.onCheckItemRating(item.rating);
-          })
+          });
           this.getNames(this.categoryId, this.subcategoryId);
         }
       }),
@@ -69,16 +69,14 @@ export class ItemDetailedInfoComponent implements OnInit {
   }
 
   getNames(catid: string, subcutId: string) {
-    this.backendService
-      .fetchCategories()
-      .then((cats) => {
-        const currCategory = cats.filter((cat) => cat.id === catid)[0];
-        this.categoryName = currCategory.name;
-        const subcategories = currCategory.subCategories;
-        const currSubcategory = subcategories.filter((subcat) => subcat.id === subcutId)[0];
-        this.subcategoryName = currSubcategory.name;
-      })
- }
+    this.backendService.fetchCategories().then((cats) => {
+      const currCategory = cats.filter((cat) => cat.id === catid)[0];
+      this.categoryName = currCategory.name;
+      const subcategories = currCategory.subCategories;
+      const currSubcategory = subcategories.filter((subcat) => subcat.id === subcutId)[0];
+      this.subcategoryName = currSubcategory.name;
+    });
+  }
 
   getStarsColor(rating: number) {
     if (rating) {
@@ -90,7 +88,7 @@ export class ItemDetailedInfoComponent implements OnInit {
 
   @HostBinding('style.--posSlider')
   get posSlider() {
-    return this.itemNumber * 65 + 'px';
+    return `${this.itemNumber * 65}px`;
   }
 
   onCheckItemRating(rating: number) {

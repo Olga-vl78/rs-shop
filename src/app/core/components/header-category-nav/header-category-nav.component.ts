@@ -11,11 +11,8 @@ export class HeaderCategoryNavComponent implements OnInit {
   categories: ICategory[] = [];
 
   constructor(private readonly backendService: BackendService) {
-    this.backendService.fetchCategories()
-    .then((cats) => this.categories = cats);
+    this.backendService.fetchCategories().then((cats) => (this.categories = cats));
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

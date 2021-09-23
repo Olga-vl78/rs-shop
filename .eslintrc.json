@@ -24,7 +24,7 @@
         "import"
       ],
       "rules": {
-        //"import/prefer-default-export": "off",
+        "import/prefer-default-export": "off",
         //"class-methods-use-this": "off",
         //"@typescript-eslint/no-empty-function": "off",
         "@angular-eslint/directive-selector": [

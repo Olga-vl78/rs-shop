@@ -26,7 +26,7 @@ export class UserService {
 
   addUser(user: IUserInfo): Promise<any> {
     return this.http
-      .post<IUserInfo>(`${BASEURL}/users/register`, user) 
+      .post<IUserInfo>(`${BASEURL}/users/register`, user)
       .pipe(catchError(this.handleError))
       .toPromise();
   }
@@ -67,7 +67,7 @@ export class UserService {
     return this.http
       .put(`${BASEURL}/users/order`, order, this.getHeaders())
       .pipe(catchError(this.handleError))
-      .toPromise()
+      .toPromise();
   }
 
   handleError(error: HttpErrorResponse) {
@@ -76,7 +76,9 @@ export class UserService {
     } else {
       console.error(`Backend returned code ${error.status}, body was:`, error.error);
       if (error.error === 'Wrong username or password') {
-        alert('Неверный логин или пароль. Пожалуйста, введдите верные данные или пройдите регистрацию.');
+        alert(
+          'Неверный логин или пароль. Пожалуйста, введдите верные данные или пройдите регистрацию.',
+        );
       }
     }
     return throwError('Something bad happens; please try again later');

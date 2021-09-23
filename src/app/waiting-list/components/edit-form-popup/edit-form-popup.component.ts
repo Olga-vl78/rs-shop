@@ -54,10 +54,9 @@ export class EditFormPopupComponent {
     if (order) {
       order.details.address = formData.address;
       order.details.timeToDeliver = `${formData.date} ${formData.time}`;
-      this.userService.updateOrder(order)
-      .then(() => {
+      this.userService.updateOrder(order).then(() => {
         this.submitOrder.emit(true);
-        this.pagesDataService.isEditMode = false
+        this.pagesDataService.isEditMode = false;
       });
     }
   }

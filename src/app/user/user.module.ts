@@ -5,7 +5,7 @@ import { LoginPopupComponent } from './components/login-popup/login-popup.compon
 import { RegistrationPopupComponent } from './components/registration-popup/registration-popup.component';
 
 const routes: Routes = [
-  //{ path: '', component: OrderPageComponent, pathMatch: 'full' },
+  // { path: '', component: OrderPageComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

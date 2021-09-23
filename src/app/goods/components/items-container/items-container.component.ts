@@ -120,8 +120,8 @@ export class ItemsContainerComponent implements OnInit {
   }
 
   getPageItems() {
-    let startIdx = (this.pageNum - 1) * ITEMS_PER_PAGE;
-    let lastIdx = startIdx + ITEMS_PER_PAGE;
+    const startIdx = (this.pageNum - 1) * ITEMS_PER_PAGE;
+    const lastIdx = startIdx + ITEMS_PER_PAGE;
     return this.items.slice(startIdx, lastIdx);
   }
 }

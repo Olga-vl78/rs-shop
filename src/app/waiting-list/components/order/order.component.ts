@@ -41,7 +41,7 @@ export class OrderComponent implements OnInit {
   getOrders() {
     this.userService.getUserInfo().then((ordersData) => {
       const userOrdersData: any = ordersData;
-      const orders = userOrdersData.orders;
+      const { orders } = userOrdersData;
       const newOrders = orders.map((order: IUserOrder) => this.transformOrder(order));
       this.orders = newOrders;
       return this.orders;
@@ -58,7 +58,7 @@ export class OrderComponent implements OnInit {
     });
     const newOrder = {
       ...order,
-      items: items,
+      items,
     };
     return newOrder;
   }
@@ -68,8 +68,7 @@ export class OrderComponent implements OnInit {
   }
 
   onDeleteBtnClick(id: string) {
-    this.userService.deleteOrder(id)
-    .then(() => this.getOrders());
+    this.userService.deleteOrder(id).then(() => this.getOrders());
   }
 
   onEditBtnClick(order: IUserOrder) {
