@@ -39,12 +39,10 @@ export class OrdersContainerComponent implements OnInit {
 
   onLoginBtnClick() {
     this.authService.isAuthorization();
-    console.log('login', this.$isLogin.value);
   }
 
   checkOrderedItems() {
     if (this.orderedItems.length === 0) this.isEmpty = true;
     else this.isEmpty = false;
-    console.log('check', this.$isLogin.value);
   }
 }

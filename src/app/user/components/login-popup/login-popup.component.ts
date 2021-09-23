@@ -12,6 +12,8 @@ export class LoginPopupComponent {
 
   password: string = '';
 
+  isLoginError = false;
+
   constructor(
     private readonly authService: AuthService,
     private readonly userSevice: UserService,
@@ -21,7 +23,7 @@ export class LoginPopupComponent {
     return this.authService.$isRegistration;
   }
 
-  onGetEmailInputValue(input: HTMLInputElement) {
+  onGetLoginInputValue(input: HTMLInputElement) {
     if (input.validity.valid) {
       this.login = input.value;
     }
@@ -41,13 +43,23 @@ export class LoginPopupComponent {
     this.authService.$isRegistration.next(true);
   }
 
-  async onSubmit() {
-    this.authService.login(this.login, this.password);
+  clearForm(login: HTMLInputElement, password: HTMLInputElement) {
+    login.value = '';
+    password.value = '';
+  }
+
+  async onSubmit(login: HTMLInputElement, password: HTMLInputElement) {
     const response = await this.userSevice.loginUser({
       login: this.login,
       password: this.password,
-    });
-    this.authService.userToken = response.token;
-    console.log(response.token);
+    }).catch((error) => console.log(error));
+    if (response == undefined) {
+      this.isLoginError = true;
+      this.clearForm(login, password)
+    } else {
+      this.isLoginError = false;
+      this.authService.login(this.login, this.password);
+      this.authService.userToken = response.token;
+    }
   }
 }

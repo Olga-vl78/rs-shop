@@ -42,9 +42,7 @@ export class OrderComponent implements OnInit {
     this.userService.getUserInfo().then((ordersData) => {
       const userOrdersData: any = ordersData;
       const orders = userOrdersData.orders;
-      console.log('orders', orders);
       const newOrders = orders.map((order: IUserOrder) => this.transformOrder(order));
-      console.log('newOrders', newOrders);
       this.orders = newOrders;
       return this.orders;
     });
@@ -62,7 +60,6 @@ export class OrderComponent implements OnInit {
       ...order,
       items: items,
     };
-    console.log(newOrder);
     return newOrder;
   }
 
@@ -76,8 +73,8 @@ export class OrderComponent implements OnInit {
   }
 
   onEditBtnClick(order: IUserOrder) {
-    this.pagesDataService.isEditMode = true;
     this.pagesDataService.currentOrder = order;
+    this.pagesDataService.isEditMode = true;
   }
 
   onSubmitOrder(isSubmitted: boolean) {

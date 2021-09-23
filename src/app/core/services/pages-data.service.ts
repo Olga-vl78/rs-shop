@@ -49,7 +49,6 @@ export class PagesDataService {
   async getSearchItems(inputValue: string) {
     const items = await this.backendService.fetchSearchResult(inputValue);
     this.$searchItems.next(items);
-    console.log(items);
   }
 
   async addToOrderedItems(id: string) {
@@ -61,7 +60,6 @@ export class PagesDataService {
   async addToFavoriteItems(id: string) {
     const item = await this.backendService.fetchItem(id);
     this.favoriteItems.push(item);
-    console.log(this.favoriteItems);
   }
 
   async getPopularItems() {
@@ -70,7 +68,6 @@ export class PagesDataService {
     const itemsDataFirst = await this.backendService.fetchCategory(idsData[1]);
     const itemsDataSecond = await this.backendService.fetchCategory(idsData[2]);
     const popularItems = itemsDataFirst.concat(itemsDataSecond).filter((item) => item.rating === 5);
-    console.log(popularItems);
     return popularItems;
   }
 

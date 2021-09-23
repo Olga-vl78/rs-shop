@@ -70,7 +70,6 @@ export class HeaderNavComponent implements OnInit {
   onSearchInputChange(inputValue: string) {
     this.pagesDataService.getSearchItems(inputValue);
     if (inputValue) this.isEmpty = false;
-    console.log(this.isEmpty);
   }
 
   onLoginBtnClick() {

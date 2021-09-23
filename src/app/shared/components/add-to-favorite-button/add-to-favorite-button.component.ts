@@ -18,7 +18,6 @@ export class AddToFavoriteButtonComponent implements OnInit {
   }
 
   onFavoriteBtnClick(id: string | undefined) {
-    console.log(id);
     if (id) this.pagesDataService.addToFavoriteItems(id);
     this.isFavorite = true;
   }
@@ -32,6 +31,5 @@ export class AddToFavoriteButtonComponent implements OnInit {
     if (favoriteItem) {
       this.isFavorite = true;
     } else this.isFavorite = false;
-    console.log('isFavorite', this.isFavorite);
   }
 }

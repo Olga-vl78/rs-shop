@@ -74,7 +74,6 @@ export class ItemDetailedInfoComponent implements OnInit {
   }
 
   getStarsColor(rating: number) {
-    console.log('amount', rating);
     if (rating) {
       for (let i = 0; i < this.stars.length; i++) {
         if (i < rating) this.stars[i].color = '#0072BC';

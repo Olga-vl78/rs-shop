@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   userToken: string = '';
 
-  userLogin: string = 'Your name';
+  userLogin: string = '';
 
   $isAuth = new BehaviorSubject<boolean>(false);
 
@@ -33,7 +33,6 @@ export class AuthService {
 
   getAuthHeaders(): { [key: string]: string } {
     if (this.userToken) {
-      console.log('headers', this.userToken);
       return {
         Authorization: `Bearer ${this.userToken}`,
       };

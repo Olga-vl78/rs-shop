@@ -27,7 +27,6 @@ export class PopularItemCardComponent implements OnInit {
   async getSearchItems(itemName: string | undefined) {
     if (itemName) {
       const items = await this.backendService.fetchSearchResult(itemName);
-      console.log(items);
     }
   }
 

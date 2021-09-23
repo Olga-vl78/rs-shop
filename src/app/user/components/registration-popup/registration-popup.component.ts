@@ -56,7 +56,6 @@ export class RegistrationPopupComponent {
       login: this.login,
       password: this.password,
     });
-    console.log(response.token);
     this.authService.$isRegistration.next(false);
   }
 }

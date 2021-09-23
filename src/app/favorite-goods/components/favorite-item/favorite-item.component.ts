@@ -26,14 +26,12 @@ export class FavoriteItemComponent implements OnInit {
 
   onDeleteBtnClick(itemId: string | undefined) {
     const items = this.pagesDataService.favoriteItems;
-    console.log('items before', items);
     if (itemId) {
       const index = items.findIndex((item) => item.id === itemId);
       if (index > -1) {
         items.splice(index, 1);
       }
     }
-    console.log('items after', items);
   }
 
   goToItemDetailedPage(itemId: string | undefined) {
