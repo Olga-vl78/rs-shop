@@ -56,6 +56,11 @@
     gap: 10px;
     text-decoration: dotted;
     color: #0072BC;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-style: dotted;
+    }
 }
 
 .benefits__instruction-icon {

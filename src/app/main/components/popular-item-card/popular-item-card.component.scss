@@ -35,6 +35,10 @@
     color: #0072BC;
     text-align: center;
     cursor: pointer;
+
+    &:hover {
+        color: #8f0808;
+    }
 }
 
 .item__pic {
