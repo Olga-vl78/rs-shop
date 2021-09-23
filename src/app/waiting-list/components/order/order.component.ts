@@ -68,8 +68,8 @@ export class OrderComponent implements OnInit {
   }
 
   onDeleteBtnClick(id: string) {
-    this.userService.deleteOrder(id);
-    this.getOrders();
+    this.userService.deleteOrder(id)
+    .then(() => this.getOrders());
   }
 
   onEditBtnClick(order: IUserOrder) {

@@ -49,14 +49,16 @@ export class EditFormPopupComponent {
     this.pagesDataService.isEditMode = false;
   }
 
-  async submit(order: IUserOrder | null) {
-    this.submitOrder.emit(true);
+  submit(order: IUserOrder | null) {
     const formData = { ...this.form.value };
     if (order) {
       order.details.address = formData.address;
       order.details.timeToDeliver = `${formData.date} ${formData.time}`;
-      await this.userService.updateOrder(order);
+      this.userService.updateOrder(order)
+      .then(() => {
+        this.submitOrder.emit(true);
+        this.pagesDataService.isEditMode = false
+      });
     }
-    this.pagesDataService.isEditMode = false;
   }
 }
