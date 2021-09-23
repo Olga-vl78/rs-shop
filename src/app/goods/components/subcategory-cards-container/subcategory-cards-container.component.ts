@@ -29,13 +29,20 @@ export class SubcategoryCardsContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const categoryId = this.activatedRoute.snapshot.params.catId;
-    this.categoryId = categoryId;
-    this.getSubcategories(categoryId);
+    this.subscriptions.push(
+      this.activatedRoute.paramMap.subscribe((params) => {
+        const id = params.get('catId');
+        if (id) {
+          this.categoryId = id;
+          this.getSubcategories(id);
+        }
+      }),
+    );
   }
 
   getSubcategories(id: string) {
-    this.backendService.fetchCategories().then((cats) => {
+    this.backendService.fetchCategories()
+    .then((cats) => {
       const currentCategory = cats.find((cat) => cat.id === id);
       if (currentCategory) {
         this.categoryName = currentCategory.name;
