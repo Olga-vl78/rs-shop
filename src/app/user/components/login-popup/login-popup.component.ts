@@ -55,7 +55,7 @@ export class LoginPopupComponent {
         password: this.password,
       })
       .catch((error) => console.log(error));
-    if (response == undefined) {
+    if (response === undefined) {
       this.isLoginError = true;
       this.clearForm(login, password);
     } else {

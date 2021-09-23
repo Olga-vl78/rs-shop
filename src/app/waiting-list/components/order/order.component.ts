@@ -6,7 +6,6 @@ import { IHandledUserOrder } from 'src/app/user/models/handled-user-order.model'
 import { IUserOrderItem } from 'src/app/user/models/user-order-item.model';
 import { IUserOrder } from 'src/app/user/models/user-order.model';
 import { UserService } from 'src/app/user/services/user.service';
-import { getNextOrderNum } from '../../services/counter';
 
 @Component({
   selector: 'app-order',
@@ -15,8 +14,6 @@ import { getNextOrderNum } from '../../services/counter';
 })
 export class OrderComponent implements OnInit {
   isDetailes: boolean = false;
-
-  orderNum = getNextOrderNum();
 
   orders: any = [];
 

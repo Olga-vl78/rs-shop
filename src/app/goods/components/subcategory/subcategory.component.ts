@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendService } from 'src/app/core/services/backend.service';
-import { ICategory } from 'src/app/shared/models/category.model';
 import { ISubcategory } from 'src/app/shared/models/subcategory.model';
 
 @Component({

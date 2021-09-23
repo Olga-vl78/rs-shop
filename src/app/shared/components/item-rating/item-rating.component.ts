@@ -23,7 +23,7 @@ export class ItemRatingComponent implements OnInit {
   getStarsColor() {
     const amount = this.itemRating;
     if (amount) {
-      for (let i = 0; i < this.stars.length; i++) {
+      for (let i = 0; i < this.stars.length; i += 1) {
         if (i < amount) this.stars[i].color = '#0072BC';
       }
     }

@@ -25,8 +25,17 @@
       ],
       "rules": {
         "import/prefer-default-export": "off",
-        //"class-methods-use-this": "off",
+        "class-methods-use-this": "off",
+        "no-param-reassign": "off",
+        "no-return-assign": "off",
+        "prefer-destructuring": "off",
+        "array-callback-return": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-plusplus": "off",
+        "no-console": "off",
+        "no-alert": "off",
         //"@typescript-eslint/no-empty-function": "off",
+
         "@angular-eslint/directive-selector": [
           "error",
           {

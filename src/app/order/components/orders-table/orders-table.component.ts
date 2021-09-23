@@ -58,7 +58,7 @@ export class OrdersTableComponent implements OnInit {
 
   addOrderQuantity(input: HTMLInputElement, itemId: string) {
     let counter: number = +input.value;
-    counter++;
+    counter += 1;
     input.value = counter.toString();
     this.onAmountInputChange(input.value, itemId);
     this.orderSum = this.updateOrderSum();
@@ -67,7 +67,7 @@ export class OrdersTableComponent implements OnInit {
 
   reduceOrderQuantity(input: HTMLInputElement, itemId: string) {
     let counter: number = +input.value;
-    counter--;
+    counter -= 1;
     if (counter < 0) counter = 0;
     input.value = counter.toString();
     this.onAmountInputChange(input.value, itemId);

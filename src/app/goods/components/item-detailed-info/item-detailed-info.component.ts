@@ -80,7 +80,7 @@ export class ItemDetailedInfoComponent implements OnInit {
 
   getStarsColor(rating: number) {
     if (rating) {
-      for (let i = 0; i < this.stars.length; i++) {
+      for (let i = 0; i < this.stars.length; i += 1) {
         if (i < rating) this.stars[i].color = '#0072BC';
       }
     }
