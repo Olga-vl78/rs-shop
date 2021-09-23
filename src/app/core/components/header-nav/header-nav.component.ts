@@ -16,8 +16,6 @@ const SEARCH_INTERVAL_SEC: number = 700;
 export class HeaderNavComponent implements OnInit {
   @ViewChild('searchText', { static: true }) searchInput: ElementRef<HTMLInputElement> | undefined;
 
-  isEmpty: boolean = true;
-
   isCategoriesPage: boolean = false;
 
   isOrdersPage: boolean = false;
@@ -69,7 +67,6 @@ export class HeaderNavComponent implements OnInit {
 
   onSearchInputChange(inputValue: string) {
     this.pagesDataService.getSearchItems(inputValue);
-    if (inputValue) this.isEmpty = false;
   }
 
   onLoginBtnClick() {
@@ -91,7 +88,13 @@ export class HeaderNavComponent implements OnInit {
 
   clearInputValue(input: HTMLInputElement) {
     input.value = '';
-    this.isEmpty = true;
     this.pagesDataService.clearItems();
+  }
+
+  onRouterLinkCkick(input: HTMLInputElement, catId: string, subId: string, itemId: string) {
+    setTimeout(() => {
+      this.goToItemDetailedPage(catId, subId, itemId);
+      this.clearInputValue(input);
+    }, 1000)
   }
 }

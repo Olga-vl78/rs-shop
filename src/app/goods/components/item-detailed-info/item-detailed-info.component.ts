@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 
@@ -10,6 +11,8 @@ import { IGoodsItem } from 'src/app/shared/models/goods-item.model';
 })
 export class ItemDetailedInfoComponent implements OnInit {
   item: IGoodsItem | undefined;
+
+  subscriptions: Subscription[] = [];
 
   imageUrl: string = '';
 
@@ -43,18 +46,26 @@ export class ItemDetailedInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryId = this.activatedRoute.snapshot.params.catId;
-    this.subcategoryId = this.activatedRoute.snapshot.params.subId;
-    this.itemId = this.activatedRoute.snapshot.params.id;
-    this.getNames(this.categoryId, this.subcategoryId);
-    if (this.itemId) {
-      this.backendService.fetchItem(this.itemId).then((item) => {
-        this.item = item;
-        this.imageUrl = item.imageUrls[0];
-        this.getStarsColor(item.rating);
-        this.onCheckItemRating(item.rating);
-      });
-    }
+    this.subscriptions.push(
+      this.activatedRoute.paramMap.subscribe((params) => {
+        const categoryId = params.get('catId');
+        const subcatId = params.get('subId');
+        const itemId = params.get('id');
+
+        if (categoryId && subcatId && itemId) {
+          this.categoryId = categoryId;
+          this.subcategoryId = subcatId;
+          this.itemId = itemId;
+          this.backendService.fetchItem(this.itemId).then((item) => {
+            this.item = item;
+            this.imageUrl = item.imageUrls[0];
+            this.getStarsColor(item.rating);
+            this.onCheckItemRating(item.rating);
+          })
+          this.getNames(this.categoryId, this.subcategoryId);
+        }
+      }),
+    );
   }
 
   getNames(catid: string, subcutId: string) {
@@ -64,14 +75,10 @@ export class ItemDetailedInfoComponent implements OnInit {
         const currCategory = cats.filter((cat) => cat.id === catid)[0];
         this.categoryName = currCategory.name;
         const subcategories = currCategory.subCategories;
-        return subcategories;
-      })
-      .then((subcats) => {
-        const currSubcategory = subcats.filter((subcat) => subcat.id === subcutId)[0];
+        const currSubcategory = subcategories.filter((subcat) => subcat.id === subcutId)[0];
         this.subcategoryName = currSubcategory.name;
-        return this.subcategoryName;
-      });
-  }
+      })
+ }
 
   getStarsColor(rating: number) {
     if (rating) {

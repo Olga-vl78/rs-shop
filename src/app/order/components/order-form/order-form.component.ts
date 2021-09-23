@@ -96,7 +96,8 @@ export class OrderFormComponent {
     setTimeout(() => {
       this.isSubmitted = false;
       this.goToWaitingList();
-    }, 3000);
+      this.pagesDataService.clearOrderedItems();
+    }, 2500);
   }
 
   async submit() {
@@ -111,7 +112,6 @@ export class OrderFormComponent {
         comment: formData.comments,
       },
     });
-    this.pagesDataService.clearOrderedItems();
     this.showPopup();
   }
 }

@@ -76,7 +76,7 @@ export class UserService {
     } else {
       console.error(`Backend returned code ${error.status}, body was:`, error.error);
       if (error.error === 'Wrong username or password') {
-        alert('Неверный логин или пароль. Пожалeйста, введдите верные данные или пройдите регистрацию.');
+        alert('Неверный логин или пароль. Пожалуйста, введдите верные данные или пройдите регистрацию.');
       }
     }
     return throwError('Something bad happens; please try again later');
