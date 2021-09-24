@@ -1,0 +1,8 @@
+<div class="category__nav">
+    <div class="category__nav-wrapper">
+        <ul class="category__nav-list">
+            <li class="category__nav-item" *ngFor="let category of categories"><a class="category__nav-link"
+                    routerLink="/categories/{{category.id}}">{{category.name}}</a></li>
+        </ul>
+    </div>
+</div>

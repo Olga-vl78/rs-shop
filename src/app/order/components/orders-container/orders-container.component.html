@@ -1,0 +1,21 @@
+<div class="orders">
+    <p class="orders__help"><span class="orders__help-text">Помощь в оформлении:</span><span
+            class="order__help-phone">+375 29 655-55-55</span></p>
+    <h2 class="orders__title">Оформление заказа</h2>
+    <div class="orders__container">
+        <app-orders-table></app-orders-table>
+    </div>
+    <div class="orders__btn-wrapper" [ngClass]="isCheckout ? 'hidden' : ''">
+        <button class="orders__back-btn" routerLink="/categories">← Вернуться к покупкам</button>
+        <div class="orders__btn-inner-wrap">
+            <button class="orders__login-btn" [ngClass]="isEmpty ? 'hidden' : ''" (click)="onLoginBtnClick()"
+                [disabled]="($isLogin | async)">Войти в
+                аккаунт</button>
+            <button class="orders__checkout-btn" [ngClass]="isEmpty ? 'hidden' : ''" (click)="onCheckoutBtnClick()"
+                [disabled]="($isLogin | async) === false">Оформить
+                заказ</button>
+        </div>
+    </div>
+    <app-order-form *ngIf="isCheckout"></app-order-form>
+</div>
+<app-login-popup *ngIf="($isLogin | async) === false && ($isAuth | async)"></app-login-popup>

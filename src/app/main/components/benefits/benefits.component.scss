@@ -1,0 +1,69 @@
+.benefites__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.devider {
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #e5e5e5;
+}
+
+.benefits__title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+.benefits {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.benefits__inner-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.benefit__icon {
+    width: 40px;
+    height: 40px;
+}
+
+.benefits__instruction {
+    margin-bottom: 20px;
+    padding-left: 145px;
+}
+
+.benefits__instruction-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: dotted;
+    color: #0072BC;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-style: dotted;
+    }
+}
+
+.benefits__instruction-icon {
+    width: 30px;
+    height: 30px;
+}
